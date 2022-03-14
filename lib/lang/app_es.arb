@@ -1,6 +1,5 @@
 {
-  "helloWorld": "Hola Mundo!!!",
-  "@helloWorld": {
-    "description": "The conventional newborn programmer greeting"
-  }
+  "signUp": "Registrarte",
+  "signIn": "Iniciar sesión",
+  "haveAccount": "Tengo una Cuenta"
 }

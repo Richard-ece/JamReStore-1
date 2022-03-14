@@ -28,7 +28,7 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: Column(
         children: [
-          Text(AppLocalizations.of(context)!.helloWorld),
+          Text(AppLocalizations.of(context)!.signUp),
           Switch(
             onChanged: (bool value) {
               _changeLenguage(language, value);
