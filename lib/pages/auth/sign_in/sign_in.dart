@@ -1,7 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/api/auth_api.dart';
 
 class SignIn extends HookWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -13,7 +13,9 @@ class SignIn extends HookWidget {
     void login() {
       print(_emailController.value.text);
       print(_passwordController.value.text);
-      Dio().post("http://localhost:4000/api/auth/signIn", data:{"email":_emailController.value.text,"password":_passwordController.value.text });
+      AuthApi().signIn(
+        email:_emailController.value.text, password:_passwordController.value.text
+      );
     };
 
     return Scaffold(
