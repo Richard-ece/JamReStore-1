@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:jam_re_store/api/auth_api.dart';
 
 class SignUp extends HookWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -12,19 +11,13 @@ class SignUp extends HookWidget {
     final _emailController = useTextEditingController();
     final _passwordController = useTextEditingController();
 
-    void register() { 
-      
+    void register() {
       print(_nameController.value.text);
       print(_emailController.value.text);
       print(_passwordController.value.text);
 
-      AuthApi().SignUp(
-        email:_emailController.value.text,
-        password:_passwordController.value.text,
-        name:_nameController.value.text
-      );
+      // Llamar al blocs
     }
-    
 
     return Scaffold(
       appBar: AppBar(
