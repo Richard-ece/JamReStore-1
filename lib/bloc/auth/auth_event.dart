@@ -13,3 +13,9 @@ class SignUpRequest extends AuthEvent {
 
   SignUpRequest({required this.userSignUp});
 }
+
+class changePasswordRequest extends AuthEvent {
+  final Password changePassword;
+
+  changePasswordRequest({required this.changePassword});
+}

@@ -16,4 +16,10 @@ class AuthRepository {
       return response;
     });
   }
+
+  Future<ResponseApi> changePassword(Password password) {
+    return authApi.changePassword(password:password).then((response) {
+      return response;
+    });
+  }
 }
