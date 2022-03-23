@@ -53,7 +53,7 @@ class SignUpPage extends HookWidget {
                 child: Text(AppLocalizations.of(context)!.signUp),
                 onPressed: signUp,
               ),
-            )
+            ),
           ],
         ),
       ),

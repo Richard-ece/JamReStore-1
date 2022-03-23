@@ -8,26 +8,24 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   var authRepository = AuthRepository();
 
   AuthBloc() : super(AuthState()) {
-    on<SignInRequest>((event, emit) {
-      authRepository.signIn(event.userSignIn).then((value) {
+    on<SignInRequest>((event, emit) async {
+      await authRepository.signIn(event.userSignIn).then((value) {
         emit(state.copyWith(
           signInRequestStatus: RequestStatus.succes,
         ));
       }).catchError((error) {
-        print(error);
         emit(state.copyWith(
           signInRequestStatus: RequestStatus.failed,
           signInRequestError: error,
         ));
       });
     });
-    on<SignUpRequest>((event, emit) {
-      authRepository.signUp(event.userSignUp).then((value) {
+    on<SignUpRequest>((event, emit) async {
+      await authRepository.signUp(event.userSignUp).then((value) {
         emit(state.copyWith(
           signUpRequestStatus: RequestStatus.succes,
         ));
       }).catchError((error) {
-        print(error);
         emit(state.copyWith(
           signUpRequestStatus: RequestStatus.failed,
           signUpRequestError: error,
