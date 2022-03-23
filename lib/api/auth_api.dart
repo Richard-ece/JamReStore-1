@@ -11,10 +11,15 @@ class AuthApi {
     );
   }
 
-  Future<dynamic> signUp({required UserSignUp user}) {
+  Future<dynamic> signUp({required UserSignUp user}) async {
+    print({user.name});
     return Dio().post(
       "${backendPath}/auth/signUp",
       data: {"email": user.email, "password": user.password, "name": user.name},
+    ).then((value) {
+      print(value);
+      return value;
+    } 
     );
   }
 }

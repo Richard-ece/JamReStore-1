@@ -5,10 +5,10 @@ class AuthRepository {
   var authApi = AuthApi();
 
   Future<dynamic> signIn(UserSignIn userSignIn) async {
-    return await authApi.signIn(user: userSignIn);
+    return  authApi.signIn(user: userSignIn);
   }
 
   Future<dynamic> signUp(UserSignUp userSignUp) async {
-    return await authApi.signUp(user: userSignUp);
+    return  authApi.signUp(user: userSignUp);
   }
 }

@@ -14,6 +14,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           signInRequestStatus: RequestStatus.succes,
         ));
       }).catchError((error) {
+        print(error);
         emit(state.copyWith(
           signInRequestStatus: RequestStatus.failed,
           signInRequestError: error,
@@ -26,6 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           signUpRequestStatus: RequestStatus.succes,
         ));
       }).catchError((error) {
+        print(error);
         emit(state.copyWith(
           signUpRequestStatus: RequestStatus.failed,
           signUpRequestError: error,
