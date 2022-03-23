@@ -1,22 +1,20 @@
 import 'package:dio/dio.dart';
+import 'package:jam_re_store/models/auth/user.dart';
 
 class AuthApi {
   final backendPath = "http://localhost:4000/api";
-  
-  Future<dynamic> signIn ({required String email, required String password}) {
-    return Dio().post("${backendPath}/auth/signIn", 
-      data:{
-      "email":email,
-      "password":password
-      });
+
+  Future<dynamic> signIn({required UserSignIn user}) {
+    return Dio().post(
+      "${backendPath}/auth/signIn",
+      data: {"email": user.email, "password": user.password},
+    );
   }
 
-   Future<dynamic> SignUp ({required String email, required String password, required String name}) {
-    return Dio().post("${backendPath}/auth/signUp", 
-      data:{
-      "email":email,
-      "password":password,
-      "name" :name
-      });
+  Future<dynamic> signUp({required UserSignUp user}) {
+    return Dio().post(
+      "${backendPath}/auth/signUp",
+      data: {"email": user.email, "password": user.password, "name": user.name},
+    );
   }
 }

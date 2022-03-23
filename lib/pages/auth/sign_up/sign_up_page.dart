@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
+import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/models/auth/user.dart';
 
 class SignUpPage extends HookWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -11,12 +15,16 @@ class SignUpPage extends HookWidget {
     final _emailController = useTextEditingController();
     final _passwordController = useTextEditingController();
 
-    void register() {
-      print(_nameController.value.text);
-      print(_emailController.value.text);
-      print(_passwordController.value.text);
-
-      // Llamar al blocs
+    void signUp() {
+      context.read<AuthBloc>().add(
+            SignUpRequest(
+              userSignUp: UserSignUp(
+                password: _passwordController.value.text,
+                email: _emailController.value.text,
+                name: _nameController.value.text,
+              ),
+            ),
+          );
     }
 
     return Scaffold(
@@ -43,7 +51,7 @@ class SignUpPage extends HookWidget {
               width: double.infinity,
               child: ElevatedButton(
                 child: Text(AppLocalizations.of(context)!.signUp),
-                onPressed: register,
+                onPressed: signUp,
               ),
             )
           ],

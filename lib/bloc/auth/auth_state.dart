@@ -22,13 +22,13 @@ class AuthState extends Equatable {
   });
 
   AuthState copyWith({
-    required String? name,
-    required String? password,
-    required String? email,
-    required RequestStatus? signInRequestStatus,
-    required RequestStatus? signUpRequestStatus,
-    required DioError? signInRequestError,
-    required DioError? signUpRequestError,
+    String? name,
+    String? password,
+    String? email,
+    RequestStatus? signInRequestStatus,
+    RequestStatus? signUpRequestStatus,
+    DioError? signInRequestError,
+    DioError? signUpRequestError,
   }) {
     return AuthState(
       name: name ?? this.name,
