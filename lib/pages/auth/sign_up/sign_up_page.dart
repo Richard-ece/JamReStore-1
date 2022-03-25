@@ -5,6 +5,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/models/auth/user.dart';
+import 'package:jam_re_store/routes/names.dart';
 
 class SignUpPage extends HookWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -25,6 +26,7 @@ class SignUpPage extends HookWidget {
               ),
             ),
           );
+      Navigator.pushNamed(context, NamesRoutes.otp);
     }
 
     return Scaffold(
