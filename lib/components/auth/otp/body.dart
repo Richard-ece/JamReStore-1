@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jam_re_store/components/otp/otp_form.dart';
+import 'package:jam_re_store/components/auth/otp/otp_form.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);

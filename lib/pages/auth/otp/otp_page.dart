@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:jam_re_store/components/otp/body.dart';
+import 'package:jam_re_store/components/auth/otp/body.dart';
 
 class OtpPage extends HookWidget {
   const OtpPage({Key? key}) : super(key: key);
@@ -8,9 +8,10 @@ class OtpPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("otp"),
-        ),
-        body: Body());
+      appBar: AppBar(
+        title: Text("otp"),
+      ),
+      body: Body(),
+    );
   }
 }

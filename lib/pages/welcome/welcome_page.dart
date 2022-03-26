@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:jam_re_store/components/welcome/introduction_slider.dart';
 
-class Welcome extends StatelessWidget {
-  const Welcome({Key? key}) : super(key: key);
+class WelcomePage extends StatelessWidget {
+  const WelcomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
