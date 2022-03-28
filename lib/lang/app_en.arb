@@ -1,5 +1,12 @@
 {
   "signUp": "Register",
   "signIn": "Sign In",
-  "haveAccount": "I have an Account"
+  "haveAccount": "I have an Account",
+  "next": "Next",
+  "welcomeTittleOne": "Recycle from home",
+  "welcomeDescriptionOne": "Verified and trained staff will be where and when it is most convenient for you to handle any reusable items.",
+  "welcomeTittleTwo": "Benefits for all",
+  "welcomeDescriptionTwo": "In addition to dignifying the employment of recycling personnel, helping to conserve the environment, you will be able to accumulate JamTokens and obtain rewards.",
+  "welcomeTittleThree": "Thrift Store",
+  "welcomeDescriptionThree": "Sell and buy second-hand products, using JamTokens and/or your local currency, you can always chat with the other party to get a better price."
 }

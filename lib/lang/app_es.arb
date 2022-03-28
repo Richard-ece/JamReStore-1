@@ -1,5 +1,12 @@
 {
   "signUp": "Registrarte",
   "signIn": "Iniciar sesión",
-  "haveAccount": "Tengo una Cuenta"
+  "haveAccount": "Tengo una Cuenta",
+  "next": "Siguiente",
+  "welcomeTittleOne": "Recicla desde casa",
+  "welcomeDescriptionOne": "Personal verificado y capacitado estará donde y cuando te sea más comodo para encargarse de cualquier elemento con posibilidad de reusarse.",
+  "welcomeTittleTwo": "Beneficios para todos",
+  "welcomeDescriptionTwo": "Además de dignificar el empleo del personal de reciclaje, ayudar a conservar el medio ambiente, podrás acumular JamTokens y obtener recompensas.",
+  "welcomeTittleThree": "Tienda de segunda mano",
+  "welcomeDescriptionThree": "Vende y compra productos de segunda mano, usando JamTokens y/o tu moneda local, siempre podrás chatear con la otra parte para conseguir un mejor precio."
 }
