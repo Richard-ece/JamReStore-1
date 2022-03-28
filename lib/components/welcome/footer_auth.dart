@@ -35,11 +35,15 @@ class _SignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-        Navigator.pushNamed(context, NamesRoutes.signUp);
-      },
-      child: Text(AppLocalizations.of(context)!.signUp),
+    return SizedBox(
+      width: double.infinity,
+      height: 50,
+      child: ElevatedButton(
+        onPressed: () {
+          Navigator.pushNamed(context, NamesRoutes.signUp);
+        },
+        child: Text(AppLocalizations.of(context)!.signUp),
+      ),
     );
   }
 }
