@@ -1,35 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
-import 'package:jam_re_store/bloc/auth/auth_event.dart';
-import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/routes/names.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:jam_re_store/utils/constants/assets.dart';
 import 'package:lottie/lottie.dart';
 
-class SignUpPage extends HookWidget {
-  const SignUpPage({Key? key}) : super(key: key);
+class OtpNumberPage extends HookWidget {
+  const OtpNumberPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final _nameController = useTextEditingController();
-    final _emailController = useTextEditingController();
-    final _passwordController = useTextEditingController();
+    final _numberController = useTextEditingController();
 
-    void signUp() {
-      context.read<AuthBloc>().add(
-            SignUpRequest(
-              userSignUp: UserSignUp(
-                password: _passwordController.value.text,
-                email: _emailController.value.text,
-                name: _nameController.value.text,
-              ),
-            ),
-          );
-      Navigator.pushNamed(context, NamesRoutes.otpNumber);
+    void setNumber() {
+      Navigator.pushNamed(context, NamesRoutes.otp);
     }
+
+    ;
 
     return Scaffold(
       appBar: AppBar(
@@ -49,22 +36,15 @@ class SignUpPage extends HookWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Nombre'),
-                controller: _nameController,
+                decoration: const InputDecoration(labelText: 'Pais'),
+                controller: _numberController,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Email'),
-                controller: _emailController,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Password'),
-                controller: _passwordController,
+                decoration: const InputDecoration(labelText: 'Numero'),
+                controller: _numberController,
               ),
             ),
             Padding(
@@ -80,7 +60,7 @@ class SignUpPage extends HookWidget {
                 height: 50,
                 child: ElevatedButton(
                   child: Text(AppLocalizations.of(context)!.signUp),
-                  onPressed: signUp,
+                  onPressed: setNumber,
                 ),
               ),
             ),

@@ -9,7 +9,7 @@ class OtpPage extends HookWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("otp"),
+        title: Text("Codigo de Verificacion"),
       ),
       body: Body(),
     );
