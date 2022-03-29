@@ -15,9 +15,9 @@ class Body extends StatelessWidget {
             children: [
               //SizedBox(height, 0.05),
               Text(
-                "OTP Verification",
+                "Verification Number",
               ),
-              Text("We sent your code to your Number"),
+              Text("We sent your code to your Phone"),
 
               OtpForm(),
               SizedBox(height: 0.1),
