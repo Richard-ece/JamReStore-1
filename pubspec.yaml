@@ -35,6 +35,8 @@ dependencies:
   equatable: ^2.0.3
 
   lottie: ^1.2.2
+  
+  intl_phone_number_input: ^0.7.0+2
 
 dev_dependencies:
 
