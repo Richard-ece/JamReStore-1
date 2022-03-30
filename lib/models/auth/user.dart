@@ -43,7 +43,7 @@ class UserSignUp extends User {
 
 class Number {
   final String number;
-  final String password;
+  final String country;
 
-  Number({required this.number, required this.password});
+  Number({required this.number, required this.country});
 }

@@ -34,8 +34,8 @@ class AuthApi {
 
   Future<ResponseApi> setNumber({required Number number}) {
     return Dio().post(
-      "${backendPath}/auth/signUp",
-      data: {"Number": number.number, "password": number.password},
+      "${backendPath}/auth/OtpNumber",
+      data: {"Number": number.number, "country": number.country},
     ).then((response) {
       return ResponseApi.fromJson(response.data);
     });

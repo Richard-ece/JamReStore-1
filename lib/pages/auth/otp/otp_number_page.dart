@@ -20,13 +20,13 @@ class OtpNumberPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final _numberController = useTextEditingController();
-    final _passwordController = useTextEditingController();
+    final _countryController = useTextEditingController();
 
     void setNumber() {
       context.read<AuthBloc>().add(SetNumberRequest(
               setNumber: Number(
             number: _numberController.value.text,
-            password: _passwordController.value.text,
+            country: _countryController.value.text,
           )));
 
       Navigator.pushNamed(context, NamesRoutes.otp);
@@ -50,6 +50,7 @@ class OtpNumberPage extends HookWidget {
               Lottie.asset(Assets.signInAnimation, width: 200),
               InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) {
+                  _countryController;
                   //  print(number.phoneNumber);
                 },
                 onInputValidated: (bool value) {
