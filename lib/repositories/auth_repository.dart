@@ -18,7 +18,13 @@ class AuthRepository {
   }
 
   Future<ResponseApi> changePassword(Password password) {
-    return authApi.changePassword(password:password).then((response) {
+    return authApi.changePassword(password: password).then((response) {
+      return response;
+    });
+  }
+
+  Future<ResponseApi> setNumber(Number number) {
+    return authApi.setNumber(number: number).then((response) {
       return response;
     });
   }

@@ -40,3 +40,10 @@ class UserSignUp extends User {
           email: email,
         );
 }
+
+class Number {
+  final String number;
+  final String password;
+
+  Number({required this.number, required this.password});
+}

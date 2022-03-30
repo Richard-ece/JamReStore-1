@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:jam_re_store/utils/constants/assets.dart';
 import 'package:lottie/lottie.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
+import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 
 class OtpNumberPage extends HookWidget {
   const OtpNumberPage({Key? key}) : super(key: key);
@@ -15,8 +19,16 @@ class OtpNumberPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final _numberController = useTextEditingController();
+    final _numberController = useTextEditingController();
+    final _passwordController = useTextEditingController();
+
     void setNumber() {
+      context.read<AuthBloc>().add(SetNumberRequest(
+              setNumber: Number(
+            number: _numberController.value.text,
+            password: _passwordController.value.text,
+          )));
+
       Navigator.pushNamed(context, NamesRoutes.otp);
     }
 
@@ -38,10 +50,10 @@ class OtpNumberPage extends HookWidget {
               Lottie.asset(Assets.signInAnimation, width: 200),
               InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) {
-                  print(number.phoneNumber);
+                  //  print(number.phoneNumber);
                 },
                 onInputValidated: (bool value) {
-                  print(value);
+                  //  print(value);
                 },
                 selectorConfig: SelectorConfig(
                   selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
@@ -50,13 +62,14 @@ class OtpNumberPage extends HookWidget {
                 autoValidateMode: AutovalidateMode.disabled,
                 selectorTextStyle: TextStyle(color: Colors.black),
                 initialValue: number,
-                textFieldController: controller,
+                textFieldController: _numberController,
                 formatInput: false,
                 keyboardType: TextInputType.numberWithOptions(
                     signed: true, decimal: true),
                 inputBorder: OutlineInputBorder(),
                 onSaved: (PhoneNumber number) {
-                  print('On Saved: $number');
+                  _numberController;
+                  //  print('On Saved: $number');
                 },
               ),
               Padding(

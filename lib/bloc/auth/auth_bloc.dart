@@ -33,6 +33,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
     });
 
+    on<SetNumberRequest>((event, emit) async {
+      await authRepository.setNumber(event.setNumber).then((value) {
+        emit(state.copyWith(
+          setNumberRequestStatus: RequestStatus.succes,
+        ));
+      }).catchError((error) {
+        emit(state.copyWith(
+          setNumberRequestStatus: RequestStatus.failed,
+          setNumberRequestError: error,
+        ));
+      });
+    });
+
     on<changePasswordRequest>((event, emit) async {
       await authRepository.changePassword(event.changePassword).then((value) {
         emit(state.copyWith(
@@ -46,5 +59,4 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
     });
   }
-  
 }

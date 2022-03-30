@@ -22,11 +22,20 @@ class AuthApi {
       return ResponseApi.fromJson(response.data);
     });
   }
-  
+
   Future<ResponseApi> changePassword({required Password password}) {
     return Dio().post(
       "${backendPath}/auth/password",
       data: {"email": password.email, "password": password.password},
+    ).then((response) {
+      return ResponseApi.fromJson(response.data);
+    });
+  }
+
+  Future<ResponseApi> setNumber({required Number number}) {
+    return Dio().post(
+      "${backendPath}/auth/signUp",
+      data: {"Number": number.number, "password": number.password},
     ).then((response) {
       return ResponseApi.fromJson(response.data);
     });
