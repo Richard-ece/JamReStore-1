@@ -50,6 +50,7 @@ class OtpNumberPage extends HookWidget {
               Lottie.asset(Assets.signInAnimation, width: 200),
               InternationalPhoneNumberInput(
                 onInputChanged: (PhoneNumber number) {
+                  _countryController;
                   //  print(number.phoneNumber);
                 },
                 onInputValidated: (bool value) {
