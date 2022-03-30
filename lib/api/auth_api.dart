@@ -32,10 +32,10 @@ class AuthApi {
     });
   }
 
-  Future<ResponseApi> setNumber({required Number number}) {
+  Future<ResponseApi> setNumberPhone({required NumberPhone numberPhone}) {
     return Dio().post(
       "${backendPath}/auth/signUp",
-      data: {"Number": number.number, "Country": number.country},
+      data: {"Number": numberPhone.number, "Country": numberPhone.country},
     ).then((response) {
       return ResponseApi.fromJson(response.data);
     });

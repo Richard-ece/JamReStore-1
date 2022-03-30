@@ -21,7 +21,7 @@ class changePasswordRequest extends AuthEvent {
 }
 
 class SetNumberRequest extends AuthEvent {
-  final Number setNumber;
+  final NumberPhone numberPhone;
 
-  SetNumberRequest({required this.setNumber});
+  SetNumberRequest({required this.numberPhone});
 }

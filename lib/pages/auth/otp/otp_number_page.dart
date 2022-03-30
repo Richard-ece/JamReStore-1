@@ -13,21 +13,20 @@ import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 class OtpNumberPage extends HookWidget {
   const OtpNumberPage({Key? key}) : super(key: key);
 
-  get number => null;
-
-  get controller => null;
-
   @override
   Widget build(BuildContext context) {
-    final _numberController = useTextEditingController();
-    final _countryController = useTextEditingController();
+    final _numberPhone = useState("");
+    final _countryCode = useState("");
 
     void setNumber() {
-      context.read<AuthBloc>().add(SetNumberRequest(
-              setNumber: Number(
-            number: _numberController.value.text,
-            country: _countryController.value.text,
-          )));
+      context.read<AuthBloc>().add(
+            SetNumberRequest(
+              numberPhone: NumberPhone(
+                number: _numberPhone.value,
+                country: _countryCode.value,
+              ),
+            ),
+          );
 
       Navigator.pushNamed(context, NamesRoutes.otp);
     }
@@ -35,62 +34,66 @@ class OtpNumberPage extends HookWidget {
     ;
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.signUp),
-        ),
-        body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 0,
-                  vertical: 20,
-                ),
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.signUp),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 0,
+                vertical: 20,
               ),
-              Lottie.asset(Assets.signInAnimation, width: 200),
-              InternationalPhoneNumberInput(
-                onInputChanged: (PhoneNumber number) {
-                  _countryController;
-                  //  print(number.phoneNumber);
-                },
-                onInputValidated: (bool value) {
-                  //  print(value);
+            ),
+            Lottie.asset(Assets.signInAnimation, width: 200),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+              child: InternationalPhoneNumberInput(
+                hintText: AppLocalizations.of(context)!.otpNumberPhone,
+                onInputChanged: (PhoneNumber phoneNumber) {
+                  _countryCode.value = phoneNumber.dialCode ?? "";
+                  _numberPhone.value = phoneNumber.phoneNumber
+                          ?.substring(phoneNumber.dialCode?.length ?? 1) ??
+                      "";
                 },
                 selectorConfig: SelectorConfig(
-                  selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                  selectorType: PhoneInputSelectorType.DIALOG,
                 ),
                 ignoreBlank: false,
                 autoValidateMode: AutovalidateMode.disabled,
                 selectorTextStyle: TextStyle(color: Colors.black),
-                initialValue: number,
-                textFieldController: _numberController,
+                initialValue: PhoneNumber(
+                    phoneNumber: "", dialCode: "+54", isoCode: "AR"),
                 formatInput: false,
                 keyboardType: TextInputType.numberWithOptions(
-                    signed: true, decimal: true),
+                    signed: false, decimal: false),
                 inputBorder: OutlineInputBorder(),
-                onSaved: (PhoneNumber number) {
-                  _numberController;
-                  //  print('On Saved: $number');
-                },
               ),
-              Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 0,
-                        vertical: 20,
-                      ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 0,
+                      vertical: 20,
                     ),
-                    ElevatedButton(
-                      onPressed: () {
-                        setNumber();
-                        var formKey;
-                        formKey.currentState.save();
-                      },
-                      child: Text('Siguiente'),
-                    ),
-                  ]))
-            ])));
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      setNumber();
+                    },
+                    child: Text(AppLocalizations.of(context)!.next),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

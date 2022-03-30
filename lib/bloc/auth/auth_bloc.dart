@@ -34,7 +34,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<SetNumberRequest>((event, emit) async {
-      await authRepository.setNumber(event.setNumber).then((value) {
+      await authRepository.setNumberPhone(event.numberPhone).then((value) {
         emit(state.copyWith(
           setNumberRequestStatus: RequestStatus.succes,
         ));

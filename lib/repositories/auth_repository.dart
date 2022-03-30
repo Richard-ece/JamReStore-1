@@ -23,8 +23,8 @@ class AuthRepository {
     });
   }
 
-  Future<ResponseApi> setNumber(Number number) {
-    return authApi.setNumber(number: number).then((response) {
+  Future<ResponseApi> setNumberPhone(NumberPhone number) {
+    return authApi.setNumberPhone(numberPhone: number).then((response) {
       return response;
     });
   }

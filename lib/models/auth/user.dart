@@ -41,9 +41,9 @@ class UserSignUp extends User {
         );
 }
 
-class Number {
+class NumberPhone {
   final String number;
   final String country;
 
-  Number({required this.number, required this.country});
+  NumberPhone({required this.number, required this.country});
 }
