@@ -28,4 +28,10 @@ class AuthRepository {
       return response;
     });
   }
+
+  Future<ResponseApi> validationCode(Code code) {
+    return authApi.validationCode(code: code).then((response) {
+      return response;
+    });
+  }
 }

@@ -46,6 +46,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
     });
 
+    on<ValidationCodeRequest>((event, emit) async {
+      await authRepository.validationCode(event.code).then((value) {
+        emit(state.copyWith(
+          validationCodeRequestStatus: RequestStatus.succes,
+        ));
+      }).catchError((error) {
+        emit(state.copyWith(
+          validationCodeRequestStatus: RequestStatus.failed,
+          validationCodeRequestError: error,
+        ));
+      });
+    });
+
     on<changePasswordRequest>((event, emit) async {
       await authRepository.changePassword(event.changePassword).then((value) {
         emit(state.copyWith(

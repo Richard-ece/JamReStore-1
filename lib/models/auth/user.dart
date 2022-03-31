@@ -47,3 +47,8 @@ class NumberPhone {
 
   NumberPhone({required this.number, required this.country});
 }
+
+class Code {
+  final String code;
+  Code({required this.code});
+}

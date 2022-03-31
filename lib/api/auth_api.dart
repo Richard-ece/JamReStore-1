@@ -43,4 +43,13 @@ class AuthApi {
       return ResponseApi.fromJson(response.data);
     });
   }
+
+  Future<ResponseApi> validationCode({required Code code}) {
+    return Dio().post(
+      "${backendPath}/auth/otp",
+      data: {"otpCode": code.code},
+    ).then((response) {
+      return ResponseApi.fromJson(response.data);
+    });
+  }
 }

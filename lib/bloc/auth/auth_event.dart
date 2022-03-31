@@ -25,3 +25,9 @@ class SetNumberRequest extends AuthEvent {
 
   SetNumberRequest({required this.numberPhone});
 }
+
+class ValidationCodeRequest extends AuthEvent {
+  final Code code;
+
+  ValidationCodeRequest({required this.code});
+}

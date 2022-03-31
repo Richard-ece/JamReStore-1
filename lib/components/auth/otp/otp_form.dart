@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
+import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/models/auth/user.dart';
 
 class SizeConfig {
   static late MediaQueryData _mediaQueryData;
@@ -58,6 +62,18 @@ class OtpForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _codeController = useTextEditingController();
+
+    void otpCode() {
+      context.read<AuthBloc>().add(
+            ValidationCodeRequest(
+              code: Code(
+                code: _codeController.value.text,
+              ),
+            ),
+          );
+    }
+
     useEffect(() {
       pin2FocusNode = FocusNode();
       pin3FocusNode = FocusNode();
@@ -89,6 +105,7 @@ class OtpForm extends HookWidget {
                   onChanged: (value) {
                     nextField(value, pin2FocusNode);
                   },
+                  controller: _codeController,
                 ),
               ),
               SizedBox(
@@ -136,8 +153,8 @@ class OtpForm extends HookWidget {
           SizedBox(height: SizeConfig.screenHeight * 0.15),
           ElevatedButton(
             child: Text("Continue"),
-            onPressed: () {},
-          )
+            onPressed: otpCode,
+          ),
         ],
       ),
     );
