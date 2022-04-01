@@ -30,7 +30,7 @@ class AuthRepository {
   }
 
   Future<ResponseApi> validationCode(Code code) {
-    return authApi.validationCode(code: code).then((response) {
+    return authApi.validationCode(codeVerificated: code).then((response) {
       return response;
     });
   }

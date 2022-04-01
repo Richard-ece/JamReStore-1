@@ -44,10 +44,10 @@ class AuthApi {
     });
   }
 
-  Future<ResponseApi> validationCode({required Code code}) {
+  Future<ResponseApi> validationCode({required Code codeVerificated}) {
     return Dio().post(
       "${backendPath}/auth/otp",
-      data: {"otpCode": code.code},
+      data: {"otpCodePhone": codeVerificated.code},
     ).then((response) {
       return ResponseApi.fromJson(response.data);
     });
