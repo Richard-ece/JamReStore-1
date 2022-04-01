@@ -62,13 +62,13 @@ class OtpForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _codeValidation = useState("");
+    final _codeController = useTextEditingController();
 
     void otpCode() {
       context.read<AuthBloc>().add(
             ValidationCodeRequest(
               code: Code(
-                code: _codeValidation.value,
+                code: _codeController.value.text,
               ),
             ),
           );
@@ -104,8 +104,8 @@ class OtpForm extends HookWidget {
                   decoration: otpInputDecoration,
                   onChanged: (value) {
                     nextField(value, pin2FocusNode);
-                    _codeValidation.value = value;
                   },
+                  controller: _codeController,
                 ),
               ),
               SizedBox(
@@ -117,10 +117,7 @@ class OtpForm extends HookWidget {
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value, pin3FocusNode);
-                    _codeValidation.value = _codeValidation.value + value;
-                  },
+                  onChanged: (value) => nextField(value, pin3FocusNode),
                 ),
               ),
               SizedBox(
@@ -132,10 +129,7 @@ class OtpForm extends HookWidget {
                   keyboardType: TextInputType.number,
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value, pin4FocusNode);
-                    _codeValidation.value = _codeValidation.value + value;
-                  },
+                  onChanged: (value) => nextField(value, pin4FocusNode),
                 ),
               ),
               SizedBox(
@@ -151,7 +145,6 @@ class OtpForm extends HookWidget {
                     if (value.length == 1) {
                       pin4FocusNode!.unfocus();
                     }
-                    _codeValidation.value = _codeValidation.value + value;
                   },
                 ),
               ),
