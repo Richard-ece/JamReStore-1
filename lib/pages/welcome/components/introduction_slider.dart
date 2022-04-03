@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:jam_re_store/components/welcome/footer_auth.dart';
+import 'package:jam_re_store/pages/welcome/components/footer_auth.dart';
 import 'package:jam_re_store/utils/constants/assets.dart';
 import 'package:lottie/lottie.dart';
 

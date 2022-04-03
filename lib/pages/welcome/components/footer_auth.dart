@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:jam_re_store/components/have_account_button.dart';
 import 'package:jam_re_store/routes/names.dart';
 
 class FooterAuth extends StatelessWidget {
@@ -14,22 +15,16 @@ class FooterAuth extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          const _SignUpButton(),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(AppLocalizations.of(context)!.haveAccount),
-              const _SignInButton(),
-            ],
-          ),
+          SignUpButton(),
+          HaveAccountButton(),
         ],
       ),
     );
   }
 }
 
-class _SignUpButton extends StatelessWidget {
-  const _SignUpButton({
+class SignUpButton extends StatelessWidget {
+  const SignUpButton({
     Key? key,
   }) : super(key: key);
 
@@ -44,22 +39,6 @@ class _SignUpButton extends StatelessWidget {
         },
         child: Text(AppLocalizations.of(context)!.signUp),
       ),
-    );
-  }
-}
-
-class _SignInButton extends StatelessWidget {
-  const _SignInButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: () {
-        Navigator.pushNamed(context, NamesRoutes.signIn);
-      },
-      child: Text(AppLocalizations.of(context)!.signIn),
     );
   }
 }

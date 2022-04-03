@@ -7,4 +7,8 @@ class Assets {
   static const welcomeAnimationThree = "assets/88958-shopping-green.json";
 
   static const signInAnimation = "assets/71230-sign-in-green.json";
+
+  static const googleIcon = "icons/google.png";
+
+  static const facebookIcon = "icons/facebook.png";
 }

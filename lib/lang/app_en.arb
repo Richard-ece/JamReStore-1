@@ -1,7 +1,11 @@
 {
   "signUp": "Register",
   "signIn": "Sign In",
-  "haveAccount": "I have an Account",
+  "email": "Email Address",
+  "nameAndLastName": "Name and Lastname",
+  "password": "Password",
+  "haveAccount": "I have an account",
+  "dontHaveAccount": "Don't have an account?",
   "next": "Next",
   "welcomeTittleOne": "Recycle from home",
   "welcomeDescriptionOne": "Verified and trained staff will be where and when it is most convenient for you to handle any reusable items.",

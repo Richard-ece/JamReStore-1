@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/components/have_account_button.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/constants/assets.dart';
@@ -39,40 +40,42 @@ class SignUpPage extends HookWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 0,
-                vertical: 20,
-              ),
-            ),
+            Spacer(),
             Lottie.asset(Assets.signInAnimation, width: 200),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Nombre'),
+                decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context)!.nameAndLastName,
+                  icon: Icon(Icons.person_outline),
+                ),
                 controller: _nameController,
+                keyboardType: TextInputType.name,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Email'),
+                decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context)!.email,
+                  icon: Icon(Icons.email_outlined),
+                ),
                 controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(
+                  labelText: AppLocalizations.of(context)!.password,
+                  icon: Icon(Icons.key_outlined),
+                ),
                 controller: _passwordController,
+                keyboardType: TextInputType.visiblePassword,
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 0,
-                vertical: 20,
-              ),
-            ),
+            Spacer(),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: SizedBox(
@@ -84,6 +87,8 @@ class SignUpPage extends HookWidget {
                 ),
               ),
             ),
+            Spacer(),
+            HaveAccountButton(),
           ],
         ),
       ),

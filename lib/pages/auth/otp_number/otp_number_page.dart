@@ -11,7 +11,9 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 
 class OtpNumberPage extends HookWidget {
-  const OtpNumberPage({Key? key}) : super(key: key);
+  OtpNumberPage({Key? key}) : super(key: key);
+
+  final initialPhoneNumber = PhoneNumber(isoCode: "AR");
 
   @override
   Widget build(BuildContext context) {
@@ -49,27 +51,25 @@ class OtpNumberPage extends HookWidget {
             ),
             Lottie.asset(Assets.signInAnimation, width: 200),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 24,
+                vertical: 8,
+              ),
               child: InternationalPhoneNumberInput(
                 hintText: AppLocalizations.of(context)!.otpNumberPhone,
                 onInputChanged: (PhoneNumber phoneNumber) {
-                  _countryCode.value = phoneNumber.dialCode ?? "";
-                  _numberPhone.value = phoneNumber.phoneNumber
-                          ?.substring(phoneNumber.dialCode?.length ?? 1) ??
-                      "";
+                  _countryCode.value = phoneNumber.dialCode!;
+                  _numberPhone.value = phoneNumber.phoneNumber!
+                      .substring(phoneNumber.dialCode!.length);
                 },
                 selectorConfig: SelectorConfig(
                   selectorType: PhoneInputSelectorType.DIALOG,
                 ),
-                ignoreBlank: false,
-                autoValidateMode: AutovalidateMode.disabled,
-                selectorTextStyle: TextStyle(color: Colors.black),
-                initialValue: PhoneNumber(
-                    phoneNumber: "", dialCode: "+54", isoCode: "AR"),
-                formatInput: false,
+                initialValue: initialPhoneNumber,
                 keyboardType: TextInputType.numberWithOptions(
-                    signed: false, decimal: false),
-                inputBorder: OutlineInputBorder(),
+                  signed: false,
+                  decimal: false,
+                ),
               ),
             ),
             Padding(

@@ -1,7 +1,11 @@
 {
   "signUp": "Registrate",
   "signIn": "Iniciar sesión",
-  "haveAccount": "Tengo una Cuenta",
+  "email": "Correo Electrónico",
+  "nameAndLastName": "Nombre y Apellido",
+  "password": "Contraseña",
+  "haveAccount": "Tengo una cuenta",
+  "dontHaveAccount": "¿No tienes una cuenta?",
   "next": "Siguiente",
   "welcomeTittleOne": "Recicla desde casa",
   "welcomeDescriptionOne": "Personal verificado y capacitado estará donde y cuando te sea más comodo para encargarse de cualquier elemento con posibilidad de reusarse.",

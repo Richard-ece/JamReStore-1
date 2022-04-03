@@ -5,6 +5,11 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/models/auth/user.dart';
+import 'package:jam_re_store/pages/auth/sign_in/components/dont_have_account_button.dart';
+import 'package:jam_re_store/pages/auth/sign_in/components/facebook_sign_in_button.dart';
+import 'package:jam_re_store/pages/auth/sign_in/components/google_sign_in_button.dart';
+import 'package:jam_re_store/pages/auth/sign_in/components/or_divider.dart';
+import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/constants/assets.dart';
 import 'package:lottie/lottie.dart';
 
@@ -25,56 +30,88 @@ class SignInPage extends HookWidget {
               ),
             ),
           );
+      Navigator.pushNamed(context, NamesRoutes.home);
     }
 
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.signIn),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 0,
-                vertical: 20,
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Lottie.asset(Assets.signInAnimation, width: 200),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextFormField(
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.email,
+                icon: Icon(Icons.email_outlined),
               ),
+              controller: _emailController,
+              keyboardType: TextInputType.emailAddress,
             ),
-            Lottie.asset(Assets.signInAnimation, width: 200),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Email'),
-                controller: _emailController,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: TextFormField(
+              decoration: InputDecoration(
+                labelText: AppLocalizations.of(context)!.password,
+                icon: Icon(Icons.key_outlined),
               ),
+              controller: _passwordController,
+              keyboardType: TextInputType.visiblePassword,
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: TextFormField(
-                decoration: const InputDecoration(labelText: 'Password'),
-                controller: _passwordController,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 0,
-                vertical: 20,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: ElevatedButton(
-                  child: Text(AppLocalizations.of(context)!.signIn),
-                  onPressed: signIn,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Checkbox(
+                      value: true,
+                      onChanged: (value) {},
+                    ),
+                    Text("Recordarme"),
+                  ],
                 ),
+                TextButton(
+                  onPressed: () {},
+                  child: Text("¿Olvidaste la contraseña?"),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: SizedBox(
+              width: double.infinity,
+              height: 50,
+              child: ElevatedButton(
+                child: Text(AppLocalizations.of(context)!.signIn),
+                onPressed: signIn,
               ),
-            )
-          ],
-        ),
+            ),
+          ),
+          OrDivider(),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                FacebookSignInButton(),
+                Padding(padding: const EdgeInsets.symmetric(horizontal: 8)),
+                GoogleSignInButton(),
+              ],
+            ),
+          ),
+          Spacer(),
+          DontHaveAccountButton(),
+        ],
       ),
     );
   }
