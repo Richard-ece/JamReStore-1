@@ -45,7 +45,7 @@ final otpInputDecoration = InputDecoration(
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
     borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
-    borderSide: BorderSide(color: Colors.red),
+    borderSide: BorderSide(color: Colors.green),
   );
 }
 
@@ -62,14 +62,23 @@ class OtpForm extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _codeController = useTextEditingController();
+    final _codeController1 = useTextEditingController();
+    final _codeController2 = useTextEditingController();
+    final _codeController3 = useTextEditingController();
+    final _codeController4 = useTextEditingController();
 
     void otpCode() {
+      print(_codeController1.value.text +
+          _codeController2.value.text +
+          _codeController3.value.text +
+          _codeController4.value.text);
       context.read<AuthBloc>().add(
             ValidationCodeRequest(
               code: Code(
-                code: _codeController.value.text,
-              ),
+                  code: _codeController1.value.text +
+                      _codeController2.value.text +
+                      _codeController3.value.text +
+                      _codeController4.value.text),
             ),
           );
     }
@@ -105,7 +114,7 @@ class OtpForm extends HookWidget {
                   onChanged: (value) {
                     nextField(value, pin2FocusNode);
                   },
-                  controller: _codeController,
+                  controller: _codeController1,
                 ),
               ),
               SizedBox(
@@ -118,6 +127,7 @@ class OtpForm extends HookWidget {
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
                   onChanged: (value) => nextField(value, pin3FocusNode),
+                  controller: _codeController2,
                 ),
               ),
               SizedBox(
@@ -130,6 +140,7 @@ class OtpForm extends HookWidget {
                   textAlign: TextAlign.center,
                   decoration: otpInputDecoration,
                   onChanged: (value) => nextField(value, pin4FocusNode),
+                  controller: _codeController3,
                 ),
               ),
               SizedBox(
@@ -146,6 +157,7 @@ class OtpForm extends HookWidget {
                       pin4FocusNode!.unfocus();
                     }
                   },
+                  controller: _codeController4,
                 ),
               ),
             ],
