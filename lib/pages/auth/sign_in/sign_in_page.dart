@@ -33,6 +33,10 @@ class SignInPage extends HookWidget {
       Navigator.pushNamed(context, NamesRoutes.home);
     }
 
+    void forgot() {
+      Navigator.pushNamed(context, NamesRoutes.forgotPassword);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.signIn),
@@ -80,7 +84,7 @@ class SignInPage extends HookWidget {
                   ],
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: forgot,
                   child: Text("¿Olvidaste la contraseña?"),
                 )
               ],
