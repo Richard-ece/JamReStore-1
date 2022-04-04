@@ -29,10 +29,10 @@ class forgotPasswordPage extends HookWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Lottie.asset(Assets.signInAnimation, width: 200),
+            child: Lottie.asset(Assets.welcomeAnimationTwo, width: 200),
           ),
           Padding(padding: const EdgeInsets.all(16.0)),
-          Text("Recibirás un código de verificación"),
+          Text("Necesitamos comprobar tu identidad"),
           Padding(padding: const EdgeInsets.all(10.0)),
           Text("Elige como quieres recibir el codigo"),
           Padding(padding: const EdgeInsets.all(32.0)),
@@ -45,15 +45,28 @@ class forgotPasswordPage extends HookWidget {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        ElevatedButton(
-                          onPressed: email,
-                          child: Text(AppLocalizations.of(context)!.email),
+                        Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: ElevatedButton(
+                              child: Text(AppLocalizations.of(context)!.email),
+                              onPressed: email,
+                            ),
+                          ),
                         ),
-                        const SizedBox(height: 20),
-                        ElevatedButton(
-                          onPressed: phone,
-                          child: Text(
-                              AppLocalizations.of(context)!.otpNumberPhone),
+                        Padding(
+                          padding: const EdgeInsets.all(6),
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 50,
+                            child: ElevatedButton(
+                              child: Text(
+                                  AppLocalizations.of(context)!.otpNumberPhone),
+                              onPressed: phone,
+                            ),
+                          ),
                         ),
                       ],
                     ),

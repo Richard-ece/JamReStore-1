@@ -14,7 +14,7 @@ class forgotPasswordEmailPage extends StatelessWidget {
     }
 
     void cancelar() {
-      Navigator.pushNamed(context, NamesRoutes.signIn);
+      Navigator.pushNamed(context, NamesRoutes.forgotPassword);
     }
 
     return Scaffold(
@@ -40,7 +40,7 @@ class forgotPasswordEmailPage extends StatelessWidget {
                   Padding(padding: const EdgeInsets.all(16.0)),
                   //SizedBox(height, 0.05),
                   Text(
-                    "Ingresa tu correo electrónico o número de celular para buscar tu cuenta.",
+                    "Ingresa tu correo electrónico para buscar tu cuenta.",
                   ),
 
                   Padding(
