@@ -10,7 +10,7 @@ class forgotPasswordEmailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void forgot() {
-      Navigator.pushNamed(context, NamesRoutes.otp);
+      Navigator.pushNamed(context, NamesRoutes.forgotPassword);
     }
 
     void cancelar() {

@@ -34,7 +34,7 @@ class SignInPage extends HookWidget {
     }
 
     void forgot() {
-      Navigator.pushNamed(context, NamesRoutes.forgotPassword);
+      Navigator.pushNamed(context, NamesRoutes.forgotpasswordEmail);
     }
 
     return Scaffold(

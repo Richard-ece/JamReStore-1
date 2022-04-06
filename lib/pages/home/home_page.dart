@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/helpers/app_locale.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomePage extends HookWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +17,14 @@ class HomePage extends HookWidget {
       Text("3"),
     ];
 
+    void cerrarSesion() {
+      Navigator.pushNamed(context, NamesRoutes.welcome);
+    }
+
+    void editarPerfil() {
+      Navigator.pushNamed(context, NamesRoutes.editProfile);
+    }
+
     print("dentro");
 
     return DefaultTabController(
@@ -26,6 +34,34 @@ class HomePage extends HookWidget {
           title: const Text('Home'),
         ),
         body: listScreens[tabIndex.value],
+        drawer: Drawer(
+          child: ListView(
+            children: [
+              Container(
+                color: Colors.green,
+                child: DrawerHeader(
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+              ),
+              Padding(padding: const EdgeInsets.all(16.0)),
+              ListTile(
+                title: const Text('Editar Perfil'),
+                onTap: editarPerfil,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(16),
+              ),
+              ListTile(
+                title: TextButton(
+                  onPressed: cerrarSesion,
+                  child: Text("Cerrar Sesion"),
+                ),
+              ),
+            ],
+          ),
+        ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: tabIndex.value,
           onTap: (int index) {

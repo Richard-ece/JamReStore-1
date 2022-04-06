@@ -10,7 +10,7 @@ class forgotPasswordPage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     void email() {
-      Navigator.pushNamed(context, NamesRoutes.forgotpasswordEmail);
+      Navigator.pushNamed(context, NamesRoutes.otp);
     }
 
     void phone() {
