@@ -41,6 +41,19 @@ class UserSignUp extends User {
         );
 }
 
+class EditAccount extends User {
+  final String name;
+
+  EditAccount({
+    required this.name,
+    required String password,
+    required String email,
+  }) : super(
+          password: password,
+          email: email,
+        );
+}
+
 class NumberPhone {
   final String number;
   final String country;

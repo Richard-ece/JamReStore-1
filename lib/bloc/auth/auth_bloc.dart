@@ -58,18 +58,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ));
       });
     });
-
-    on<changePasswordRequest>((event, emit) async {
-      await authRepository.changePassword(event.changePassword).then((value) {
-        emit(state.copyWith(
-          changePasswordRequestStatus: RequestStatus.succes,
-        ));
-      }).catchError((error) {
-        emit(state.copyWith(
-          changePasswordRequestStatus: RequestStatus.failed,
-          changePasswordRequestError: error,
-        ));
-      });
-    });
   }
 }

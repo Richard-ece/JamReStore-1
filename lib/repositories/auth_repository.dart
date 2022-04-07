@@ -17,12 +17,6 @@ class AuthRepository {
     });
   }
 
-  Future<ResponseApi> changePassword(Password password) {
-    return authApi.changePassword(password: password).then((response) {
-      return response;
-    });
-  }
-
   Future<ResponseApi> setNumberPhone(NumberPhone number) {
     return authApi.setNumberPhone(numberPhone: number).then((response) {
       return response;

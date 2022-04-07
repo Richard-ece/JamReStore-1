@@ -23,15 +23,6 @@ class AuthApi {
     });
   }
 
-  Future<ResponseApi> changePassword({required Password password}) {
-    return Dio().post(
-      "${backendPath}/auth/password",
-      data: {"email": password.email, "password": password.password},
-    ).then((response) {
-      return ResponseApi.fromJson(response.data);
-    });
-  }
-
   Future<ResponseApi> setNumberPhone({required NumberPhone numberPhone}) {
     return Dio().post(
       "${backendPath}/auth/OtpNumber",
