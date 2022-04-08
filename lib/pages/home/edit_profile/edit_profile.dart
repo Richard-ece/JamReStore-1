@@ -27,7 +27,7 @@ class EditProfilePageState extends State<EditProfilePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Editar Perfil"),
+        title: Text("Edit profile"),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -86,7 +86,7 @@ class EditProfilePageState extends State<EditProfilePage> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    child: Text("Configuracion De Perfil"),
+                    child: Text("Profile settings"),
                     onPressed: configuracion,
                   ),
                 ),
@@ -97,7 +97,7 @@ class EditProfilePageState extends State<EditProfilePage> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    child: Text("Guardar"),
+                    child: Text("Save"),
                     onPressed: guardar,
                   ),
                 ),
@@ -108,7 +108,7 @@ class EditProfilePageState extends State<EditProfilePage> {
                   width: double.infinity,
                   height: 50,
                   child: TextButton(
-                    child: Text("Cancelar"),
+                    child: Text("Cancel"),
                     onPressed: cancelar,
                   ),
                 ),
