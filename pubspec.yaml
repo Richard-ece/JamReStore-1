@@ -32,6 +32,10 @@ dependencies:
 
   flutter_bloc: ^8.0.1
 
+  cached_network_image: ^3.0.0
+
+  like_button: ^2.0.3
+
   equatable: ^2.0.3
 
   lottie: ^1.2.2
