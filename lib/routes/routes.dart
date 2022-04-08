@@ -8,6 +8,7 @@ import 'package:jam_re_store/pages/auth/sign_up/sign_up_page.dart';
 import 'package:jam_re_store/pages/home/edit_profile/components/settings.dart';
 import 'package:jam_re_store/pages/home/edit_profile/edit_profile.dart';
 import 'package:jam_re_store/pages/home/home_page.dart';
+import 'package:jam_re_store/pages/home/profile/proflie.dart';
 import 'package:jam_re_store/pages/welcome/welcome_page.dart';
 import 'package:jam_re_store/routes/names.dart';
 
@@ -18,6 +19,7 @@ var routes = <String, WidgetBuilder>{
   NamesRoutes.signUp: (context) => const SignUpPage(),
   NamesRoutes.home: (context) => const HomePage(),
   NamesRoutes.editProfile: (context) => EditProfilePage(),
+  NamesRoutes.profile: (context) => ProfilePage(),
   NamesRoutes.settings: (context) => SettingsPage(),
   NamesRoutes.otp: (context) => const OtpPage(),
   NamesRoutes.otpNumber: (context) => OtpNumberPage(),

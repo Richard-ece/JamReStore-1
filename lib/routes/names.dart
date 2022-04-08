@@ -6,6 +6,7 @@ class NamesRoutes {
   static const forgotPassword = "/forgotPassword";
   static const home = "/home";
   static const editProfile = "/editProfile";
+  static const profile = "/profile";
   static const settings = "/settings";
   static const otp = "/otp";
   static const otpNumber = "/OtpNumber";
