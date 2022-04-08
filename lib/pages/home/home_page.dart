@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/components/post.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/helpers/app_locale.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,7 @@ class HomePage extends HookWidget {
     ValueNotifier<int> tabIndex = useState(0);
 
     List<Widget> listScreens = [
+      PostHomeView(),
       Text("1"),
       Text("2"),
       Text("3"),
@@ -47,7 +49,7 @@ class HomePage extends HookWidget {
               ),
               Padding(padding: const EdgeInsets.all(16.0)),
               ListTile(
-                title: const Text('Editar Perfil'),
+                title: const Text('Edit profile'),
                 onTap: editarPerfil,
               ),
               Padding(
@@ -56,7 +58,7 @@ class HomePage extends HookWidget {
               ListTile(
                 title: TextButton(
                   onPressed: cerrarSesion,
-                  child: Text("Cerrar Sesion"),
+                  child: Text("Sign out"),
                 ),
               ),
             ],
