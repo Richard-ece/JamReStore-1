@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:jam_re_store/components/post.dart';
+import 'package:jam_re_store/components/card_post.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/helpers/app_locale.dart';
 import 'package:provider/provider.dart';
@@ -13,8 +13,7 @@ class HomePage extends HookWidget {
     ValueNotifier<int> tabIndex = useState(0);
 
     List<Widget> listScreens = [
-      PostHomeView(),
-      Text("1"),
+      Container(child: CardPost()),
       Text("2"),
       Text("3"),
     ];
@@ -26,8 +25,6 @@ class HomePage extends HookWidget {
     void editarPerfil() {
       Navigator.pushNamed(context, NamesRoutes.editProfile);
     }
-
-    print("dentro");
 
     return DefaultTabController(
       length: 3,
