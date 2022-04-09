@@ -26,7 +26,7 @@ class App extends StatelessWidget {
           ],
           child: MaterialApp(
             title: 'JamReStore',
-            theme: theme,
+            theme: AppTheme.light,
             routes: routes,
             locale: locale.locale,
             home: const WelcomePage(),
