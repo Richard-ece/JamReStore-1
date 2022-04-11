@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/components/card_post.dart';
+import 'package:jam_re_store/models/post/post.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/helpers/app_locale.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends HookWidget {
-  const HomePage({Key? key}) : super(key: key);
+  HomePage({Key? key}) : super(key: key);
+  final post = Post(
+    nameUser: 'User',
+    avatarUser: null,
+    imagePost: null,
+    titlePost:
+        'Esta es la vista previa del titulo de un post que tiene 3 lineas, la cual no contiene subtitulo',
+    subTitlePost:
+        'Es una medida tomada por el ministerio de seguridad y eventos naturales, para evitar cualquier accidente que damnifique a los tripulantes y a la carga, que proviene...',
+    datePost: '20/04/2022',
+    idPost: '1',
+  );
 
   @override
   Widget build(BuildContext context) {
     ValueNotifier<int> tabIndex = useState(0);
 
     List<Widget> listScreens = [
-      Container(child: CardPost()),
+      Column(children: [
+        CardPost(
+          post: post,
+        ),
+      ]),
       Text("2"),
       Text("3"),
     ];

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:jam_re_store/models/post/post.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 
 class InteractionBar extends StatelessWidget {
-  const InteractionBar({Key? key}) : super(key: key);
+  const InteractionBar({Key? key, required this.post}) : super(key: key);
+  final Post post;
 
   @override
   Widget build(BuildContext context) {
