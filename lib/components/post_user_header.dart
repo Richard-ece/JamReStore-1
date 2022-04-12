@@ -54,11 +54,8 @@ class SecundaryAction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: IconButton(
-        icon: Icon(Icons.more_horiz),
-        color: ColorTheme.grey,
-        onPressed: () {},
-      ),
+      child: GestureDetector(
+          onTap: () {}, child: Icon(Icons.more_horiz, color: ColorTheme.grey)),
     );
   }
 }
