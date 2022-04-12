@@ -43,4 +43,5 @@ abstract class ColorTheme {
   static const blue9 = Color(0xff0E4F87);
   static const blue10 = Color(0xff0A3960);
   static const blue11 = Color(0xff06223A);
+  static const facebook = Color(0xff3B5998);
 }

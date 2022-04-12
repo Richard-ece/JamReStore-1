@@ -1,5 +1,6 @@
 class NamesRoutes {
   static const welcome = "/welcome";
+  static const welcome2 = "/welcome2";
   static const signUp = "/signUp";
   static const signIn = "/signIn";
   static const forgotpasswordEmail = "/forgotPasswordEmail";
