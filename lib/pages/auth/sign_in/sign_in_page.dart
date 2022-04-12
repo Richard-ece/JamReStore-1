@@ -4,7 +4,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/models/auth/user.dart';
+import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/pages/auth/sign_in/components/dont_have_account_button.dart';
 import 'package:jam_re_store/pages/auth/sign_in/components/facebook_sign_in_button.dart';
 import 'package:jam_re_store/pages/auth/sign_in/components/google_sign_in_button.dart';
@@ -48,25 +50,21 @@ class SignInPage extends HookWidget {
             child: Lottie.asset(Assets.signInAnimation, width: 200),
           ),
           Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: TextFormField(
-              decoration: InputDecoration(
+              padding: const EdgeInsets.all(16.0),
+              child: Input(
+                controller: _emailController,
+                keyboardType: TextInputType.emailAddress,
                 labelText: AppLocalizations.of(context)!.email,
-                icon: Icon(Icons.email_outlined),
-              ),
-              controller: _emailController,
-              keyboardType: TextInputType.emailAddress,
-            ),
-          ),
+                suffixIcon: Icon(Icons.email_outlined),
+              )),
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: TextFormField(
-              decoration: InputDecoration(
-                labelText: AppLocalizations.of(context)!.password,
-                icon: Icon(Icons.key_outlined),
-              ),
+            child: Input(
+              labelText: AppLocalizations.of(context)!.password,
+              suffixIcon: Icon(Icons.key_outlined),
               controller: _passwordController,
               keyboardType: TextInputType.visiblePassword,
+              obscureText: true,
             ),
           ),
           Padding(
