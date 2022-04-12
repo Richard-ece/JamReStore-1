@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:jam_re_store/components/card_post.dart';
+import 'package:jam_re_store/components/card_post/card_post.dart';
 import 'package:jam_re_store/models/post/post.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/helpers/app_locale.dart';
