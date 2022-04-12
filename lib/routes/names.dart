@@ -11,4 +11,5 @@ class NamesRoutes {
   static const settings = "/settings";
   static const otp = "/otp";
   static const otpNumber = "/OtpNumber";
+  static const articleOpen = "/articleOpen";
 }
