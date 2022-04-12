@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:jam_re_store/components/interaction_bar.dart';
-import 'package:jam_re_store/components/post_user_header.dart';
+import 'package:jam_re_store/components/card_post/interaction_bar.dart';
+import 'package:jam_re_store/components/card_post/post_user_header.dart';
 import 'package:jam_re_store/models/post/post.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
