@@ -7,7 +7,6 @@ import 'package:jam_re_store/styles/text_styles_app.dart';
 
 class ArticleOpen extends StatelessWidget {
   ArticleOpen({Key? key}) : super(key: key);
-
   final post = Post(
     nameUser: 'User',
     avatarUser: null,

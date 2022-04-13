@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:jam_re_store/components/card_post/interaction_bar.dart';
+import 'package:jam_re_store/components/card_post/card_post.dart';
 import 'package:jam_re_store/components/card_post/post_user_header.dart';
 import 'package:jam_re_store/models/post/post.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 
-class CardPost extends StatelessWidget {
-  const CardPost({Key? key, required this.post}) : super(key: key);
+class CardPostSmall extends StatelessWidget {
+  CardPostSmall({Key? key, required this.post}) : super(key: key);
   final Post post;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Column(
+      child: Row(
         children: [
-          PostUserHeader(
-            post: post,
+          Container(
+            child: Column(
+              children: [
+                PostUserHeader(
+                  post: post,
+                ),
+                TitlePreview(
+                  post: post,
+                ),
+              ],
+            ),
           ),
           MultimediaContainer(
             imagePost: post.imagePost,
-          ),
-          TitlePreview(
-            post: post,
-          ),
-          InteractionBar(
-            post: post,
           ),
         ],
       ),
@@ -40,10 +43,13 @@ class MultimediaContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 18),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 22,
+        vertical: 14,
+      ),
       child: Container(
-        width: double.infinity,
-        height: 200,
+        width: 109,
+        height: 84,
         decoration: BoxDecoration(
           color: ColorTheme.grey2,
           borderRadius: BorderRadius.circular(5),
@@ -56,26 +62,16 @@ class MultimediaContainer extends StatelessWidget {
 class TitlePreview extends StatelessWidget {
   const TitlePreview({Key? key, required this.post}) : super(key: key);
   final Post post;
-
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 18, vertical: 12),
-      child: Column(
-        children: [
-          Text(
-            post.titlePost,
-            style: TextStyleApp.headlinesBase(ColorTheme.textBlack),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8),
-            child: Text(
-              post.subTitlePost,
-              style: TextStyleApp.bodyBase(ColorTheme.grey),
-            ),
-          )
-        ],
-      ),
+    return Wrap(
+      direction: Axis.horizontal,
+      children: [
+        Text(
+          post.titlePost,
+          style: TextStyleApp.headlinesS(ColorTheme.textBlack),
+        ),
+      ],
     );
   }
 }

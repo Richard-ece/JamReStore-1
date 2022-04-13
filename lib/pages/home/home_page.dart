@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/components/card_post/card_post.dart';
+import 'package:jam_re_store/components/card_post/card_post_small.dart';
 import 'package:jam_re_store/models/post/post.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/helpers/app_locale.dart';
@@ -12,8 +13,7 @@ class HomePage extends HookWidget {
     nameUser: 'User',
     avatarUser: null,
     imagePost: null,
-    titlePost:
-        'Esta es la vista previa del titulo de un post que tiene 3 lineas, la cual no contiene subtitulo',
+    titlePost: 'Titulo mediano que ocupa 2 lineas verticales',
     subTitlePost:
         'Es una medida tomada por el ministerio de seguridad y eventos naturales, para evitar cualquier accidente que damnifique a los tripulantes y a la carga, que proviene...',
     datePost: '20/04/2022',
@@ -30,7 +30,7 @@ class HomePage extends HookWidget {
           controller: _firstController,
           itemCount: 100,
           itemBuilder: (context, int index) {
-            return CardPost(
+            return CardPostSmall(
               post: post,
             );
           }),
