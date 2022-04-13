@@ -21,10 +21,11 @@ class Button extends StatelessWidget {
     return ElevatedButton(
       onPressed: () {},
       style: ElevatedButton.styleFrom(
+        elevation: 0,
         minimumSize: Size(double.infinity, 58),
         primary: backgroudColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(18.0),
+          borderRadius: BorderRadius.circular(35.0),
         ),
       ),
       child: Row(

@@ -8,6 +8,8 @@ class Assets {
 
   static const signInAnimation = "assets/71230-sign-in-green.json";
 
+  static const tellinIcon = "icons/tellingIcon.png";
+
   static const googleIcon = "icons/google.png";
 
   static const facebookIcon = "icons/facebook.png";
