@@ -23,40 +23,73 @@ class ArticleOpen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 0),
-              child: Container(
-                width: double.infinity,
-                height: 400,
-                decoration: BoxDecoration(
-                  color: ColorTheme.grey2,
+      bottomNavigationBar: BottomAppBar(
+        child: InteractionBar(
+          post: post,
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  Positioned(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 400,
+                        decoration: BoxDecoration(
+                          color: ColorTheme.grey2,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    child: Icon(Icons.cancel,
+                        color: ColorTheme.textBlack, size: 35),
+                    top: 18,
+                    right: 18,
+                  )
+                ],
+              ),
+              PostUserHeader(
+                post: post,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(18, 12, 18, 24),
+                child: Text(
+                  post.titlePost,
+                  style: TextStyleApp.headlinesXl(ColorTheme.textBlack),
                 ),
               ),
-            ),
-            PostUserHeader(
-              post: post,
-            ),
-            Padding(
-              padding: EdgeInsets.fromLTRB(18, 12, 18, 24),
-              child: Text(
-                post.titlePost,
-                style: TextStyleApp.headlinesXl(ColorTheme.textBlack),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 0),
+                child: Text(
+                  post.subTitlePost,
+                  style: TextStyleApp.bodyXl(ColorTheme.grey),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 0),
-              child: Text(
-                post.subTitlePost,
-                style: TextStyleApp.bodyXl(ColorTheme.grey),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 0),
+                child: Text(
+                  post.subTitlePost,
+                  style: TextStyleApp.bodyXl(ColorTheme.grey),
+                ),
               ),
-            ),
-            // InteractionBar(
-            //   post: post,
-            // ),
-          ],
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 18, vertical: 0),
+                child: Text(
+                  post.subTitlePost,
+                  style: TextStyleApp.bodyXl(ColorTheme.grey),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
