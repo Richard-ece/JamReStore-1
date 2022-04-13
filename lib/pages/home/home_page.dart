@@ -23,13 +23,17 @@ class HomePage extends HookWidget {
   @override
   Widget build(BuildContext context) {
     ValueNotifier<int> tabIndex = useState(0);
+    final ScrollController _firstController = useScrollController();
 
     List<Widget> listScreens = [
-      Column(children: [
-        CardPost(
-          post: post,
-        ),
-      ]),
+      ListView.builder(
+          controller: _firstController,
+          itemCount: 100,
+          itemBuilder: (context, int index) {
+            return CardPost(
+              post: post,
+            );
+          }),
       Text("2"),
       Text("3"),
     ];
