@@ -20,7 +20,6 @@ class SignUpPage extends HookWidget {
   Widget build(BuildContext context) {
     final _nameController = useTextEditingController();
     final _emailController = useTextEditingController();
-    final _confirmedEmailController = useTextEditingController();
     final _passwordController = useTextEditingController();
 
     void signUp() {
@@ -30,7 +29,6 @@ class SignUpPage extends HookWidget {
                 password: _passwordController.value.text,
                 email: _emailController.value.text,
                 name: _nameController.value.text,
-                confirmedEmail: _confirmedEmailController.value.text,
               ),
             ),
           );
@@ -48,9 +46,8 @@ class SignUpPage extends HookWidget {
             TellingIcon(),
             TextWelcome(),
             TextIntroduction(),
+            InputName(nameController: _nameController),
             InputEmail(emailController: _emailController),
-            InputConfirmedEmail(
-                confirmedEmailController: _confirmedEmailController),
             TextEmail(),
             ContinueButton(),
             HaveAccountButton(),
@@ -134,23 +131,23 @@ class InputEmail extends StatelessWidget {
   }
 }
 
-class InputConfirmedEmail extends StatelessWidget {
-  const InputConfirmedEmail({
+class InputName extends StatelessWidget {
+  const InputName({
     Key? key,
-    required TextEditingController confirmedEmailController,
-  })  : _emailController = confirmedEmailController,
+    required TextEditingController nameController,
+  })  : _nameController = nameController,
         super(key: key);
 
-  final TextEditingController _emailController;
+  final TextEditingController _nameController;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(16.0),
         child: Input(
-          controller: _emailController,
+          controller: _nameController,
           keyboardType: TextInputType.emailAddress,
-          labelText: AppLocalizations.of(context)!.email,
+          labelText: AppLocalizations.of(context)!.nameAndLastName,
         ));
   }
 }

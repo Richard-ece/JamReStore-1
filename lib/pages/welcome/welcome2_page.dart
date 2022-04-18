@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/dont_have_account_button.dart';
+import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 import 'package:jam_re_store/utils/constants/assets.dart';
@@ -134,6 +135,9 @@ class ButtonSignInEmail extends StatelessWidget {
         ),
         labelText: 'Ingresa con Correo',
         backgroudColor: ColorTheme.blue,
+        onPressed: () {
+          Navigator.pushNamed(context, NamesRoutes.signIn);
+        },
       ),
     );
   }
