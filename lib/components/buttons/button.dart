@@ -6,13 +6,13 @@ class Button extends StatelessWidget {
   const Button({
     Key? key,
     required this.labelText,
-    required this.icon,
+    this.icon,
     required this.backgroudColor,
     this.textColor = ColorTheme.white,
   }) : super(key: key);
 
   final String labelText;
-  final Widget icon;
+  final Widget? icon;
   final Color backgroudColor;
   final Color textColor;
 
@@ -31,7 +31,7 @@ class Button extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          icon,
+          icon ?? Container(),
           Text(
             labelText,
             style: TextStyleApp.labelS(textColor),

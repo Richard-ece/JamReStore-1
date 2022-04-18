@@ -14,7 +14,7 @@ class Input extends StatelessWidget {
       required this.labelText,
       this.errorInput = const ErrorInput(error: null),
       this.hintText,
-      required this.suffixIcon})
+      this.suffixIcon})
       : super(key: key);
 
   final TextEditingController controller;
@@ -25,7 +25,7 @@ class Input extends StatelessWidget {
   final ErrorInput errorInput;
   final String labelText;
   final String? hintText;
-  final Icon suffixIcon;
+  final Icon? suffixIcon;
 
   Color getBorderColor(bool? error) {
     switch (error) {
