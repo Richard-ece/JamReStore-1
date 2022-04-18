@@ -6,7 +6,6 @@ import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/pages/welcome/welcome2_page.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
-import 'package:jam_re_store/utils/constants/assets.dart';
 
 class CreatePasswordPage extends HookWidget {
   const CreatePasswordPage({Key? key}) : super(key: key);
@@ -57,7 +56,7 @@ class InputPassword extends StatelessWidget {
         controller: _passwordController,
         labelText: 'Contraseña',
         keyboardType: TextInputType.visiblePassword,
-        suffixIcon: Icon(Icons.key_outlined),
+        obscureText: true,
       ),
     );
   }
@@ -80,7 +79,7 @@ class InputConfirmedPassword extends StatelessWidget {
         controller: _confirmedpasswordController,
         labelText: 'Confirmar contraseña',
         keyboardType: TextInputType.visiblePassword,
-        suffixIcon: Icon(Icons.key_outlined),
+        obscureText: true,
       ),
     );
   }
@@ -135,10 +134,6 @@ class ContinueButton extends StatelessWidget {
         bottom: 53,
       ),
       child: Button(
-        icon: Image.asset(
-          Assets.facebookIcon,
-          scale: 15,
-        ),
         labelText: 'Continuar',
         backgroudColor: ColorTheme.blue4,
       ),
