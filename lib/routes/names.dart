@@ -12,4 +12,5 @@ class NamesRoutes {
   static const otp = "/otp";
   static const otpNumber = "/OtpNumber";
   static const articleOpen = "/articleOpen";
+  static const createPassword = "/createPassword";
 }
