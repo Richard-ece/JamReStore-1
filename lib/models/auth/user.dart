@@ -35,7 +35,6 @@ class UserSignUp extends User {
     required this.name,
     required String password,
     required String email,
-    required String confirmedEmail,
   }) : super(
           password: password,
           email: email,

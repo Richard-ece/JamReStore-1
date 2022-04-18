@@ -18,9 +18,7 @@ class SignInPage extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _nameController = useTextEditingController();
     final _emailController = useTextEditingController();
-    final _confirmedEmailController = useTextEditingController();
     final _passwordController = useTextEditingController();
 
     void signIn() {
@@ -29,7 +27,6 @@ class SignInPage extends HookWidget {
               userSignIn: UserSignIn(
                 password: _passwordController.value.text,
                 email: _emailController.value.text,
-                // name: _nameController.value.text,
               ),
             ),
           );
@@ -47,16 +44,12 @@ class SignInPage extends HookWidget {
             TellingIcon(),
             TextWelcome(),
             TextIntroduction(),
-            Spacer(),
-            InputEmail(emailController: _emailController),
-            InputConfirmedEmail(
-                confirmedEmailController: _confirmedEmailController),
-            TextEmail(),
-            Spacer(),
+            InputEmailOrUser(
+              emailController: _emailController,
+            ),
+            InputPassword(passwordController: _passwordController),
             ContinueButton(),
-            Spacer(),
             DontHaveAccountButton(),
-            TextTermsAndConditions(),
           ],
         ),
       ),
@@ -108,15 +101,15 @@ class TextIntroduction extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 0, 32, 0),
       child: Text(
-        "Solo te pedimos tu nombre y correo!",
+        "Inicia sesion con tu usuario o email, y tu contraseña.",
         style: TextStyleApp.bodyBase(ColorTheme.grey6),
       ),
     );
   }
 }
 
-class InputEmail extends StatelessWidget {
-  const InputEmail({
+class InputEmailOrUser extends StatelessWidget {
+  const InputEmailOrUser({
     Key? key,
     required TextEditingController emailController,
   })  : _emailController = emailController,
@@ -136,41 +129,24 @@ class InputEmail extends StatelessWidget {
   }
 }
 
-class InputConfirmedEmail extends StatelessWidget {
-  const InputConfirmedEmail({
+class InputPassword extends StatelessWidget {
+  const InputPassword({
     Key? key,
-    required TextEditingController confirmedEmailController,
-  })  : _emailController = confirmedEmailController,
+    required TextEditingController passwordController,
+  })  : _passwordController = passwordController,
         super(key: key);
 
-  final TextEditingController _emailController;
+  final TextEditingController _passwordController;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(16.0),
         child: Input(
-          controller: _emailController,
+          controller: _passwordController,
           keyboardType: TextInputType.emailAddress,
           labelText: AppLocalizations.of(context)!.email,
         ));
-  }
-}
-
-class TextEmail extends StatelessWidget {
-  const TextEmail({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 32, 0),
-      child: Text(
-        "Ningun usuario de Telling podrá ver tu dirección de correo electrónico.",
-        style: TextStyleApp.bodyXs(ColorTheme.grey6),
-      ),
-    );
   }
 }
 
@@ -191,26 +167,6 @@ class ContinueButton extends StatelessWidget {
       child: Button(
         labelText: 'Continuar',
         backgroudColor: ColorTheme.blue,
-      ),
-    );
-  }
-}
-
-class TextTermsAndConditions extends StatelessWidget {
-  const TextTermsAndConditions({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 9),
-      child: Center(
-        child: Text(
-          "Al registrarte, aceptas los Términos de Uso, la Política de Privacidad y la Política de Cookies de Telling.",
-          style: TextStyleApp.bodyXs(ColorTheme.grey7),
-          textAlign: TextAlign.center,
-        ),
       ),
     );
   }

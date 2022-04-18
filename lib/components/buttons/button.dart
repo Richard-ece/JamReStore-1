@@ -7,6 +7,7 @@ class Button extends StatelessWidget {
     Key? key,
     required this.labelText,
     this.icon,
+    this.onPressed,
     required this.backgroudColor,
     this.textColor = ColorTheme.white,
   }) : super(key: key);
@@ -15,11 +16,12 @@ class Button extends StatelessWidget {
   final Widget? icon;
   final Color backgroudColor;
   final Color textColor;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         elevation: 0,
         minimumSize: Size(double.infinity, 58),
