@@ -4,28 +4,28 @@ import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 
 class Input extends StatelessWidget {
-  const Input(
-      {Key? key,
-      required this.controller,
-      required this.keyboardType,
-      this.focusNode,
-      this.obscureText = false,
-      this.enabled = true,
-      required this.labelText,
-      this.errorInput = const ErrorInput(error: null),
-      this.hintText,
-      this.suffixIcon})
-      : super(key: key);
+  const Input({
+    Key? key,
+    required this.controller,
+    required this.labelText,
+    this.obscureText = false,
+    this.enabled = true,
+    this.errorInput = const ErrorInput(error: null),
+    this.keyboardType,
+    this.hintText,
+    this.suffixIcon,
+    this.focusNode,
+  }) : super(key: key);
 
   final TextEditingController controller;
-  final TextInputType keyboardType;
-  final FocusNode? focusNode;
+  final String labelText;
   final bool obscureText;
   final bool enabled;
   final ErrorInput errorInput;
-  final String labelText;
+  final TextInputType? keyboardType;
+  final FocusNode? focusNode;
   final String? hintText;
-  final Icon? suffixIcon;
+  final Widget? suffixIcon;
 
   Color getBorderColor(bool? error) {
     switch (error) {

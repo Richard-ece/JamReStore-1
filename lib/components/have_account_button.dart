@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:jam_re_store/routes/names.dart';
+import 'package:jam_re_store/styles/color_theme.dart';
+import 'package:jam_re_store/styles/text_styles_app.dart';
 
 class HaveAccountButton extends StatelessWidget {
   const HaveAccountButton({
@@ -9,20 +11,20 @@ class HaveAccountButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(AppLocalizations.of(context)!.haveAccount),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, NamesRoutes.signIn);
-            },
-            child: Text(AppLocalizations.of(context)!.signIn),
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          AppLocalizations.of(context)!.haveAccount,
+          style: TextStyleApp.labelS(ColorTheme.grey11),
+        ),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, NamesRoutes.signIn);
+          },
+          child: Text(AppLocalizations.of(context)!.signIn),
+        ),
+      ],
     );
   }
 }

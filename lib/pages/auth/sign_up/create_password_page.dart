@@ -3,6 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/inputs/input.dart';
+import 'package:jam_re_store/components/inputs/input_password.dart';
 import 'package:jam_re_store/pages/welcome/welcome2_page.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
@@ -20,27 +21,25 @@ class CreatePasswordPage extends HookWidget {
           child: Text(AppLocalizations.of(context)!.signUp),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TellingIcon(),
-            TextPassword(),
-            TextIntroduction(),
-            InputPassword(passwordController: _passwordController),
-            InputConfirmedPassword(
-                confirmedpasswordController: _confirmedpasswordController),
-            ContinueButton(),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          TellingIcon(),
+          TextPassword(),
+          TextIntroduction(),
+          InputCreatePassword(passwordController: _passwordController),
+          InputConfirmedPassword(
+              confirmedpasswordController: _confirmedpasswordController),
+          Spacer(),
+          ContinueButton(),
+        ],
       ),
     );
   }
 }
 
-class InputPassword extends StatelessWidget {
-  const InputPassword({
+class InputCreatePassword extends StatelessWidget {
+  const InputCreatePassword({
     Key? key,
     required TextEditingController passwordController,
   })  : _passwordController = passwordController,
@@ -51,12 +50,10 @@ class InputPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 18, 48),
-      child: Input(
+      padding: const EdgeInsets.fromLTRB(18, 0, 18, 24),
+      child: InputPassword(
         controller: _passwordController,
         labelText: 'Contraseña',
-        keyboardType: TextInputType.visiblePassword,
-        obscureText: true,
       ),
     );
   }
@@ -93,7 +90,7 @@ class TextPassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 23, 18, 4),
+      padding: const EdgeInsets.fromLTRB(18, 16, 18, 4),
       child: Text(
         "Elige tu contraseña",
         style: TextStyleApp.labelXl(ColorTheme.grey11),
@@ -110,7 +107,7 @@ class TextIntroduction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 4, 18, 53),
+      padding: const EdgeInsets.fromLTRB(18, 0, 18, 29),
       child: Text(
         "Deberá temer al menos 8 caracteres, una mayúscula y un número.",
         style: TextStyleApp.bodyBase(ColorTheme.grey6),
@@ -128,10 +125,10 @@ class ContinueButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        top: 200,
+        top: 16,
         left: 16,
         right: 16,
-        bottom: 53,
+        bottom: 16,
       ),
       child: Button(
         labelText: 'Continuar',

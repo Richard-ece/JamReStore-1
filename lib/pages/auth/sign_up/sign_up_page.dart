@@ -69,7 +69,7 @@ class TellingIcon extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 61, 18, 16),
       child: Image.asset(
-        Assets.tellinIcon,
+        Assets.tellinBlack,
         width: 36,
       ),
     );
@@ -101,7 +101,7 @@ class TextIntroduction extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 32, 0),
+      padding: const EdgeInsets.fromLTRB(18, 0, 32, 53),
       child: Text(
         "Solo te pedimos tu nombre y correo!",
         style: TextStyleApp.bodyBase(ColorTheme.grey6),
@@ -122,7 +122,7 @@ class InputEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(18, 24, 18, 0),
         child: Input(
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
@@ -143,10 +143,10 @@ class InputName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
         child: Input(
           controller: _nameController,
-          keyboardType: TextInputType.emailAddress,
+          keyboardType: TextInputType.name,
           labelText: AppLocalizations.of(context)!.nameAndLastName,
         ));
   }
@@ -160,7 +160,7 @@ class TextEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 32, 0),
+      padding: const EdgeInsets.fromLTRB(18, 4, 32, 0),
       child: Text(
         "Ningun usuario de Telling podrá ver tu dirección de correo electrónico.",
         style: TextStyleApp.bodyXs(ColorTheme.grey6),
@@ -177,17 +177,8 @@ class ContinueButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 10,
-        left: 16,
-        right: 16,
-        bottom: 20,
-      ),
+      padding: const EdgeInsets.fromLTRB(18, 24, 18, 34),
       child: Button(
-        icon: Image.asset(
-          Assets.facebookIcon,
-          scale: 100,
-        ),
         labelText: 'Continuar',
         backgroudColor: ColorTheme.blue,
       ),
@@ -203,7 +194,7 @@ class TextTermsAndConditions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 9),
+      padding: const EdgeInsets.fromLTRB(18, 34, 18, 0),
       child: Center(
         child: Text(
           "Al registrarte, aceptas los Términos de Uso, la Política de Privacidad y la Política de Cookies de Telling.",

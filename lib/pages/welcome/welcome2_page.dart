@@ -86,10 +86,9 @@ class TellingIcon extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.fromLTRB(18, 61, 18, 16),
       child: Image.asset(
-        Assets.tellinIcon,
+        Assets.tellinBlack,
         width: 36,
       ),
-      // Lottie.asset(Assets.tellinIcon, width: 2),
     );
   }
 }
