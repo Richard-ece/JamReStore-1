@@ -11,26 +11,24 @@ class CardPostSmall extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Row(
-        children: [
-          Container(
-            child: Column(
-              children: [
-                PostUserHeader(
-                  post: post,
-                ),
-                TitlePreview(
-                  post: post,
-                ),
-              ],
-            ),
+    return Row(
+      children: [
+        Flexible(
+          child: Column(
+            children: [
+              PostUserHeader(
+                post: post,
+              ),
+              TitlePreview(
+                post: post,
+              ),
+            ],
           ),
-          MultimediaContainer(
-            imagePost: post.imagePost,
-          ),
-        ],
-      ),
+        ),
+        MultimediaContainer(
+          imagePost: post.imagePost,
+        ),
+      ],
     );
   }
 }
@@ -42,18 +40,12 @@ class MultimediaContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 22,
-        vertical: 14,
-      ),
-      child: Container(
-        width: 109,
-        height: 84,
-        decoration: BoxDecoration(
-          color: ColorTheme.grey2,
-          borderRadius: BorderRadius.circular(5),
-        ),
+    return Container(
+      width: 109,
+      height: 84,
+      decoration: BoxDecoration(
+        color: ColorTheme.grey2,
+        borderRadius: BorderRadius.circular(5),
       ),
     );
   }
@@ -64,14 +56,11 @@ class TitlePreview extends StatelessWidget {
   final Post post;
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      direction: Axis.horizontal,
-      children: [
-        Text(
-          post.titlePost,
-          style: TextStyleApp.headlinesS(ColorTheme.textBlack),
-        ),
-      ],
+    return Text(
+      post.titlePost,
+      style: TextStyleApp.headlinesS(ColorTheme.textBlack),
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }
