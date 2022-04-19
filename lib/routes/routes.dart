@@ -5,6 +5,7 @@ import 'package:jam_re_store/pages/auth/otp_number/otp_number_page.dart';
 import 'package:jam_re_store/pages/auth/otp/otp_page.dart';
 import 'package:jam_re_store/pages/auth/sign_in/sign_in_page.dart';
 import 'package:jam_re_store/pages/auth/sign_up/create_password_page.dart';
+import 'package:jam_re_store/pages/auth/sign_up/select_topics_page.dart';
 import 'package:jam_re_store/pages/auth/sign_up/sign_up_page.dart';
 import 'package:jam_re_store/pages/home/article_open_page.dart';
 import 'package:jam_re_store/pages/home/edit_profile/components/settings.dart';
@@ -30,4 +31,5 @@ var routes = <String, WidgetBuilder>{
   NamesRoutes.welcome: (context) => const WelcomePage(),
   NamesRoutes.welcome2: (context) => const Welcome2Page(),
   NamesRoutes.createPassword: (context) => CreatePasswordPage(),
+  NamesRoutes.selectTopics: (context) => SelectTopicsPage(),
 };
