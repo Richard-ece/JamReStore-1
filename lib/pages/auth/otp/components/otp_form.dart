@@ -4,6 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/models/auth/user.dart';
+import 'package:jam_re_store/styles/color_theme.dart';
 
 class SizeConfig {
   static late MediaQueryData _mediaQueryData;
@@ -44,8 +45,8 @@ final otpInputDecoration = InputDecoration(
 
 OutlineInputBorder outlineInputBorder() {
   return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(getProportionateScreenWidth(15)),
-    borderSide: BorderSide(color: Colors.green),
+    borderRadius: BorderRadius.circular(getProportionateScreenWidth(10)),
+    borderSide: BorderSide(color: ColorTheme.blue),
   );
 }
 
@@ -53,6 +54,8 @@ class OtpForm extends HookWidget {
   FocusNode? pin2FocusNode;
   FocusNode? pin3FocusNode;
   FocusNode? pin4FocusNode;
+  FocusNode? pin5FocusNode;
+  FocusNode? pin6FocusNode;
 
   void nextField(String value, FocusNode? focusNode) {
     if (value.length == 1) {
@@ -66,108 +69,123 @@ class OtpForm extends HookWidget {
     final _codeController2 = useTextEditingController();
     final _codeController3 = useTextEditingController();
     final _codeController4 = useTextEditingController();
+    final _codeController5 = useTextEditingController();
+    final _codeController6 = useTextEditingController();
+
+    final pin2FocusNode = useFocusNode();
+    final pin3FocusNode = useFocusNode();
+    final pin4FocusNode = useFocusNode();
+    final pin5FocusNode = useFocusNode();
+    final pin6FocusNode = useFocusNode();
 
     void otpCode() {
       print(_codeController1.value.text +
           _codeController2.value.text +
           _codeController3.value.text +
-          _codeController4.value.text);
+          _codeController4.value.text +
+          _codeController5.value.text +
+          _codeController6.value.text);
       context.read<AuthBloc>().add(
             ValidationCodeRequest(
               code: Code(
                   code: _codeController1.value.text +
                       _codeController2.value.text +
                       _codeController3.value.text +
-                      _codeController4.value.text),
+                      _codeController4.value.text +
+                      _codeController5.value.text +
+                      _codeController6.value.text),
             ),
           );
     }
 
-    useEffect(() {
-      pin2FocusNode = FocusNode();
-      pin3FocusNode = FocusNode();
-      pin4FocusNode = FocusNode();
-      return (() {
-        pin2FocusNode!.dispose();
-        pin3FocusNode!.dispose();
-        pin4FocusNode!.dispose();
-      });
-    });
-
     SizeConfig().init(context);
-    return Form(
-      child: Column(
-        children: [
-          SizedBox(height: SizeConfig.screenHeight * 0.15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      children: [
+        Form(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  autofocus: true,
-                  obscureText: true,
-                  style: TextStyle(fontSize: 24),
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    nextField(value, pin2FocusNode);
-                  },
-                  controller: _codeController1,
-                ),
+              InputOtp(
+                controller: _codeController1,
+                focusNode: pin2FocusNode,
               ),
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  focusNode: pin2FocusNode,
-                  obscureText: true,
-                  style: TextStyle(fontSize: 24),
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value) => nextField(value, pin3FocusNode),
-                  controller: _codeController2,
-                ),
+              InputOtp(
+                controller: _codeController2,
+                focusNode: pin3FocusNode,
               ),
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  focusNode: pin3FocusNode,
-                  obscureText: true,
-                  style: TextStyle(fontSize: 24),
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value) => nextField(value, pin4FocusNode),
-                  controller: _codeController3,
-                ),
+              InputOtp(
+                controller: _codeController3,
+                focusNode: pin4FocusNode,
               ),
-              SizedBox(
-                width: getProportionateScreenWidth(60),
-                child: TextFormField(
-                  focusNode: pin4FocusNode,
-                  obscureText: true,
-                  style: TextStyle(fontSize: 24),
-                  keyboardType: TextInputType.number,
-                  textAlign: TextAlign.center,
-                  decoration: otpInputDecoration,
-                  onChanged: (value) {
-                    if (value.length == 1) {
-                      pin4FocusNode!.unfocus();
-                    }
-                  },
-                  controller: _codeController4,
-                ),
+              InputOtp(
+                controller: _codeController4,
+                focusNode: pin5FocusNode,
+              ),
+              InputOtp(
+                controller: _codeController5,
+                focusNode: pin6FocusNode,
+              ),
+              InputOtp(
+                controller: _codeController6,
+                focusNode: null,
+                isUnfocus: true,
               ),
             ],
           ),
-          SizedBox(height: SizeConfig.screenHeight * 0.15),
-          ElevatedButton(
-            child: Text("Continue"),
-            onPressed: otpCode,
-          ),
-        ],
+        ),
+      ],
+    );
+  }
+}
+
+class InputOtp extends StatelessWidget {
+  const InputOtp(
+      {Key? key,
+      required this.controller,
+      this.focusNode,
+      this.isUnfocus = false})
+      : super(key: key);
+  final TextEditingController controller;
+  final FocusNode? focusNode;
+  final bool isUnfocus;
+
+  void nextField(String value, FocusNode? focusNode) {
+    print("Next field");
+    if (value.length == 1) {
+      print("Next field 2");
+
+      if (isUnfocus) {
+        print("Next field 3");
+
+        focusNode!.unfocus();
+      } else {
+        print("Next field 4");
+
+        focusNode!.requestFocus();
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: Container(
+        constraints: BoxConstraints(maxWidth: 51.33),
+        height: 60,
+        child: TextFormField(
+          autofocus: true,
+          obscureText: true,
+          style: TextStyle(fontSize: 24),
+          keyboardType: TextInputType.number,
+          textAlign: TextAlign.center,
+          decoration: otpInputDecoration,
+          onChanged: (value) {
+            nextField(value, focusNode);
+          },
+          controller: controller,
+        ),
       ),
     );
   }
