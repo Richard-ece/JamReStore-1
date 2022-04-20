@@ -1,17 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:jam_re_store/models/auth/user.dart';
+import 'package:jam_re_store/models/base_api.dart';
 import 'package:jam_re_store/models/response_api.dart';
+import 'package:jam_re_store/models/session/profile.dart';
 
-class AuthApi {
-  final backendPath = "http://localhost:4000/api";
-
-  Future<ResponseApi> signIn({required UserSignIn user}) {
-    return Dio().post(
-      "${backendPath}/auth/signIn",
-      data: {"email": user.email, "password": user.password},
-    ).then((response) {
-      return ResponseApi.fromJson(response.data);
-    });
+class AuthApi extends BaseApi {
+  Future<ResponseApi<Profile>> signIn({required UserSignIn user}) async {
+    return super.post(
+      url: "/auth/signIn",
+      body: {"email": user.email, "password": user.password},
+      mapper: (data) => Profile.fromJson(data['data']),
+    );
   }
 
   Future<ResponseApi> signUp({required UserSignUp user}) {
