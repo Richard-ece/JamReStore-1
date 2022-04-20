@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/models/error_input.dart';
+import 'package:jam_re_store/styles/custom_icons.dart';
 
 class InputPassword extends HookWidget {
   const InputPassword({
@@ -28,8 +29,8 @@ class InputPassword extends HookWidget {
 
     IconData? getWidgetSeePassword() {
       if (controller.value.text == "") return null;
-      if (obscureText.value) return Icons.remove_red_eye_outlined;
-      return Icons.remove_red_eye;
+      if (obscureText.value) return CustomIcons.eye_open;
+      return CustomIcons.eye_closed;
     }
 
     useEffect(() {
