@@ -62,6 +62,9 @@
   "settings": "Configuración",
   "logOut": "Cerrar sesión",
   "profile": "Perfil",
-  "about": "Acerca de"
+  "about": "Acerca de",
+  "hintPassword": "Debe ser igual a la de abajo",
+  "hintConfirmPassword": "Debe ser igual a la de arriba"
+
 
 }

@@ -72,6 +72,7 @@ class InputCreatePassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InputPassword(
+      hintText: AppLocalizations.of(context)!.hintPassword,
       controller: _passwordController,
       labelText: AppLocalizations.of(context)!.password,
     );
@@ -89,11 +90,10 @@ class InputConfirmedPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Input(
+    return InputPassword(
+      hintText: AppLocalizations.of(context)!.hintConfirmPassword,
       controller: _confirmedpasswordController,
       labelText: AppLocalizations.of(context)!.confirmedPassword,
-      keyboardType: TextInputType.visiblePassword,
-      obscureText: true,
     );
   }
 }

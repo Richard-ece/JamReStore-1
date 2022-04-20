@@ -15,6 +15,7 @@ class Input extends StatelessWidget {
     this.hintText,
     this.suffixIcon,
     this.focusNode,
+    this.onTapIcon,
   }) : super(key: key);
 
   final TextEditingController controller;
@@ -25,7 +26,8 @@ class Input extends StatelessWidget {
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
   final String? hintText;
-  final Widget? suffixIcon;
+  final IconData? suffixIcon;
+  final void Function()? onTapIcon;
 
   Color getBorderColor(bool? error) {
     switch (error) {
@@ -57,9 +59,15 @@ class Input extends StatelessWidget {
             ),
           ),
           TextFormField(
+            style: TextStyleApp.bodyBase(ColorTheme.grey10),
             decoration: InputDecoration(
+              labelStyle: TextStyleApp.labelS(ColorTheme.grey7),
+              hintStyle: TextStyleApp.bodyS(ColorTheme.grey6),
               errorText: errorInput.message,
-              suffixIcon: suffixIcon,
+              suffixIcon: GestureDetector(
+                child: Icon(suffixIcon, color: ColorTheme.black),
+                onTap: onTapIcon,
+              ),
               hintText: hintText,
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),

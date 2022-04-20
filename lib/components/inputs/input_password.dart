@@ -24,12 +24,12 @@ class InputPassword extends HookWidget {
   @override
   Widget build(BuildContext context) {
     var obscureText = useState(true);
-    var suffixIcon = useState<Widget?>(SizedBox.shrink());
+    var suffixIcon = useState<IconData?>(null);
 
-    Widget? getWidgetSeePassword() {
-      if (controller.value.text == "") return SizedBox.shrink();
-      if (obscureText.value) return Icon(Icons.remove_red_eye_outlined);
-      return Icon(Icons.remove_red_eye);
+    IconData? getWidgetSeePassword() {
+      if (controller.value.text == "") return null;
+      if (obscureText.value) return Icons.remove_red_eye_outlined;
+      return Icons.remove_red_eye;
     }
 
     useEffect(() {
@@ -55,12 +55,10 @@ class InputPassword extends HookWidget {
       focusNode: focusNode,
       errorInput: errorInput,
       hintText: hintText,
-      suffixIcon: GestureDetector(
-        child: suffixIcon.value,
-        onTap: () {
-          obscureText.value = !obscureText.value;
-        },
-      ),
+      onTapIcon: () {
+        obscureText.value = !obscureText.value;
+      },
+      suffixIcon: suffixIcon.value,
     );
   }
 }
