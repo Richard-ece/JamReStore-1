@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/models/base_api.dart';
 import 'package:jam_re_store/models/response_api.dart';
@@ -9,37 +8,39 @@ class AuthApi extends BaseApi {
     return super.post(
       url: "/auth/signIn",
       body: {"email": user.email, "password": user.password},
+      mapper: (data) {
+        print("maper");
+        return Profile.fromJson(data['data']);
+      },
+    );
+  }
+
+  Future<ResponseApi<Profile>> signUp({required UserSignUp user}) async {
+    return super.post(
+      url: "/auth/signUp",
+      body: {"email": user.email, "password": user.password, "name": user.name},
       mapper: (data) => Profile.fromJson(data['data']),
     );
   }
 
-  Future<ResponseApi> signUp({required UserSignUp user}) {
-    return Dio().post(
-      "${backendPath}/auth/signUp",
-      data: {"email": user.email, "password": user.password, "name": user.name},
-    ).then((response) {
-      return ResponseApi.fromJson(response.data);
-    });
-  }
-
-  Future<ResponseApi> setNumberPhone({required NumberPhone numberPhone}) {
-    return Dio().post(
-      "${backendPath}/auth/OtpNumber",
-      data: {
+  Future<ResponseApi<Profile>> setNumberPhone(
+      {required NumberPhone numberPhone}) async {
+    return super.post(
+      url: "/auth/OtpNumber",
+      body: {
         "numberPhone": numberPhone.number,
         "countryCode": numberPhone.country
       },
-    ).then((response) {
-      return ResponseApi.fromJson(response.data);
-    });
+      mapper: (data) => Profile.fromJson(data['data']),
+    );
   }
 
-  Future<ResponseApi> validationCode({required Code codeVerificated}) {
-    return Dio().post(
-      "${backendPath}/auth/otp",
-      data: {"otpCodePhone": codeVerificated.code},
-    ).then((response) {
-      return ResponseApi.fromJson(response.data);
-    });
+  Future<ResponseApi<Profile>> validationCode(
+      {required Code codeVerificated}) async {
+    return super.post(
+      url: "/auth/otp",
+      body: {"otpCodePhone": codeVerificated.code},
+      mapper: (data) => Profile.fromJson(data['data']),
+    );
   }
 }

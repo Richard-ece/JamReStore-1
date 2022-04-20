@@ -2,5 +2,5 @@ enum RequestStatus {
   initial,
   loading,
   failed,
-  succes
+  success,
 }

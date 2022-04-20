@@ -28,6 +28,7 @@ class BaseRepository<T> {
         }
       }
     } catch (e) {
+      print(e);
       return Left(Failure(
         statusCode: 0,
         message: e.toString(),

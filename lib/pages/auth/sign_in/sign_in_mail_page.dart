@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/bloc/auth/auth_state.dart';
 import 'package:jam_re_store/components/app_bar_simple.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/inputs/input.dart';
@@ -28,7 +29,6 @@ class SignInMailPage extends HookWidget {
     var disabled = useState(true);
 
     useEffect(() {
-      print('useEffect');
       if (_emailController.value.text.isNotEmpty &&
           _passwordController.value.text.isNotEmpty) {
         disabled.value = false;
@@ -46,54 +46,59 @@ class SignInMailPage extends HookWidget {
               ),
             ),
           );
-      Navigator.pushNamed(context, NamesRoutes.home);
+      // Navigator.pushNamed(context, NamesRoutes.home);
     }
 
     return Scaffold(
       appBar: AppBarSimple(
         text: AppLocalizations.of(context)!.signIn,
       ),
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 61),
-              child: TellingIcon(),
+      body: BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          print(state.signInRequestStatus);
+          return Padding(
+            padding: EdgeInsets.symmetric(horizontal: 18),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 61),
+                  child: TellingIcon(),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 16),
+                  child: TitlePage(
+                      text: AppLocalizations.of(context)!.signInTittle),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: SubTitlePage(
+                      text: AppLocalizations.of(context)!.signInDescription),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 29),
+                  child: InputEmailOrUser(emailController: _emailController),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 24),
+                  child: InputPasswordSignIn(
+                      passwordController: _passwordController),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 24),
+                  child: ContinueButton(
+                    disabled: disabled.value,
+                    onPressed: signIn,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 34),
+                  child: DontHaveAccountButton(),
+                ),
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child:
-                  TitlePage(text: AppLocalizations.of(context)!.signInTittle),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: SubTitlePage(
-                  text: AppLocalizations.of(context)!.signInDescription),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 29),
-              child: InputEmailOrUser(emailController: _emailController),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 24),
-              child:
-                  InputPasswordSignIn(passwordController: _passwordController),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 24),
-              child: ContinueButton(
-                disabled: disabled.value,
-                onPressed: signIn,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 34),
-              child: DontHaveAccountButton(),
-            ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

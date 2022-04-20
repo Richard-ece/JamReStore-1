@@ -1,19 +1,21 @@
+import 'package:dartz/dartz.dart';
 import 'package:jam_re_store/api/user_api.dart';
 import 'package:jam_re_store/models/auth/user.dart';
-import 'package:jam_re_store/models/response_api.dart';
+import 'package:jam_re_store/models/base_repository.dart';
+import 'package:jam_re_store/models/failures.dart';
+import 'package:jam_re_store/models/session/profile.dart';
 
-class UserRepository {
+class UserRepository extends BaseRepository {
   var userApi = UserApi();
 
-  Future<ResponseApi> editAccount(EditAccount userEditAccount) {
-    return userApi.editAccount(user: userEditAccount).then((response) {
-      return response;
-    });
+  Future<Either<Failure, Profile>> editAccount(
+      EditAccount userEditAccount) async {
+    return super
+        .toEither(apiCall: () => userApi.editAccount(user: userEditAccount));
   }
 
-  Future<ResponseApi> changePassword(Password password) {
-    return userApi.changePassword(password: password).then((response) {
-      return response;
-    });
+  Future<Either<Failure, Profile>> changePassword(Password password) async {
+    return super
+        .toEither(apiCall: () => userApi.changePassword(password: password));
   }
 }

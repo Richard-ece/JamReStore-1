@@ -9,10 +9,20 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   UserBloc() : super(UserState()) {
     on<changePasswordRequest>((event, emit) async {
-      await userRepository.changePassword(event.changePassword).then((value) {
-        emit(state.copyWith(
-          changePasswordRequestStatus: RequestStatus.succes,
-        ));
+      await userRepository.changePassword(event.changePassword).then((either) {
+        either.fold(
+          (failure) {
+            emit(state.copyWith(
+              changePasswordRequestStatus: RequestStatus.failed,
+              changePasswordRequestError: null,
+            ));
+          },
+          (response) {
+            emit(state.copyWith(
+              changePasswordRequestStatus: RequestStatus.success,
+            ));
+          },
+        );
       }).catchError((error) {
         emit(state.copyWith(
           changePasswordRequestStatus: RequestStatus.failed,
@@ -22,10 +32,20 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     });
 
     on<editProfileRequest>((event, emit) async {
-      await userRepository.editAccount(event.editProfile).then((value) {
-        emit(state.copyWith(
-          editProfileRequestStatus: RequestStatus.succes,
-        ));
+      await userRepository.editAccount(event.editProfile).then((either) {
+        either.fold(
+          (failure) {
+            emit(state.copyWith(
+              editProfileRequestStatus: RequestStatus.failed,
+              editProfileRequestError: null,
+            ));
+          },
+          (response) {
+            emit(state.copyWith(
+              editProfileRequestStatus: RequestStatus.success,
+            ));
+          },
+        );
       }).catchError((error) {
         emit(state.copyWith(
           editProfileRequestStatus: RequestStatus.failed,
