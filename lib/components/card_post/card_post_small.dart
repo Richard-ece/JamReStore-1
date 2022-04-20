@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jam_re_store/components/card_post/card_post.dart';
 import 'package:jam_re_store/components/card_post/post_user_header.dart';
 import 'package:jam_re_store/models/post/post.dart';
 import 'package:jam_re_store/styles/color_theme.dart';

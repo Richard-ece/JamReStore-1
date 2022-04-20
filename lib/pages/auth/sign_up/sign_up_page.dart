@@ -7,11 +7,13 @@ import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/have_account_button.dart';
 import 'package:jam_re_store/components/inputs/input.dart';
+import 'package:jam_re_store/components/telling_icon.dart';
+import 'package:jam_re_store/components/text_terms_conditions.dart';
+import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
-import 'package:jam_re_store/utils/constants/assets.dart';
 
 class SignUpPage extends HookWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -39,72 +41,49 @@ class SignUpPage extends HookWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.signUp),
       ),
-      body: Container(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TellingIcon(),
-            TextWelcome(),
-            TextIntroduction(),
-            InputName(nameController: _nameController),
-            InputEmail(emailController: _emailController),
-            TextEmail(),
-            ContinueButton(),
-            HaveAccountButton(),
-            TextTermsAndConditions(),
+            Padding(
+              padding: const EdgeInsets.only(top: 61),
+              child: TellingIcon(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: TitlePage(text: "Regístrate con email"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: SubTitlePage(text: "Solo te pedimos tu nombre y correo!"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 53),
+              child: InputName(nameController: _nameController),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: InputEmail(emailController: _emailController),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: TextEmail(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 24),
+              child: ContinueButton(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 34),
+              child: HaveAccountButton(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 22, right: 22, top: 26),
+              child: TextTermsAndConditions(),
+            ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class TellingIcon extends StatelessWidget {
-  const TellingIcon({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 61, 18, 16),
-      child: Image.asset(
-        Assets.tellinBlack,
-        width: 36,
-      ),
-    );
-  }
-}
-
-class TextWelcome extends StatelessWidget {
-  const TextWelcome({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 18, 4),
-      child: Text(
-        "Regístrate con email",
-        style: TextStyleApp.labelXl(ColorTheme.grey11),
-      ),
-    );
-  }
-}
-
-class TextIntroduction extends StatelessWidget {
-  const TextIntroduction({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 32, 53),
-      child: Text(
-        "Solo te pedimos tu nombre y correo!",
-        style: TextStyleApp.bodyBase(ColorTheme.grey6),
       ),
     );
   }
@@ -121,13 +100,11 @@ class InputEmail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.fromLTRB(18, 24, 18, 0),
-        child: Input(
-          controller: _emailController,
-          keyboardType: TextInputType.emailAddress,
-          labelText: AppLocalizations.of(context)!.email,
-        ));
+    return Input(
+      controller: _emailController,
+      keyboardType: TextInputType.emailAddress,
+      labelText: AppLocalizations.of(context)!.email,
+    );
   }
 }
 
@@ -142,13 +119,11 @@ class InputName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.fromLTRB(18, 0, 18, 0),
-        child: Input(
-          controller: _nameController,
-          keyboardType: TextInputType.name,
-          labelText: AppLocalizations.of(context)!.nameAndLastName,
-        ));
+    return Input(
+      controller: _nameController,
+      keyboardType: TextInputType.name,
+      labelText: AppLocalizations.of(context)!.nameAndLastName,
+    );
   }
 }
 
@@ -176,32 +151,9 @@ class ContinueButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 24, 18, 34),
-      child: Button(
-        labelText: 'Continuar',
-        backgroudColor: ColorTheme.blue,
-      ),
-    );
-  }
-}
-
-class TextTermsAndConditions extends StatelessWidget {
-  const TextTermsAndConditions({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 34, 18, 0),
-      child: Center(
-        child: Text(
-          "Al registrarte, aceptas los Términos de Uso, la Política de Privacidad y la Política de Cookies de Telling.",
-          style: TextStyleApp.bodyXs(ColorTheme.grey7),
-          textAlign: TextAlign.center,
-        ),
-      ),
+    return Button(
+      labelText: 'Continuar',
+      backgroudColor: ColorTheme.blue,
     );
   }
 }

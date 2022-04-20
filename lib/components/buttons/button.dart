@@ -6,9 +6,9 @@ class Button extends StatelessWidget {
   const Button({
     Key? key,
     required this.labelText,
+    required this.backgroudColor,
     this.icon,
     this.onPressed,
-    required this.backgroudColor,
     this.textColor = ColorTheme.white,
   }) : super(key: key);
 

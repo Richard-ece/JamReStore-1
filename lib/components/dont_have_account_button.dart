@@ -9,20 +9,17 @@ class DontHaveAccountButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(AppLocalizations.of(context)!.dontHaveAccount),
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, NamesRoutes.signUp);
-            },
-            child: Text(AppLocalizations.of(context)!.signUp),
-          ),
-        ],
-      ),
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(AppLocalizations.of(context)!.dontHaveAccount),
+        TextButton(
+          onPressed: () {
+            Navigator.pushNamed(context, NamesRoutes.signUp);
+          },
+          child: Text(AppLocalizations.of(context)!.signUp),
+        ),
+      ],
     );
   }
 }

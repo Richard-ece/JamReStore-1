@@ -3,10 +3,10 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/chips/chip.dart';
-import 'package:jam_re_store/pages/home/home_page.dart';
+import 'package:jam_re_store/components/telling_icon.dart';
+import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
-import 'package:jam_re_store/utils/constants/assets.dart';
 
 class SelectTopicsPage extends HookWidget {
   const SelectTopicsPage({Key? key}) : super(key: key);
@@ -17,13 +17,25 @@ class SelectTopicsPage extends HookWidget {
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.signUp),
       ),
-      body: Container(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            TellingIcon(),
-            TextWelcome(),
-            TextIntroduction(),
+            Padding(
+              padding: const EdgeInsets.only(top: 61),
+              child: TellingIcon(),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: TitlePage(text: "Te damos la bienvenida a Telling!"),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: SubTitlePage(
+                  text:
+                      "Selecciona como mínimo 5 temas para mejorar tu experiencia"),
+            ),
             TextTopicsBase(labelText: "Arte y entretenimiento"),
             Row(
               children: [
@@ -79,57 +91,6 @@ class SelectTopicsPage extends HookWidget {
             StartButton(),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class TellingIcon extends StatelessWidget {
-  const TellingIcon({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 61, 18, 16),
-      child: Image.asset(
-        Assets.tellinBlack,
-        width: 36,
-      ),
-    );
-  }
-}
-
-class TextWelcome extends StatelessWidget {
-  const TextWelcome({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 18, 4),
-      child: Text(
-        "Te damos la bienvenida a Telling!",
-        style: TextStyleApp.labelXl(ColorTheme.grey11),
-      ),
-    );
-  }
-}
-
-class TextIntroduction extends StatelessWidget {
-  const TextIntroduction({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 0, 32, 0),
-      child: Text(
-        "Selecciona como mínimo 5 temas para mejorar tu experiencia",
-        style: TextStyleApp.bodyBase(ColorTheme.grey6),
       ),
     );
   }

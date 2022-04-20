@@ -5,134 +5,73 @@ import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
-
-class SizeConfig {
-  static late MediaQueryData _mediaQueryData;
-  static late double screenWidth;
-  static late double screenHeight;
-  static double? defaultSize;
-  static Orientation? orientation;
-
-  void init(BuildContext context) {
-    _mediaQueryData = MediaQuery.of(context);
-    screenWidth = _mediaQueryData.size.width;
-    screenHeight = _mediaQueryData.size.height;
-    orientation = _mediaQueryData.orientation;
-  }
-}
-
-// Get the proportionate height as per screen size
-double getProportionateScreenHeight(double inputHeight) {
-  double screenHeight = SizeConfig.screenHeight;
-  // 812 is the layout height that designer use
-  return (inputHeight / 812.0) * screenHeight;
-}
-
-// Get the proportionate height as per screen size
-double getProportionateScreenWidth(double inputWidth) {
-  double screenWidth = SizeConfig.screenWidth;
-  // 375 is the layout width that designer use
-  return (inputWidth / 375.0) * screenWidth;
-}
-
-final otpInputDecoration = InputDecoration(
-  contentPadding:
-      EdgeInsets.symmetric(vertical: getProportionateScreenWidth(15)),
-  border: outlineInputBorder(),
-  focusedBorder: outlineInputBorder(),
-  enabledBorder: outlineInputBorder(),
-);
-
-OutlineInputBorder outlineInputBorder() {
-  return OutlineInputBorder(
-    borderRadius: BorderRadius.circular(getProportionateScreenWidth(10)),
-    borderSide: BorderSide(color: ColorTheme.blue),
-  );
-}
+import 'package:jam_re_store/styles/text_styles_app.dart';
 
 class OtpForm extends HookWidget {
-  FocusNode? pin2FocusNode;
-  FocusNode? pin3FocusNode;
-  FocusNode? pin4FocusNode;
-  FocusNode? pin5FocusNode;
-  FocusNode? pin6FocusNode;
-
-  void nextField(String value, FocusNode? focusNode) {
-    if (value.length == 1) {
-      focusNode!.requestFocus();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    final _codeController1 = useTextEditingController();
-    final _codeController2 = useTextEditingController();
-    final _codeController3 = useTextEditingController();
-    final _codeController4 = useTextEditingController();
-    final _codeController5 = useTextEditingController();
-    final _codeController6 = useTextEditingController();
+    final controller1 = useTextEditingController();
+    final controller2 = useTextEditingController();
+    final controller3 = useTextEditingController();
+    final controller4 = useTextEditingController();
+    final controller5 = useTextEditingController();
+    final controller6 = useTextEditingController();
 
-    final pin2FocusNode = useFocusNode();
-    final pin3FocusNode = useFocusNode();
-    final pin4FocusNode = useFocusNode();
-    final pin5FocusNode = useFocusNode();
-    final pin6FocusNode = useFocusNode();
+    final focusNode1 = useFocusNode();
+    final focusNode2 = useFocusNode();
+    final focusNode3 = useFocusNode();
+    final focusNode4 = useFocusNode();
+    final focusNode5 = useFocusNode();
+    final focusNode6 = useFocusNode();
 
-    void otpCode() {
-      print(_codeController1.value.text +
-          _codeController2.value.text +
-          _codeController3.value.text +
-          _codeController4.value.text +
-          _codeController5.value.text +
-          _codeController6.value.text);
+    void sendOtpCode() {
       context.read<AuthBloc>().add(
             ValidationCodeRequest(
               code: Code(
-                  code: _codeController1.value.text +
-                      _codeController2.value.text +
-                      _codeController3.value.text +
-                      _codeController4.value.text +
-                      _codeController5.value.text +
-                      _codeController6.value.text),
+                  code: controller1.value.text +
+                      controller2.value.text +
+                      controller3.value.text +
+                      controller4.value.text +
+                      controller5.value.text +
+                      controller6.value.text),
             ),
           );
     }
 
-    SizeConfig().init(context);
-    return Column(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Form(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              InputOtp(
-                controller: _codeController1,
-                focusNode: pin2FocusNode,
-              ),
-              InputOtp(
-                controller: _codeController2,
-                focusNode: pin3FocusNode,
-              ),
-              InputOtp(
-                controller: _codeController3,
-                focusNode: pin4FocusNode,
-              ),
-              InputOtp(
-                controller: _codeController4,
-                focusNode: pin5FocusNode,
-              ),
-              InputOtp(
-                controller: _codeController5,
-                focusNode: pin6FocusNode,
-              ),
-              InputOtp(
-                controller: _codeController6,
-                focusNode: null,
-                isUnfocus: true,
-              ),
-            ],
-          ),
+        InputOtp(
+          controller: controller1,
+          nextFocusNode: focusNode2,
+          actualFocusNode: focusNode1,
+          autofocus: true,
+        ),
+        InputOtp(
+          controller: controller2,
+          nextFocusNode: focusNode3,
+          actualFocusNode: focusNode2,
+        ),
+        InputOtp(
+          controller: controller3,
+          nextFocusNode: focusNode4,
+          actualFocusNode: focusNode3,
+        ),
+        InputOtp(
+          controller: controller4,
+          nextFocusNode: focusNode5,
+          actualFocusNode: focusNode4,
+        ),
+        InputOtp(
+          controller: controller5,
+          nextFocusNode: focusNode6,
+          actualFocusNode: focusNode5,
+        ),
+        InputOtp(
+          controller: controller6,
+          nextFocusNode: focusNode1,
+          actualFocusNode: focusNode6,
+          isUnfocus: true,
         ),
       ],
     );
@@ -140,49 +79,55 @@ class OtpForm extends HookWidget {
 }
 
 class InputOtp extends StatelessWidget {
-  const InputOtp(
-      {Key? key,
-      required this.controller,
-      this.focusNode,
-      this.isUnfocus = false})
-      : super(key: key);
+  const InputOtp({
+    Key? key,
+    required this.controller,
+    required this.nextFocusNode,
+    required this.actualFocusNode,
+    this.isUnfocus = false,
+    this.autofocus = false,
+  }) : super(key: key);
+
   final TextEditingController controller;
-  final FocusNode? focusNode;
+  final FocusNode actualFocusNode;
+  final FocusNode nextFocusNode;
   final bool isUnfocus;
+  final bool autofocus;
 
-  void nextField(String value, FocusNode? focusNode) {
-    print("Next field");
-    if (value.length == 1) {
-      print("Next field 2");
-
-      if (isUnfocus) {
-        print("Next field 3");
-
-        focusNode!.unfocus();
-      } else {
-        print("Next field 4");
-
-        focusNode!.requestFocus();
-      }
+  void nextField(String value) {
+    if (value.length != 1) return;
+    if (isUnfocus) {
+      actualFocusNode.unfocus();
+      return;
     }
+    nextFocusNode.requestFocus();
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: Container(
-        constraints: BoxConstraints(maxWidth: 51.33),
-        height: 60,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: 45, maxHeight: 60),
         child: TextFormField(
-          autofocus: true,
-          obscureText: true,
-          style: TextStyle(fontSize: 24),
+          obscureText: false,
+          autofocus: autofocus,
+          focusNode: actualFocusNode,
+          style: TextStyleApp.bodyBase(ColorTheme.grey11),
           keyboardType: TextInputType.number,
           textAlign: TextAlign.center,
-          decoration: otpInputDecoration,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: ColorTheme.grey2),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(10),
+              borderSide: BorderSide(color: ColorTheme.grey2),
+            ),
+          ),
           onChanged: (value) {
-            nextField(value, focusNode);
+            nextField(value);
           },
           controller: controller,
         ),
