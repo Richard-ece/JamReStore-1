@@ -31,13 +31,13 @@ class SignInPage extends HookWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: TitlePage(text: "Bienvenido de vuelta a Telling."),
+              child:
+                  TitlePage(text: AppLocalizations.of(context)!.signInTittle),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: SubTitlePage(
-                  text:
-                      "Inicia sesion con tu usuario o email, y tu contraseña."),
+                  text: AppLocalizations.of(context)!.signInDescription),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 70, left: 4, right: 4),
@@ -79,7 +79,7 @@ class ButtonSignInEmail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       icon: Icon(Icons.mail_outline),
-      labelText: 'Inicia con Correo',
+      labelText: AppLocalizations.of(context)!.mailButton,
       backgroudColor: ColorTheme.blue,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.signInMail);
@@ -97,7 +97,7 @@ class ButtonFacebook extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       icon: Icon(Icons.facebook),
-      labelText: 'Inicia con Facebook',
+      labelText: AppLocalizations.of(context)!.facebookButton,
       backgroudColor: ColorTheme.facebook,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.home);
@@ -115,7 +115,7 @@ class ButtonApple extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       icon: Icon(Icons.apple),
-      labelText: 'Inicia con Apple',
+      labelText: AppLocalizations.of(context)!.appleButton,
       backgroudColor: ColorTheme.grey11,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.home);
@@ -136,7 +136,7 @@ class ButtonGoogle extends StatelessWidget {
         Assets.googleIcon,
         scale: 1,
       ),
-      labelText: 'Inicia con Google',
+      labelText: AppLocalizations.of(context)!.googleButton,
       textColor: ColorTheme.textBlack,
       outline: true,
       borderColor: ColorTheme.grey2,

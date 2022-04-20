@@ -49,13 +49,13 @@ class SignInMailPage extends HookWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: TitlePage(text: "Bienvenido de vuelta a Telling."),
+              child:
+                  TitlePage(text: AppLocalizations.of(context)!.signInTittle),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: SubTitlePage(
-                  text:
-                      "Inicia sesion con tu usuario o email, y tu contraseña."),
+                  text: AppLocalizations.of(context)!.signInDescription),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 29),
@@ -126,7 +126,7 @@ class ContinueButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      labelText: 'Continuar',
+      labelText: AppLocalizations.of(context)!.continueButton,
       backgroudColor: ColorTheme.blue,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.home);

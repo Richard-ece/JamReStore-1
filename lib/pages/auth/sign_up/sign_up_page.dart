@@ -31,13 +31,13 @@ class SignUpPage extends HookWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: TitlePage(text: "Únete a Telling."),
+              child: TitlePage(
+                  text: AppLocalizations.of(context)!.signUpJoinUpTelling),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: SubTitlePage(
-                  text:
-                      "Lee y escribe contenido de calidad, crea una comunidad y obten ganancias con tu audiencia."),
+                  text: AppLocalizations.of(context)!.signUpSubtittle),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 70, left: 4, right: 4),
@@ -79,7 +79,7 @@ class ButtonSignInEmail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       icon: Icon(Icons.mail_outline),
-      labelText: 'Registrarse con Correo',
+      labelText: AppLocalizations.of(context)!.registerMail,
       backgroudColor: ColorTheme.blue,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.signUpMail);
@@ -97,7 +97,7 @@ class ButtonFacebook extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       icon: Icon(Icons.facebook),
-      labelText: 'Registrarse con Facebook',
+      labelText: AppLocalizations.of(context)!.registerFacebook,
       backgroudColor: ColorTheme.facebook,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.selectTopics);
@@ -115,7 +115,7 @@ class ButtonApple extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       icon: Icon(Icons.apple),
-      labelText: 'Registrarse con Apple',
+      labelText: AppLocalizations.of(context)!.registerApple,
       backgroudColor: ColorTheme.grey11,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.selectTopics);
@@ -136,7 +136,7 @@ class ButtonGoogle extends StatelessWidget {
         Assets.googleIcon,
         scale: 1,
       ),
-      labelText: 'Registrarse con Google',
+      labelText: AppLocalizations.of(context)!.registerGoogle,
       textColor: ColorTheme.textBlack,
       outline: true,
       borderColor: ColorTheme.grey2,

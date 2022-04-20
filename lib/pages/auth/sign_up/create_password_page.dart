@@ -30,13 +30,13 @@ class CreatePasswordPage extends HookWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: TitlePage(text: "Elige tu contraseña."),
+              child: TitlePage(
+                  text: AppLocalizations.of(context)!.createPasswordTittle),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 4),
               child: SubTitlePage(
-                  text:
-                      "Deberá tener al menos 8 caracteres, una mayúscula y un número."),
+                  text: AppLocalizations.of(context)!.createPasswordSubtittle),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 29),
@@ -72,8 +72,9 @@ class InputCreatePassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InputPassword(
+      hintText: AppLocalizations.of(context)!.hintPassword,
       controller: _passwordController,
-      labelText: 'Contraseña',
+      labelText: AppLocalizations.of(context)!.password,
     );
   }
 }
@@ -89,11 +90,10 @@ class InputConfirmedPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Input(
+    return InputPassword(
+      hintText: AppLocalizations.of(context)!.hintConfirmPassword,
       controller: _confirmedpasswordController,
-      labelText: 'Confirmar contraseña',
-      keyboardType: TextInputType.visiblePassword,
-      obscureText: true,
+      labelText: AppLocalizations.of(context)!.confirmedPassword,
     );
   }
 }
@@ -106,7 +106,7 @@ class ContinueButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      labelText: 'Continuar',
+      labelText: AppLocalizations.of(context)!.continueButton,
       backgroudColor: ColorTheme.blue,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.selectTopics);
