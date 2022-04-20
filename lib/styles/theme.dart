@@ -26,11 +26,11 @@ class AppTheme {
         fontFamily: GoogleFonts.nunitoSans().fontFamily,
         textTheme: AppTextTheme(),
         appBarTheme: AppBarTheme(
-          titleTextStyle: TextStyleApp.appBar,
+          titleTextStyle: TextStyleApp.screenLabel(ColorTheme.textBlack),
           backgroundColor: ColorTheme.white,
           elevation: 0,
           iconTheme: const IconThemeData(
-            color: ColorTheme.grey2,
+            color: ColorTheme.black,
             size: 15,
           ),
         ),

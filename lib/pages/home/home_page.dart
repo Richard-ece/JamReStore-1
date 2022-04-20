@@ -50,6 +50,7 @@ class HomePage extends HookWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
+          centerTitle: true,
           title: const Text('Home'),
         ),
         body: listScreens[tabIndex.value],

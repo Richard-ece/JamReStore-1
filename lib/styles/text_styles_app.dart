@@ -125,5 +125,11 @@ class TextStyleApp {
             fontStyle: FontStyle.normal,
           );
 
-  static final appBar = labelS(ColorTheme.textBlack);
+  static final screenLabel = (Color color) => GoogleFonts.nunitoSans().copyWith(
+        color: color,
+        fontSize: 15,
+        fontWeight: FontWeight.w600,
+        fontStyle: FontStyle.normal,
+      );
+
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/components/app_bar_simple.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -36,8 +37,8 @@ class OtpNumberPage extends HookWidget {
     ;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.signUp),
+      appBar: AppBarSimple(
+        text: AppLocalizations.of(context)!.signUp,
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),

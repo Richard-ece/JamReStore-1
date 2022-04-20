@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/components/app_bar_simple.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
@@ -16,11 +17,7 @@ class CreatePasswordPage extends HookWidget {
     final _passwordController = useTextEditingController();
     final _confirmedpasswordController = useTextEditingController();
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(AppLocalizations.of(context)!.signUp),
-        ),
-      ),
+      appBar: AppBarSimple(text: AppLocalizations.of(context)!.signUp),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18),
         child: Column(

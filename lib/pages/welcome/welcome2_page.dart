@@ -17,9 +17,8 @@ class Welcome2Page extends HookWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(
-          child: Text(AppLocalizations.of(context)!.signIn),
-        ),
+        centerTitle: true,
+        title: Text(AppLocalizations.of(context)!.signIn),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18),

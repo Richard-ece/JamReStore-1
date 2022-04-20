@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jam_re_store/components/app_bar_simple.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
@@ -13,10 +14,8 @@ class OtpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Center(
-          child: Text(AppLocalizations.of(context)!.signUp),
-        ),
+      appBar: AppBarSimple(
+        text: AppLocalizations.of(context)!.signUp,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18),

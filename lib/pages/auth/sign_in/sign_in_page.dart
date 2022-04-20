@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
+import 'package:jam_re_store/components/app_bar_simple.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
@@ -34,9 +35,7 @@ class SignInPage extends HookWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.signIn),
-      ),
+      appBar: AppBarSimple(text: AppLocalizations.of(context)!.signIn,),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18),
         child: Column(
