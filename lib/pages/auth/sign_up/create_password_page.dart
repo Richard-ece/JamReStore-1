@@ -7,6 +7,7 @@ import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
+import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 
 class CreatePasswordPage extends HookWidget {
@@ -106,7 +107,10 @@ class ContinueButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Button(
       labelText: 'Continuar',
-      backgroudColor: ColorTheme.blue4,
+      backgroudColor: ColorTheme.blue,
+      onPressed: () {
+        Navigator.pushNamed(context, NamesRoutes.selectTopics);
+      },
     );
   }
 }

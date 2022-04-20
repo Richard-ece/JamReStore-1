@@ -6,6 +6,7 @@ import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/chips/chip.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
+import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 
@@ -149,6 +150,9 @@ class StartButton extends StatelessWidget {
       child: Button(
         labelText: 'Empezar',
         backgroudColor: ColorTheme.blue,
+        onPressed: () {
+          Navigator.pushNamed(context, NamesRoutes.home);
+        },
       ),
     );
   }

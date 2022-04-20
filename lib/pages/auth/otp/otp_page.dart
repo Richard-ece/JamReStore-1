@@ -4,6 +4,7 @@ import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/pages/auth/otp/components/otp_form.dart';
+import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -98,6 +99,9 @@ class ContinueButton extends StatelessWidget {
     return Button(
       labelText: 'Continuar',
       backgroudColor: ColorTheme.blue,
+      onPressed: () {
+        Navigator.pushNamed(context, NamesRoutes.createPassword);
+      },
     );
   }
 }

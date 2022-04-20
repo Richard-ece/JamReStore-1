@@ -1,9 +1,10 @@
 class NamesRoutes {
   static const welcome = "/welcome";
-  static const welcome2 = "/welcome2";
   static const signUp = "/signUp";
+  static const signUpMail = "/signUpMail";
   static const selectTopics = "/selectTopics";
   static const signIn = "/signIn";
+  static const signInMail = "/signInMail";
   static const forgotpasswordEmail = "/forgotPasswordEmail";
   static const forgotPassword = "/forgotPassword";
   static const home = "/home";
