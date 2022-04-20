@@ -27,7 +27,7 @@ class EditProfilePageState extends State<EditProfilePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Edit profile"),
+        title: Text(AppLocalizations.of(context)!.editProfile),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -86,7 +86,7 @@ class EditProfilePageState extends State<EditProfilePage> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    child: Text("Profile settings"),
+                    child: Text(AppLocalizations.of(context)!.editProfile),
                     onPressed: configuracion,
                   ),
                 ),
@@ -97,7 +97,7 @@ class EditProfilePageState extends State<EditProfilePage> {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    child: Text("Save"),
+                    child: Text(AppLocalizations.of(context)!.saveButton),
                     onPressed: guardar,
                   ),
                 ),
@@ -108,7 +108,7 @@ class EditProfilePageState extends State<EditProfilePage> {
                   width: double.infinity,
                   height: 50,
                   child: TextButton(
-                    child: Text("Cancel"),
+                    child: Text(AppLocalizations.of(context)!.cancelButton),
                     onPressed: cancelar,
                   ),
                 ),

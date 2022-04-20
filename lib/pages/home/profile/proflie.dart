@@ -3,6 +3,7 @@ import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/pages/home/profile/components/numbers_component.dart';
 import 'package:jam_re_store/pages/home/profile/components/profile_Component.dart';
 import 'package:jam_re_store/utils/user/user_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -16,7 +17,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Profile"),
+        title: Text(AppLocalizations.of(context)!.profile),
       ),
       body: ListView(
         physics: BouncingScrollPhysics(),
@@ -58,10 +59,9 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              'About',
-              // style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
+            Text(AppLocalizations.of(context)!.about
+                // style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
             const SizedBox(height: 16),
             Text(
               profileAccount.about,

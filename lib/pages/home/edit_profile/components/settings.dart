@@ -16,7 +16,7 @@ class SettingsPageState extends State<SettingsPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Configuracion"),
+        title: Text(AppLocalizations.of(context)!.settings),
       ),
       body: Container(
         padding: const EdgeInsets.all(16.0),
@@ -32,7 +32,7 @@ class SettingsPageState extends State<SettingsPage> {
                   color: Colors.green,
                 ),
                 Text(
-                  "  Configuracion Del Perfil",
+                  AppLocalizations.of(context)!.profileSettings,
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ],
@@ -57,7 +57,7 @@ class SettingsPageState extends State<SettingsPage> {
                 width: double.infinity,
                 height: 50,
                 child: ElevatedButton(
-                  child: Text("Cerrar Sesión"),
+                  child: Text(AppLocalizations.of(context)!.logOut),
                   onPressed: cerrarSesion,
                 ),
               ),

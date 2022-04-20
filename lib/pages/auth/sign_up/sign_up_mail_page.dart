@@ -51,11 +51,13 @@ class SignUpMailPage extends HookWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 16),
-              child: TitlePage(text: "Regístrate con email"),
+              child:
+                  TitlePage(text: AppLocalizations.of(context)!.signUpTittle),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 4),
-              child: SubTitlePage(text: "Solo te pedimos tu nombre y correo!"),
+              child: SubTitlePage(
+                  text: AppLocalizations.of(context)!.signUpDescription),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 53),
@@ -134,7 +136,7 @@ class TextEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Ningun usuario de Telling podrá ver tu dirección de correo electrónico.",
+      AppLocalizations.of(context)!.signUpText,
       style: TextStyleApp.bodyXs(ColorTheme.grey6),
     );
   }
@@ -148,7 +150,7 @@ class ContinueButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      labelText: 'Continuar',
+      labelText: AppLocalizations.of(context)!.continueButton,
       backgroudColor: ColorTheme.blue,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.otp);

@@ -29,17 +29,18 @@ class SelectTopicsPage extends HookWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 16),
-                child: TitlePage(text: "Te damos la bienvenida a Telling!"),
+                child:
+                    TitlePage(text: AppLocalizations.of(context)!.topicsTittle),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 4),
                 child: SubTitlePage(
-                    text:
-                        "Selecciona como mínimo 5 temas para mejorar tu experiencia"),
+                    text: AppLocalizations.of(context)!.topicsSubtittle),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 48),
-                child: TextTopicsBase(labelText: "Arte y entretenimiento"),
+                child: TextTopicsBase(
+                    labelText: AppLocalizations.of(context)!.topicsBase),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 24),
@@ -48,43 +49,45 @@ class SelectTopicsPage extends HookWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Arte",
+                        labelText: AppLocalizations.of(context)!.topicsArt,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Cine",
+                        labelText: AppLocalizations.of(context)!.topicsCinema,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Gaming",
+                        labelText: AppLocalizations.of(context)!.topicsGaming,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Musica",
+                        labelText: AppLocalizations.of(context)!.topicsMusic,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Fotografia",
+                        labelText:
+                            AppLocalizations.of(context)!.topicsPhotography,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Tv",
+                        labelText: AppLocalizations.of(context)!.topicsTv,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Diseño Visual",
+                        labelText:
+                            AppLocalizations.of(context)!.topicsVisualDesign,
                       ),
                     ),
                   ],
@@ -92,7 +95,8 @@ class SelectTopicsPage extends HookWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 48),
-                child: TextTopicsBase(labelText: "Ciencia"),
+                child: TextTopicsBase(
+                    labelText: AppLocalizations.of(context)!.topicsBaseScience),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 24),
@@ -101,19 +105,22 @@ class SelectTopicsPage extends HookWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Ciencia",
+                        labelText:
+                            AppLocalizations.of(context)!.topicsBaseScience,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Psicología",
+                        labelText:
+                            AppLocalizations.of(context)!.topicsPsychology,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Cambio climático",
+                        labelText:
+                            AppLocalizations.of(context)!.topicsClimateChange,
                       ),
                     ),
                   ],
@@ -121,7 +128,8 @@ class SelectTopicsPage extends HookWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 48),
-                child: TextTopicsBase(labelText: "Cultura"),
+                child: TextTopicsBase(
+                    labelText: AppLocalizations.of(context)!.topicsBaseCulture),
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 24),
@@ -130,37 +138,39 @@ class SelectTopicsPage extends HookWidget {
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Cultura",
+                        labelText:
+                            AppLocalizations.of(context)!.topicsBaseCulture,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Comida",
+                        labelText: AppLocalizations.of(context)!.topicsFood,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Idioma",
+                        labelText: AppLocalizations.of(context)!.topicsIdiom,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Deportes",
+                        labelText: AppLocalizations.of(context)!.topicsSports,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Filosofía",
+                        labelText:
+                            AppLocalizations.of(context)!.topicsPhilosophy,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(right: 8, bottom: 12),
                       child: ChipBase(
-                        labelText: "Viajes",
+                        labelText: AppLocalizations.of(context)!.topicsTravels,
                       ),
                     ),
                   ],
@@ -225,7 +235,7 @@ class StartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      labelText: 'Empezar',
+      labelText: AppLocalizations.of(context)!.startButton,
       backgroudColor: ColorTheme.blue,
       onPressed: () {
         Navigator.pushNamed(context, NamesRoutes.home);
