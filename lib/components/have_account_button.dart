@@ -22,7 +22,10 @@ class HaveAccountButton extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, NamesRoutes.signIn);
           },
-          child: Text(AppLocalizations.of(context)!.signIn),
+          child: Text(
+            AppLocalizations.of(context)!.signIn,
+            style: TextStyleApp.labelS(ColorTheme.blue),
+          ),
         ),
       ],
     );

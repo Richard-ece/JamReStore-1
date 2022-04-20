@@ -6,16 +6,20 @@ class Button extends StatelessWidget {
   const Button({
     Key? key,
     required this.labelText,
-    required this.backgroudColor,
+    this.backgroudColor = ColorTheme.blue,
+    this.borderColor = Colors.transparent,
+    this.textColor = ColorTheme.white,
+    this.outline = false,
     this.icon,
     this.onPressed,
-    this.textColor = ColorTheme.white,
   }) : super(key: key);
 
   final String labelText;
   final Widget? icon;
   final Color backgroudColor;
+  final Color borderColor;
   final Color textColor;
+  final bool outline;
   final void Function()? onPressed;
 
   @override
@@ -25,10 +29,10 @@ class Button extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         elevation: 0,
         minimumSize: Size(double.infinity, 58),
-        primary: backgroudColor,
+        primary: outline ? Colors.transparent : backgroudColor,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(35.0),
-        ),
+            borderRadius: BorderRadius.circular(35.0),
+            side: BorderSide(color: borderColor)),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

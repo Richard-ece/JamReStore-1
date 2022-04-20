@@ -13,6 +13,4 @@ class Assets {
   static const tellinBlue = "icons/telling_blue.png";
 
   static const googleIcon = "icons/google.png";
-
-  static const facebookIcon = "icons/facebook.png";
 }

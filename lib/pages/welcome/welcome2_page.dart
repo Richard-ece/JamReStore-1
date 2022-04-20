@@ -78,10 +78,7 @@ class ButtonSignInEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      icon: Image.asset(
-        Assets.facebookIcon,
-        scale: 15,
-      ),
+      icon: Icon(Icons.mail_outline),
       labelText: 'Ingresa con Correo',
       backgroudColor: ColorTheme.blue,
       onPressed: () {
@@ -99,12 +96,10 @@ class ButtonFacebook extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      icon: Image.asset(
-        Assets.facebookIcon,
-        scale: 15,
-      ),
+      icon: Icon(Icons.facebook),
       labelText: 'Ingresa con Facebook',
       backgroudColor: ColorTheme.facebook,
+      onPressed: () {},
     );
   }
 }
@@ -117,12 +112,10 @@ class ButtonApple extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Button(
-      icon: Image.asset(
-        Assets.facebookIcon,
-        scale: 15,
-      ),
+      icon: Icon(Icons.apple),
       labelText: 'Ingresa con Apple',
       backgroudColor: ColorTheme.grey11,
+      onPressed: () {},
     );
   }
 }
@@ -137,11 +130,13 @@ class ButtonGoogle extends StatelessWidget {
     return Button(
       icon: Image.asset(
         Assets.googleIcon,
-        scale: 15,
+        scale: 1,
       ),
       labelText: 'Ingresa con Google',
       textColor: ColorTheme.textBlack,
-      backgroudColor: ColorTheme.white,
+      outline: true,
+      borderColor: ColorTheme.grey2,
+      onPressed: () {},
     );
   }
 }
