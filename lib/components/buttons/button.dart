@@ -34,16 +34,19 @@ class Button extends StatelessWidget {
             borderRadius: BorderRadius.circular(35.0),
             side: BorderSide(color: borderColor)),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          icon ?? Container(),
-          Text(
-            labelText,
-            style: TextStyleApp.labelS(textColor),
-          ),
-          Container()
-        ],
+      child: Container(
+        constraints: BoxConstraints(maxHeight: 52),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            icon ?? Container(),
+            Text(
+              labelText,
+              style: TextStyleApp.labelS(textColor),
+            ),
+            Container()
+          ],
+        ),
       ),
     );
   }

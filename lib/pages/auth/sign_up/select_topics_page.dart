@@ -19,78 +19,160 @@ class SelectTopicsPage extends HookWidget {
       appBar: AppBarSimple(text: AppLocalizations.of(context)!.signUp),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 61),
-              child: TellingIcon(),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: TitlePage(text: "Te damos la bienvenida a Telling!"),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: SubTitlePage(
-                  text:
-                      "Selecciona como mínimo 5 temas para mejorar tu experiencia"),
-            ),
-            TextTopicsBase(labelText: "Arte y entretenimiento"),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChipBase(
-                    labelText: "Arte",
-                  ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 61),
+                child: TellingIcon(),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: TitlePage(text: "Te damos la bienvenida a Telling!"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: SubTitlePage(
+                    text:
+                        "Selecciona como mínimo 5 temas para mejorar tu experiencia"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 48),
+                child: TextTopicsBase(labelText: "Arte y entretenimiento"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: Wrap(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Arte",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Cine",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Gaming",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Musica",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Fotografia",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Tv",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Diseño Visual",
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChipBase(
-                    labelText: "Cine",
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 48),
+                child: TextTopicsBase(labelText: "Ciencia"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: Wrap(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Ciencia",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Psicología",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Cambio climático",
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChipBase(
-                    labelText: "Gaming",
-                  ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 48),
+                child: TextTopicsBase(labelText: "Cultura"),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(top: 24),
+                child: Wrap(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Cultura",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Comida",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Idioma",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Deportes",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Filosofía",
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8, bottom: 12),
+                      child: ChipBase(
+                        labelText: "Viajes",
+                      ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChipBase(
-                    labelText: "Musica",
-                  ),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChipBase(
-                    labelText: "Fotografia",
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChipBase(
-                    labelText: "Tv",
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ChipBase(
-                    labelText: "Diseño Visual",
-                  ),
-                ),
-                TextTopicsBase(labelText: "Ciencia"),
-              ],
-            ),
-            StartButton(),
-          ],
+              ),
+            ],
+          ),
         ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+        child: StartButton(),
       ),
     );
   }
@@ -105,12 +187,9 @@ class TextTopicsBase extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 53, 18, 33),
-      child: Text(
-        labelText,
-        style: TextStyleApp.labelL(ColorTheme.grey11),
-      ),
+    return Text(
+      labelText,
+      style: TextStyleApp.labelL(ColorTheme.grey11),
     );
   }
 }
@@ -145,15 +224,12 @@ class StartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(18, 24, 18, 34),
-      child: Button(
-        labelText: 'Empezar',
-        backgroudColor: ColorTheme.blue,
-        onPressed: () {
-          Navigator.pushNamed(context, NamesRoutes.home);
-        },
-      ),
+    return Button(
+      labelText: 'Empezar',
+      backgroudColor: ColorTheme.blue,
+      onPressed: () {
+        Navigator.pushNamed(context, NamesRoutes.home);
+      },
     );
   }
 }

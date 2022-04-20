@@ -128,6 +128,9 @@ class ContinueButton extends StatelessWidget {
     return Button(
       labelText: 'Continuar',
       backgroudColor: ColorTheme.blue,
+      onPressed: () {
+        Navigator.pushNamed(context, NamesRoutes.home);
+      },
     );
   }
 }
