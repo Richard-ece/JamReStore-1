@@ -13,6 +13,7 @@ import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/components/dont_have_account_button.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
+import 'package:jam_re_store/components/inputs/input_password.dart';
 
 class SignInMailPage extends HookWidget {
   const SignInMailPage({Key? key}) : super(key: key);
@@ -21,6 +22,20 @@ class SignInMailPage extends HookWidget {
   Widget build(BuildContext context) {
     final _emailController = useTextEditingController();
     final _passwordController = useTextEditingController();
+    final _passwordListen = useValueListenable(_passwordController);
+    final _emailListen = useValueListenable(_emailController);
+
+    var disabled = useState(true);
+
+    useEffect(() {
+      print('useEffect');
+      if (_emailController.value.text.isNotEmpty &&
+          _passwordController.value.text.isNotEmpty) {
+        disabled.value = false;
+      } else {
+        disabled.value = true;
+      }
+    }, [_emailListen, _passwordListen]);
 
     void signIn() {
       context.read<AuthBloc>().add(
@@ -31,7 +46,7 @@ class SignInMailPage extends HookWidget {
               ),
             ),
           );
-      Navigator.pushNamed(context, NamesRoutes.otpNumber);
+      Navigator.pushNamed(context, NamesRoutes.home);
     }
 
     return Scaffold(
@@ -63,11 +78,15 @@ class SignInMailPage extends HookWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 24),
-              child: InputPassword(passwordController: _passwordController),
+              child:
+                  InputPasswordSignIn(passwordController: _passwordController),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 24),
-              child: ContinueButton(),
+              child: ContinueButton(
+                disabled: disabled.value,
+                onPressed: signIn,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 34),
@@ -99,8 +118,8 @@ class InputEmailOrUser extends StatelessWidget {
   }
 }
 
-class InputPassword extends StatelessWidget {
-  const InputPassword({
+class InputPasswordSignIn extends StatelessWidget {
+  const InputPasswordSignIn({
     Key? key,
     required TextEditingController passwordController,
   })  : _passwordController = passwordController,
@@ -110,10 +129,9 @@ class InputPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Input(
+    return InputPassword(
       controller: _passwordController,
-      keyboardType: TextInputType.emailAddress,
-      labelText: AppLocalizations.of(context)!.email,
+      labelText: AppLocalizations.of(context)!.password,
     );
   }
 }
@@ -121,16 +139,20 @@ class InputPassword extends StatelessWidget {
 class ContinueButton extends StatelessWidget {
   const ContinueButton({
     Key? key,
+    required this.onPressed,
+    required this.disabled,
   }) : super(key: key);
+
+  final void Function() onPressed;
+  final bool disabled;
 
   @override
   Widget build(BuildContext context) {
     return Button(
       labelText: AppLocalizations.of(context)!.continueButton,
       backgroudColor: ColorTheme.blue,
-      onPressed: () {
-        Navigator.pushNamed(context, NamesRoutes.home);
-      },
+      onPressed: onPressed,
+      disabled: disabled,
     );
   }
 }

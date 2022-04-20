@@ -3,7 +3,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/components/app_bar_simple.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
-import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
