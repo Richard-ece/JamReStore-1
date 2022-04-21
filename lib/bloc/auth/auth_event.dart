@@ -14,6 +14,14 @@ class SignUpRequest extends AuthEvent {
   SignUpRequest({required this.userSignUp});
 }
 
+class CreatePasswordRequest extends AuthEvent {
+  final String password;
+  final String confirmedPassword;
+
+  CreatePasswordRequest(
+      {required this.password, required this.confirmedPassword});
+}
+
 class SetNumberRequest extends AuthEvent {
   final NumberPhone numberPhone;
 

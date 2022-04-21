@@ -22,7 +22,6 @@ class BaseRepository<T> {
               errors: response.errors,
             ));
           default:
-            print(response);
             return Left(Failure(
               statusCode: response.statusCode,
               message: response.message,

@@ -25,4 +25,9 @@ class AuthRepository extends BaseRepository {
     return super
         .toEither(apiCall: () => authApi.validationCode(codeVerificated: code));
   }
+
+  Future<Either<Failure, void>> createPassword(String password) async {
+    return super
+        .toEither(apiCall: () => authApi.createPassword(password: password));
+  }
 }

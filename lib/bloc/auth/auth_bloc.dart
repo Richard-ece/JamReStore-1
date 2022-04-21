@@ -98,5 +98,30 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ));
       });
     });
+
+    on<CreatePasswordRequest>((event, emit) async {
+      await authRepository.createPassword(event.password).then((either) {
+        either.fold(
+          (failure) {
+            print(failure.errors?.first.id);
+            print("failure");
+            emit(state.copyWith(
+              createPasswordRequestStatus: RequestStatus.failed,
+              createPasswordRequestError: failure,
+            ));
+          },
+          (response) {
+            emit(state.copyWith(
+              createPasswordRequestStatus: RequestStatus.success,
+            ));
+          },
+        );
+      }).catchError((error) {
+        emit(state.copyWith(
+          createPasswordRequestStatus: RequestStatus.failed,
+          createPasswordRequestError: error,
+        ));
+      });
+    });
   }
 }

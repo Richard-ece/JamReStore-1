@@ -7,20 +7,24 @@ class AuthState extends Equatable {
   final RequestStatus signUpRequestStatus;
   final RequestStatus setNumberRequestStatus;
   final RequestStatus validationCodeRequestStatus;
+  final RequestStatus createPasswordRequestStatus;
   final Failure? signInRequestError;
   final Failure? signUpRequestError;
   final Failure? setNumberRequestError;
   final Failure? validationCodeRequestError;
+  final Failure? createPasswordRequestError;
 
   AuthState({
     this.signInRequestStatus = RequestStatus.initial,
     this.signUpRequestStatus = RequestStatus.initial,
     this.setNumberRequestStatus = RequestStatus.initial,
     this.validationCodeRequestStatus = RequestStatus.initial,
+    this.createPasswordRequestStatus = RequestStatus.initial,
     this.signInRequestError,
     this.signUpRequestError,
     this.setNumberRequestError,
     this.validationCodeRequestError,
+    this.createPasswordRequestError,
   });
 
   AuthState copyWith({
@@ -28,10 +32,12 @@ class AuthState extends Equatable {
     RequestStatus? signUpRequestStatus,
     RequestStatus? setNumberRequestStatus,
     RequestStatus? validationCodeRequestStatus,
+    RequestStatus? createPasswordRequestStatus,
     Failure? signInRequestError,
     Failure? signUpRequestError,
     Failure? setNumberRequestError,
     Failure? validationCodeRequestError,
+    Failure? createPasswordRequestError,
   }) {
     return AuthState(
       signInRequestStatus: signInRequestStatus ?? this.signInRequestStatus,

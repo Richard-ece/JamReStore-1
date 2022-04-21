@@ -8,6 +8,7 @@ String? getMessageErrorInput(
   ErrorInputMessage? errorInput = errors?.firstWhereOrNull(
     (error) => error.id == idInput,
   );
+  print(errorInput);
   return errorInput?.message;
 }
 
@@ -18,5 +19,6 @@ bool? getErrorInput(
   ErrorInputMessage? errorInput = errors?.firstWhereOrNull(
     (error) => error.id == idInput,
   );
+  print(errorInput);
   return errorInput?.id == null ? null : true;
 }

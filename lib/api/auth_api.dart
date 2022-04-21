@@ -9,7 +9,6 @@ class AuthApi extends BaseApi {
       url: "/auth/signIn",
       body: {"email": user.email, "password": user.password},
       mapper: (data) {
-        print("maper");
         return Profile.fromJson(data['data']);
       },
     );
@@ -41,6 +40,14 @@ class AuthApi extends BaseApi {
       url: "/auth/otp",
       body: {"otpCodePhone": codeVerificated.code},
       mapper: (data) => Profile.fromJson(data['data']),
+    );
+  }
+
+  Future<ResponseApi<void>> createPassword({required String password}) async {
+    return super.post(
+      url: "/auth/createPassword",
+      body: {"password": password},
+      mapper: (data) => data,
     );
   }
 }
