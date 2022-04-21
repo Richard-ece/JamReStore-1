@@ -12,9 +12,12 @@ import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/components/dont_have_account_button.dart';
+import 'package:jam_re_store/models/error_input.dart';
+import 'package:jam_re_store/models/response_api.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
+import 'package:collection/collection.dart';
 
 class SignInMailPage extends HookWidget {
   const SignInMailPage({Key? key}) : super(key: key);
@@ -35,6 +38,7 @@ class SignInMailPage extends HookWidget {
       } else {
         disabled.value = true;
       }
+      return null;
     }, [_emailListen, _passwordListen]);
 
     void signIn() {
@@ -55,7 +59,14 @@ class SignInMailPage extends HookWidget {
       ),
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
-          print(state.signInRequestStatus);
+          String? getMessageErrorInput(String idInput) {
+            ErrorInputMessage? errorInput =
+                state.signInRequestError?.errors?.firstWhereOrNull(
+              (error) => error.id == idInput,
+            );
+            return errorInput?.message;
+          }
+
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 18),
             child: Column(
@@ -77,12 +88,23 @@ class SignInMailPage extends HookWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 29),
-                  child: InputEmailOrUser(emailController: _emailController),
+                  child: InputEmailOrUser(
+                    controller: _emailController,
+                    errorInput: ErrorInput(
+                      error: state.signInRequestError?.error,
+                      message: getMessageErrorInput("email"),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: InputPasswordSignIn(
-                      passwordController: _passwordController),
+                    controller: _passwordController,
+                    errorInput: ErrorInput(
+                      error: state.signInRequestError?.error,
+                      message: getMessageErrorInput("password"),
+                    ),
+                  ),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
@@ -107,18 +129,20 @@ class SignInMailPage extends HookWidget {
 class InputEmailOrUser extends StatelessWidget {
   const InputEmailOrUser({
     Key? key,
-    required TextEditingController emailController,
-  })  : _emailController = emailController,
-        super(key: key);
+    required this.controller,
+    required this.errorInput,
+  }) : super(key: key);
 
-  final TextEditingController _emailController;
+  final TextEditingController controller;
+  final ErrorInput errorInput;
 
   @override
   Widget build(BuildContext context) {
     return Input(
-      controller: _emailController,
+      controller: controller,
       keyboardType: TextInputType.emailAddress,
       labelText: AppLocalizations.of(context)!.email,
+      errorInput: errorInput,
     );
   }
 }
@@ -126,17 +150,19 @@ class InputEmailOrUser extends StatelessWidget {
 class InputPasswordSignIn extends StatelessWidget {
   const InputPasswordSignIn({
     Key? key,
-    required TextEditingController passwordController,
-  })  : _passwordController = passwordController,
-        super(key: key);
+    required this.controller,
+    required this.errorInput,
+  }) : super(key: key);
 
-  final TextEditingController _passwordController;
+  final TextEditingController controller;
+  final ErrorInput errorInput;
 
   @override
   Widget build(BuildContext context) {
     return InputPassword(
-      controller: _passwordController,
+      controller: controller,
       labelText: AppLocalizations.of(context)!.password,
+      errorInput: errorInput,
     );
   }
 }

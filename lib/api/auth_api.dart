@@ -1,5 +1,5 @@
 import 'package:jam_re_store/models/auth/user.dart';
-import 'package:jam_re_store/models/base_api.dart';
+import 'package:jam_re_store/api/base_api.dart';
 import 'package:jam_re_store/models/response_api.dart';
 import 'package:jam_re_store/models/session/profile.dart';
 

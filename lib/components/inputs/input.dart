@@ -63,6 +63,7 @@ class Input extends StatelessWidget {
             decoration: InputDecoration(
               labelStyle: TextStyleApp.labelS(ColorTheme.grey7),
               hintStyle: TextStyleApp.bodyS(ColorTheme.grey6),
+              errorStyle: TextStyleApp.bodyXs(ColorTheme.errorRed),
               errorText: errorInput.message,
               suffixIcon: GestureDetector(
                 child: Icon(suffixIcon, color: ColorTheme.black),
@@ -82,6 +83,16 @@ class Input extends StatelessWidget {
                   color: ColorTheme.blue,
                   width: 1,
                 ),
+              ),
+              errorBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
+                borderSide: BorderSide(
+                  color: ColorTheme.errorRed,
+                  width: 1,
+                ),
+              ),
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(8.0)),
               ),
             ),
             controller: controller,

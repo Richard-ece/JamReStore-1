@@ -14,7 +14,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           (failure) {
             emit(state.copyWith(
               changePasswordRequestStatus: RequestStatus.failed,
-              changePasswordRequestError: null,
+              changePasswordRequestError: failure,
             ));
           },
           (response) {
@@ -37,7 +37,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           (failure) {
             emit(state.copyWith(
               editProfileRequestStatus: RequestStatus.failed,
-              editProfileRequestError: null,
+              editProfileRequestError: failure,
             ));
           },
           (response) {

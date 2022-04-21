@@ -1,21 +1,44 @@
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
+class ErrorInputMessage {
+  final String id;
+  final String message;
+
+  ErrorInputMessage({required this.id, required this.message});
+
+  factory ErrorInputMessage.fromJson(Map<String, dynamic> json) {
+    return ErrorInputMessage(
+      id: json['id'],
+      message: json['message'],
+    );
+  }
+}
+
 class ResponseApi<T> extends Equatable {
   final bool error;
   final int statusCode;
   final String? message;
   final T? data;
+  final List<ErrorInputMessage>? errors;
 
   ResponseApi({
     required this.statusCode,
     required this.error,
     this.message,
     this.data,
+    this.errors,
   });
 
   get success {
     return !this.error;
+  }
+
+  static List<T> listFromJson<T>(
+      dynamic json, T Function(Map<String, dynamic> data) mapper) {
+    final List<T> items = [];
+    json.forEach((x) => items.add(mapper(x)));
+    return items;
   }
 
   factory ResponseApi.fromJson(
@@ -25,6 +48,7 @@ class ResponseApi<T> extends Equatable {
       message: json['message'],
       statusCode: json['statusCode'],
       data: mapper({"data": json['data']}),
+      errors: listFromJson(json['errors'], ErrorInputMessage.fromJson),
     );
   }
 
@@ -35,6 +59,10 @@ class ResponseApi<T> extends Equatable {
           ? error.response?.data["message"]
           : "Response with status code [${error.response?.statusCode}]",
       statusCode: error.response!.statusCode!,
+      errors: listFromJson(
+        error.response?.data["errors"],
+        ErrorInputMessage.fromJson,
+      ),
     );
   }
 

@@ -19,11 +19,14 @@ class BaseRepository<T> {
             return Left(Failure(
               statusCode: response.statusCode,
               message: response.message,
+              errors: response.errors,
             ));
           default:
+            print(response);
             return Left(Failure(
               statusCode: response.statusCode,
               message: response.message,
+              errors: response.errors,
             ));
         }
       }

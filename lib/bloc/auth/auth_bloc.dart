@@ -1,9 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/bloc/auth/auth_state.dart';
-import 'package:jam_re_store/models/failures.dart';
 import 'package:jam_re_store/repositories/auth_repository.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
 
@@ -15,21 +12,18 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       await authRepository.signIn(event.userSignIn).then((either) {
         either.fold(
           (failure) {
-            print("failure");
             emit(state.copyWith(
               signInRequestStatus: RequestStatus.failed,
-              signInRequestError: null,
+              signInRequestError: failure,
             ));
           },
           (response) {
-            print("response $response");
             emit(state.copyWith(
               signInRequestStatus: RequestStatus.success,
             ));
           },
         );
       }).catchError((error) {
-        print("error");
         emit(state.copyWith(
           signInRequestStatus: RequestStatus.failed,
           signInRequestError: error,
@@ -42,7 +36,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (failure) {
             emit(state.copyWith(
               signUpRequestStatus: RequestStatus.failed,
-              signUpRequestError: null,
+              signUpRequestError: failure,
             ));
           },
           (response) {
@@ -65,7 +59,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (failure) {
             emit(state.copyWith(
               setNumberRequestStatus: RequestStatus.failed,
-              setNumberRequestError: null,
+              setNumberRequestError: failure,
             ));
           },
           (response) {
@@ -88,7 +82,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (failure) {
             emit(state.copyWith(
               validationCodeRequestStatus: RequestStatus.failed,
-              validationCodeRequestError: null,
+              validationCodeRequestError: failure,
             ));
           },
           (response) {

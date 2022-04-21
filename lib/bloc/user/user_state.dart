@@ -1,12 +1,12 @@
-import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:jam_re_store/models/failures.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
 
 class UserState extends Equatable {
   final RequestStatus changePasswordRequestStatus;
   final RequestStatus editProfileRequestStatus;
-  final DioError? changePasswordRequestError;
-  final DioError? editProfileRequestError;
+  final Failure? changePasswordRequestError;
+  final Failure? editProfileRequestError;
 
   UserState({
     this.changePasswordRequestStatus = RequestStatus.initial,
@@ -18,8 +18,8 @@ class UserState extends Equatable {
   UserState copyWith({
     RequestStatus? changePasswordRequestStatus,
     RequestStatus? editProfileRequestStatus,
-    DioError? changePasswordRequestError,
-    DioError? editProfileRequestError,
+    Failure? changePasswordRequestError,
+    Failure? editProfileRequestError,
   }) {
     return UserState(
       changePasswordRequestStatus:

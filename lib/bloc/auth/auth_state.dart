@@ -1,5 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:jam_re_store/models/failures.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
 
 class AuthState extends Equatable {
@@ -7,10 +7,10 @@ class AuthState extends Equatable {
   final RequestStatus signUpRequestStatus;
   final RequestStatus setNumberRequestStatus;
   final RequestStatus validationCodeRequestStatus;
-  final DioError? signInRequestError;
-  final DioError? signUpRequestError;
-  final DioError? setNumberRequestError;
-  final DioError? validationCodeRequestError;
+  final Failure? signInRequestError;
+  final Failure? signUpRequestError;
+  final Failure? setNumberRequestError;
+  final Failure? validationCodeRequestError;
 
   AuthState({
     this.signInRequestStatus = RequestStatus.initial,
@@ -28,10 +28,10 @@ class AuthState extends Equatable {
     RequestStatus? signUpRequestStatus,
     RequestStatus? setNumberRequestStatus,
     RequestStatus? validationCodeRequestStatus,
-    DioError? signInRequestError,
-    DioError? signUpRequestError,
-    DioError? setNumberRequestError,
-    DioError? validationCodeRequestError,
+    Failure? signInRequestError,
+    Failure? signUpRequestError,
+    Failure? setNumberRequestError,
+    Failure? validationCodeRequestError,
   }) {
     return AuthState(
       signInRequestStatus: signInRequestStatus ?? this.signInRequestStatus,
