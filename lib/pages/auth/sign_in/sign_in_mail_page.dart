@@ -13,11 +13,10 @@ import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/components/dont_have_account_button.dart';
 import 'package:jam_re_store/models/error_input.dart';
-import 'package:jam_re_store/models/response_api.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
-import 'package:collection/collection.dart';
+import 'package:jam_re_store/utils/helpers/cool_functions.dart';
 
 class SignInMailPage extends HookWidget {
   const SignInMailPage({Key? key}) : super(key: key);
@@ -59,14 +58,6 @@ class SignInMailPage extends HookWidget {
       ),
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
-          String? getMessageErrorInput(String idInput) {
-            ErrorInputMessage? errorInput =
-                state.signInRequestError?.errors?.firstWhereOrNull(
-              (error) => error.id == idInput,
-            );
-            return errorInput?.message;
-          }
-
           return Padding(
             padding: EdgeInsets.symmetric(horizontal: 18),
             child: Column(
@@ -91,8 +82,10 @@ class SignInMailPage extends HookWidget {
                   child: InputEmailOrUser(
                     controller: _emailController,
                     errorInput: ErrorInput(
-                      error: state.signInRequestError?.error,
-                      message: getMessageErrorInput("email"),
+                      error: getErrorInput(
+                          "email", state.signInRequestError?.errors),
+                      message: getMessageErrorInput(
+                          "email", state.signInRequestError?.errors),
                     ),
                   ),
                 ),
@@ -101,8 +94,10 @@ class SignInMailPage extends HookWidget {
                   child: InputPasswordSignIn(
                     controller: _passwordController,
                     errorInput: ErrorInput(
-                      error: state.signInRequestError?.error,
-                      message: getMessageErrorInput("password"),
+                      error: getErrorInput(
+                          "password", state.signInRequestError?.errors),
+                      message: getMessageErrorInput(
+                          "password", state.signInRequestError?.errors),
                     ),
                   ),
                 ),

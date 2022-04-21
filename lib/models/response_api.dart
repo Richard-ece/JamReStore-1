@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 
 class ErrorInputMessage {
   final String id;
-  final String message;
+  final String? message;
 
   ErrorInputMessage({required this.id, required this.message});
 

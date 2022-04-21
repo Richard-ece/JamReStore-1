@@ -28,17 +28,14 @@ class Password {
   });
 }
 
-class UserSignUp extends User {
+class UserSignUp {
   final String name;
+  final String email;
 
   UserSignUp({
     required this.name,
-    required String password,
-    required String email,
-  }) : super(
-          password: password,
-          email: email,
-        );
+    required this.email,
+  });
 }
 
 class EditAccount extends User {

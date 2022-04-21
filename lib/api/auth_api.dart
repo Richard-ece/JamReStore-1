@@ -18,7 +18,7 @@ class AuthApi extends BaseApi {
   Future<ResponseApi<Profile>> signUp({required UserSignUp user}) async {
     return super.post(
       url: "/auth/signUp",
-      body: {"email": user.email, "password": user.password, "name": user.name},
+      body: {"email": user.email, "name": user.name},
       mapper: (data) => Profile.fromJson(data['data']),
     );
   }
