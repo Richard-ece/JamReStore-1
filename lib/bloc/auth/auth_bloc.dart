@@ -76,7 +76,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
     });
 
-    on<ValidationCodeRequest>((event, emit) async {
+    on<ValidateCodeRequest>((event, emit) async {
       await authRepository.validationCode(event.code).then((either) {
         either.fold(
           (failure) {

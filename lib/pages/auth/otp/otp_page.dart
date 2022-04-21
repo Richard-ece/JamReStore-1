@@ -45,10 +45,6 @@ class OtpPage extends StatelessWidget {
               padding: const EdgeInsets.only(top: 34),
               child: ReSendCode(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 34),
-              child: ContinueButton(),
-            ),
           ],
         ),
       ),
@@ -85,23 +81,6 @@ class ReSendCode extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ContinueButton extends StatelessWidget {
-  const ContinueButton({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Button(
-      labelText: 'Continuar',
-      backgroudColor: ColorTheme.blue,
-      onPressed: () {
-        Navigator.pushNamed(context, NamesRoutes.createPassword);
-      },
     );
   }
 }
