@@ -18,6 +18,7 @@ abstract class ColorTheme {
   //Shades
   static const textBlack = Color(0xff141417);
   static const text = Color(0xff3b3b3b);
+  static const gradient = Color(0xff171C20);
 
   static const grey = Color(0xff7D8D9B);
   static const grey1 = Color(0xffF2F5F7);
