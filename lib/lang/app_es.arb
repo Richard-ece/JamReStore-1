@@ -3,6 +3,8 @@
   "signIn": "Iniciar sesión",
   "email": "Correo Electrónico",
   "nameAndLastName": "Nombre y Apellido",
+  "name": "Nombre",
+  "userName": "Nombre de usuario",
   "password": "Contraseña",
   "confirmedPassword": "Confirmar Contraseña",
   "haveAccount": "¿Ya tienes una cuenta?",
@@ -63,7 +65,15 @@
   "profile": "Perfil",
   "about": "Acerca de",
   "hintPassword": "Debe ser igual a la de abajo",
-  "hintConfirmPassword": "Debe ser igual a la de arriba"
+  "hintConfirmPassword": "Debe ser igual a la de arriba",
+  "biography": "Biografía",
+  "location": "Ubicación",
+  "hintName": "Aca va tu nombre",
+  "hintUserName": "Aca va tu nombre de usuario",
+  "hintBiography": "Aca va una corta descripcion de quien eres",
+  "hintLocation": "Aca va tu ubicacion"
+
+
 
 
 }
