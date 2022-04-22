@@ -32,10 +32,6 @@ dependencies:
 
   flutter_bloc: ^8.0.1
 
-  cached_network_image: ^3.0.0
-
-  like_button: ^2.0.3
-
   equatable: ^2.0.3
 
   lottie: ^1.2.2
@@ -45,6 +41,8 @@ dependencies:
   google_fonts: ^2.3.1
   
   dartz: ^0.10.1
+
+  flutter_secure_storage: ^5.0.2
 
 dev_dependencies:
 

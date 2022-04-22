@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 
@@ -46,7 +47,7 @@ class ResponseApi<T> extends Equatable {
     return ResponseApi(
       error: json['error'],
       message: json['message'],
-      statusCode: json['statusCode'],
+      statusCode: HttpStatus.ok,
       data: mapper({"data": json['data']}),
       errors: listFromJson(json['errors'], ErrorInputMessage.fromJson),
     );

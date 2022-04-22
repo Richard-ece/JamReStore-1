@@ -1,23 +1,26 @@
 import 'package:bloc/bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/bloc/auth/auth_state.dart';
+import 'package:jam_re_store/models/preferences.dart';
 import 'package:jam_re_store/repositories/auth_repository.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   var authRepository = AuthRepository();
+  var preferences = Preferences();
 
   AuthBloc() : super(AuthState()) {
     on<SignInRequest>((event, emit) async {
-      await authRepository.signIn(event.userSignIn).then((either) {
-        either.fold(
-          (failure) {
+      await authRepository.signIn(event.userSignIn).then((either) async {
+        await either.fold(
+          (failure) async {
             emit(state.copyWith(
               signInRequestStatus: RequestStatus.failed,
               signInRequestError: failure,
             ));
           },
-          (response) {
+          (response) async {
+            await preferences.setAccessToken(response.accessToken);
             emit(state.copyWith(
               signInRequestStatus: RequestStatus.success,
             ));
@@ -31,15 +34,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
     });
     on<SignUpRequest>((event, emit) async {
-      await authRepository.signUp(event.userSignUp).then((either) {
-        either.fold(
+      await authRepository.signUp(event.userSignUp).then((either) async {
+        await either.fold(
           (failure) {
             emit(state.copyWith(
               signUpRequestStatus: RequestStatus.failed,
               signUpRequestError: failure,
             ));
           },
-          (response) {
+          (response) async {
+            await preferences.setAccessToken(response.accessToken);
             emit(state.copyWith(
               signUpRequestStatus: RequestStatus.success,
             ));
@@ -54,8 +58,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<SetNumberRequest>((event, emit) async {
-      await authRepository.setNumberPhone(event.numberPhone).then((either) {
-        either.fold(
+      await authRepository
+          .setNumberPhone(event.numberPhone)
+          .then((either) async {
+        await either.fold(
           (failure) {
             emit(state.copyWith(
               setNumberRequestStatus: RequestStatus.failed,
@@ -77,8 +83,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<ValidateCodeRequest>((event, emit) async {
-      await authRepository.validationCode(event.code).then((either) {
-        either.fold(
+      await authRepository.validationCode(event.code).then((either) async {
+        await either.fold(
           (failure) {
             emit(state.copyWith(
               validationCodeRequestStatus: RequestStatus.failed,
@@ -100,8 +106,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<CreatePasswordRequest>((event, emit) async {
-      await authRepository.createPassword(event.password).then((either) {
-        either.fold(
+      await authRepository.createPassword(event.password).then((either) async {
+        await either.fold(
           (failure) {
             print(failure.errors?.first.id);
             print("failure");
