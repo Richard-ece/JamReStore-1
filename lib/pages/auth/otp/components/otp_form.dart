@@ -7,7 +7,6 @@ import 'package:jam_re_store/bloc/auth/auth_state.dart';
 import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/models/error_input.dart';
-import 'package:jam_re_store/pages/auth/otp/otp_page.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
@@ -85,7 +84,7 @@ class OtpForm extends HookWidget {
                 InputOtp(
                   controller: controller1,
                   errorInput: ErrorInput(
-                    error: state.validationCodeRequestError?.error,
+                    error: state.validateCodeRequestError?.error,
                     message: null,
                   ),
                   nextFocusNode: focusNode2,
@@ -97,7 +96,7 @@ class OtpForm extends HookWidget {
                   nextFocusNode: focusNode3,
                   actualFocusNode: focusNode2,
                   errorInput: ErrorInput(
-                    error: state.validationCodeRequestError?.error,
+                    error: state.validateCodeRequestError?.error,
                     message: null,
                   ),
                 ),
@@ -106,7 +105,7 @@ class OtpForm extends HookWidget {
                   nextFocusNode: focusNode4,
                   actualFocusNode: focusNode3,
                   errorInput: ErrorInput(
-                    error: state.validationCodeRequestError?.error,
+                    error: state.validateCodeRequestError?.error,
                     message: null,
                   ),
                 ),
@@ -115,7 +114,7 @@ class OtpForm extends HookWidget {
                   nextFocusNode: focusNode5,
                   actualFocusNode: focusNode4,
                   errorInput: ErrorInput(
-                    error: state.validationCodeRequestError?.error,
+                    error: state.validateCodeRequestError?.error,
                     message: null,
                   ),
                 ),
@@ -124,7 +123,7 @@ class OtpForm extends HookWidget {
                   nextFocusNode: focusNode6,
                   actualFocusNode: focusNode5,
                   errorInput: ErrorInput(
-                    error: state.validationCodeRequestError?.error,
+                    error: state.validateCodeRequestError?.error,
                     message: null,
                   ),
                 ),
@@ -133,7 +132,7 @@ class OtpForm extends HookWidget {
                   nextFocusNode: focusNode1,
                   actualFocusNode: focusNode6,
                   errorInput: ErrorInput(
-                    error: state.validationCodeRequestError?.error,
+                    error: state.validateCodeRequestError?.error,
                     message: null,
                   ),
                   isUnfocus: true,

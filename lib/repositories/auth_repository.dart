@@ -21,9 +21,13 @@ class AuthRepository extends BaseRepository {
         .toEither(apiCall: () => authApi.setNumberPhone(numberPhone: number));
   }
 
-  Future<Either<Failure, void>> validationCode(Code code) async {
+  Future<Either<Failure, void>> sendCode() async {
+    return super.toEither(apiCall: () => authApi.sendCode());
+  }
+
+  Future<Either<Failure, void>> validateCode(Code code) async {
     return super
-        .toEither(apiCall: () => authApi.validationCode(codeVerificated: code));
+        .toEither(apiCall: () => authApi.validateCode(codeVerificated: code));
   }
 
   Future<Either<Failure, void>> createPassword(String password) async {

@@ -33,6 +33,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         ));
       });
     });
+
     on<SignUpRequest>((event, emit) async {
       await authRepository.signUp(event.userSignUp).then((either) async {
         await either.fold(
@@ -82,25 +83,48 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       });
     });
 
-    on<ValidateCodeRequest>((event, emit) async {
-      await authRepository.validationCode(event.code).then((either) async {
+    on<SendCodeRequest>((event, emit) async {
+      await authRepository.sendCode().then((either) async {
         await either.fold(
           (failure) {
             emit(state.copyWith(
-              validationCodeRequestStatus: RequestStatus.failed,
-              validationCodeRequestError: failure,
+              sendCodeRequestStatus: RequestStatus.failed,
+              sendCodeRequestError: failure,
             ));
           },
           (response) {
             emit(state.copyWith(
-              validationCodeRequestStatus: RequestStatus.success,
+              sendCodeRequestStatus: RequestStatus.success,
             ));
           },
         );
       }).catchError((error) {
         emit(state.copyWith(
-          validationCodeRequestStatus: RequestStatus.failed,
-          validationCodeRequestError: error,
+          sendCodeRequestStatus: RequestStatus.failed,
+          sendCodeRequestError: error,
+        ));
+      });
+    });
+
+    on<ValidateCodeRequest>((event, emit) async {
+      await authRepository.validateCode(event.code).then((either) async {
+        await either.fold(
+          (failure) {
+            emit(state.copyWith(
+              validateCodeRequestStatus: RequestStatus.failed,
+              validateCodeRequestError: failure,
+            ));
+          },
+          (response) {
+            emit(state.copyWith(
+              validateCodeRequestStatus: RequestStatus.success,
+            ));
+          },
+        );
+      }).catchError((error) {
+        emit(state.copyWith(
+          validateCodeRequestStatus: RequestStatus.failed,
+          validateCodeRequestError: error,
         ));
       });
     });

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
-import 'package:jam_re_store/bloc/auth/auth_state.dart';
+import 'package:jam_re_store/bloc/user/user_bloc.dart';
+import 'package:jam_re_store/bloc/user/user_state.dart';
 import 'package:jam_re_store/components/inputs/input.dart';
 import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
@@ -36,7 +36,7 @@ class EditProfilePage extends HookWidget {
         title: Center(child: Text(AppLocalizations.of(context)!.editProfile)),
       ),
       body: Container(
-        child: BlocBuilder<AuthBloc, AuthState>(
+        child: BlocBuilder<UserBloc, UserState>(
           builder: (context, state) {
             return Column(
               children: [

@@ -6,58 +6,65 @@ class AuthState extends Equatable {
   final RequestStatus signInRequestStatus;
   final RequestStatus signUpRequestStatus;
   final RequestStatus setNumberRequestStatus;
-  final RequestStatus validationCodeRequestStatus;
+  final RequestStatus sendCodeRequestStatus;
+  final RequestStatus validateCodeRequestStatus;
   final RequestStatus createPasswordRequestStatus;
-  final RequestStatus editProfileRequestStatus;
   final Failure? signInRequestError;
   final Failure? signUpRequestError;
   final Failure? setNumberRequestError;
-  final Failure? validationCodeRequestError;
+  final Failure? sendCodeRequestError;
+  final Failure? validateCodeRequestError;
   final Failure? createPasswordRequestError;
-  final Failure? editProfileRequestError;
 
   AuthState({
     this.signInRequestStatus = RequestStatus.initial,
     this.signUpRequestStatus = RequestStatus.initial,
     this.setNumberRequestStatus = RequestStatus.initial,
-    this.validationCodeRequestStatus = RequestStatus.initial,
+    this.sendCodeRequestStatus = RequestStatus.initial,
+    this.validateCodeRequestStatus = RequestStatus.initial,
     this.createPasswordRequestStatus = RequestStatus.initial,
-    this.editProfileRequestStatus = RequestStatus.initial,
     this.signInRequestError,
     this.signUpRequestError,
     this.setNumberRequestError,
-    this.validationCodeRequestError,
+    this.sendCodeRequestError,
+    this.validateCodeRequestError,
     this.createPasswordRequestError,
-    this.editProfileRequestError,
   });
 
   AuthState copyWith({
     RequestStatus? signInRequestStatus,
     RequestStatus? signUpRequestStatus,
     RequestStatus? setNumberRequestStatus,
-    RequestStatus? validationCodeRequestStatus,
+    RequestStatus? sendCodeRequestStatus,
+    RequestStatus? validateCodeRequestStatus,
     RequestStatus? createPasswordRequestStatus,
-    RequestStatus? editProfileRequestStatus,
     Failure? signInRequestError,
     Failure? signUpRequestError,
     Failure? setNumberRequestError,
-    Failure? validationCodeRequestError,
+    Failure? sendCodeRequestError,
+    Failure? validateCodeRequestError,
     Failure? createPasswordRequestError,
-    Failure? editProfileRequestError,
   }) {
     return AuthState(
       signInRequestStatus: signInRequestStatus ?? this.signInRequestStatus,
       signUpRequestStatus: signUpRequestStatus ?? this.signUpRequestStatus,
       setNumberRequestStatus:
           setNumberRequestStatus ?? this.setNumberRequestStatus,
-      validationCodeRequestStatus:
-          validationCodeRequestStatus ?? this.setNumberRequestStatus,
+      sendCodeRequestStatus:
+          sendCodeRequestStatus ?? this.sendCodeRequestStatus,
+      createPasswordRequestStatus:
+          createPasswordRequestStatus ?? this.createPasswordRequestStatus,
+      validateCodeRequestStatus:
+          validateCodeRequestStatus ?? this.validateCodeRequestStatus,
       signInRequestError: signInRequestError ?? this.signInRequestError,
       signUpRequestError: signUpRequestError ?? this.signUpRequestError,
       setNumberRequestError:
           setNumberRequestError ?? this.setNumberRequestError,
-      validationCodeRequestError:
-          validationCodeRequestError ?? this.setNumberRequestError,
+      sendCodeRequestError: sendCodeRequestError ?? this.sendCodeRequestError,
+      validateCodeRequestError:
+          validateCodeRequestError ?? this.validateCodeRequestError,
+      createPasswordRequestError:
+          createPasswordRequestError ?? this.createPasswordRequestError,
     );
   }
 
@@ -66,10 +73,14 @@ class AuthState extends Equatable {
         signInRequestStatus,
         signUpRequestStatus,
         setNumberRequestStatus,
-        validationCodeRequestStatus,
+        sendCodeRequestStatus,
+        validateCodeRequestStatus,
+        createPasswordRequestStatus,
         signInRequestError,
         signUpRequestError,
         setNumberRequestError,
-        validationCodeRequestError,
+        sendCodeRequestError,
+        validateCodeRequestError,
+        createPasswordRequestError,
       ];
 }

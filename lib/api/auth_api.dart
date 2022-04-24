@@ -34,11 +34,18 @@ class AuthApi extends BaseApi {
     );
   }
 
-  Future<ResponseApi<void>> validationCode(
+  Future<ResponseApi<void>> sendCode() async {
+    return super.get(
+      url: "/auth/sendCode",
+      mapper: (data) => data,
+    );
+  }
+
+  Future<ResponseApi<void>> validateCode(
       {required Code codeVerificated}) async {
     return super.post(
-      url: "/auth/otp",
-      body: {"otpCodePhone": codeVerificated.code},
+      url: "/auth/validateCode",
+      body: {"otpCode": codeVerificated.code},
       mapper: (data) => data,
     );
   }

@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:jam_re_store/bloc/auth/auth_bloc.dart';
+import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/components/app_bar_simple.dart';
-import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/pages/auth/otp/components/otp_form.dart';
-import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class OtpPage extends StatelessWidget {
+class OtpPage extends HookWidget {
   const OtpPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    useEffect(() {
+      context.read<AuthBloc>().add(SendCodeRequest());
+    }, []);
+
     return Scaffold(
       appBar: AppBarSimple(
         text: AppLocalizations.of(context)!.signUp,
