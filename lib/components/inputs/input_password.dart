@@ -31,8 +31,8 @@ class InputPassword extends HookWidget {
 
     IconData? getWidgetSeePassword() {
       if (controller.value.text == "") return null;
-      if (obscureText.value) return CustomIcons.eye_open;
-      return CustomIcons.eye_closed;
+      if (obscureText.value) return CustomIcons.eye_closed;
+      return CustomIcons.eye_open;
     }
 
     useEffect(() {
