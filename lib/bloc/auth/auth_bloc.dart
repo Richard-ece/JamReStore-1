@@ -11,6 +11,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   AuthBloc() : super(AuthState()) {
     on<SignInRequest>((event, emit) async {
+      emit(state.copyWith(
+        signInRequestStatus: RequestStatus.loading,
+      ));
       await authRepository.signIn(event.userSignIn).then((either) async {
         await either.fold(
           (failure) async {
@@ -35,6 +38,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<SignUpRequest>((event, emit) async {
+      emit(state.copyWith(
+        signUpRequestStatus: RequestStatus.loading,
+      ));
       await authRepository.signUp(event.userSignUp).then((either) async {
         await either.fold(
           (failure) {
@@ -59,10 +65,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<SetNumberRequest>((event, emit) async {
+      emit(state.copyWith(
+        setNumberRequestStatus: RequestStatus.loading,
+      ));
       await authRepository
           .setNumberPhone(event.numberPhone)
           .then((either) async {
-        await either.fold(
+        either.fold(
           (failure) {
             emit(state.copyWith(
               setNumberRequestStatus: RequestStatus.failed,
@@ -84,8 +93,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<SendCodeRequest>((event, emit) async {
+      emit(state.copyWith(
+        sendCodeRequestStatus: RequestStatus.loading,
+      ));
       await authRepository.sendCode().then((either) async {
-        await either.fold(
+        either.fold(
           (failure) {
             emit(state.copyWith(
               sendCodeRequestStatus: RequestStatus.failed,
@@ -107,8 +119,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<ValidateCodeRequest>((event, emit) async {
+      emit(state.copyWith(
+        validateCodeRequestStatus: RequestStatus.loading,
+      ));
       await authRepository.validateCode(event.code).then((either) async {
-        await either.fold(
+        either.fold(
           (failure) {
             emit(state.copyWith(
               validateCodeRequestStatus: RequestStatus.failed,
@@ -130,8 +145,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<CreatePasswordRequest>((event, emit) async {
+      emit(state.copyWith(
+        createPasswordRequestStatus: RequestStatus.loading,
+      ));
       await authRepository.createPassword(event.password).then((either) async {
-        await either.fold(
+        either.fold(
           (failure) {
             print(failure.errors?.first.id);
             print("failure");
