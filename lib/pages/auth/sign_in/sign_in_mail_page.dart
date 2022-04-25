@@ -14,8 +14,8 @@ import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/components/dont_have_account_button.dart';
 import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/routes/names.dart';
-import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
+import 'package:jam_re_store/utils/constants/enums.dart';
 import 'package:jam_re_store/utils/helpers/cool_functions.dart';
 
 class SignInMailPage extends HookWidget {
@@ -79,8 +79,10 @@ class SignInMailPage extends HookWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 29),
-                  child: InputEmailOrUser(
+                  child: Input(
                     controller: _emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    labelText: AppLocalizations.of(context)!.email,
                     errorInput: ErrorInput(
                       error: getErrorInput(
                           "email", state.signInRequestError?.errors),
@@ -91,8 +93,9 @@ class SignInMailPage extends HookWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
-                  child: InputPasswordSignIn(
+                  child: InputPassword(
                     controller: _passwordController,
+                    labelText: AppLocalizations.of(context)!.password,
                     errorInput: ErrorInput(
                       error: getErrorInput(
                           "password", state.signInRequestError?.errors),
@@ -103,9 +106,11 @@ class SignInMailPage extends HookWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
-                  child: ContinueButton(
-                    disabled: disabled.value,
+                  child: Button(
+                    labelText: AppLocalizations.of(context)!.continueButton,
                     onPressed: signIn,
+                    disabled: disabled.value,
+                    loading: state.signInRequestStatus == RequestStatus.loading,
                   ),
                 ),
                 Padding(
@@ -117,68 +122,6 @@ class SignInMailPage extends HookWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class InputEmailOrUser extends StatelessWidget {
-  const InputEmailOrUser({
-    Key? key,
-    required this.controller,
-    required this.errorInput,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final ErrorInput errorInput;
-
-  @override
-  Widget build(BuildContext context) {
-    return Input(
-      controller: controller,
-      keyboardType: TextInputType.emailAddress,
-      labelText: AppLocalizations.of(context)!.email,
-      errorInput: errorInput,
-    );
-  }
-}
-
-class InputPasswordSignIn extends StatelessWidget {
-  const InputPasswordSignIn({
-    Key? key,
-    required this.controller,
-    required this.errorInput,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final ErrorInput errorInput;
-
-  @override
-  Widget build(BuildContext context) {
-    return InputPassword(
-      controller: controller,
-      labelText: AppLocalizations.of(context)!.password,
-      errorInput: errorInput,
-    );
-  }
-}
-
-class ContinueButton extends StatelessWidget {
-  const ContinueButton({
-    Key? key,
-    required this.onPressed,
-    required this.disabled,
-  }) : super(key: key);
-
-  final void Function() onPressed;
-  final bool disabled;
-
-  @override
-  Widget build(BuildContext context) {
-    return Button(
-      labelText: AppLocalizations.of(context)!.continueButton,
-      backgroudColor: ColorTheme.blue,
-      onPressed: onPressed,
-      disabled: disabled,
     );
   }
 }

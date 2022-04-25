@@ -17,6 +17,7 @@ import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
+import 'package:jam_re_store/utils/constants/enums.dart';
 import 'package:jam_re_store/utils/helpers/cool_functions.dart';
 
 class SignUpMailPage extends HookWidget {
@@ -78,8 +79,10 @@ class SignUpMailPage extends HookWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 53),
-                  child: InputName(
+                  child: Input(
                     controller: _nameController,
+                    keyboardType: TextInputType.name,
+                    labelText: AppLocalizations.of(context)!.nameComplete,
                     errorInput: ErrorInput(
                       error: getErrorInput(
                           "name", state.signUpRequestError?.errors),
@@ -90,7 +93,7 @@ class SignUpMailPage extends HookWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 29),
-                  child: InputEmail(
+                  child: Input(
                     controller: _emailController,
                     errorInput: ErrorInput(
                       error: getErrorInput(
@@ -98,17 +101,25 @@ class SignUpMailPage extends HookWidget {
                       message: getMessageErrorInput(
                           "email", state.signUpRequestError?.errors),
                     ),
+                    keyboardType: TextInputType.emailAddress,
+                    labelText: AppLocalizations.of(context)!.email,
+                  ),
+                ),
+                //TODO: Este texto debe ir dentro del input (heplerText)
+                Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    AppLocalizations.of(context)!.signUpText,
+                    style: TextStyleApp.bodyXs(ColorTheme.grey6),
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 4),
-                  child: TextEmail(),
-                ),
-                Padding(
                   padding: const EdgeInsets.only(top: 24),
-                  child: ContinueButton(
-                    disabled: disabled.value,
+                  child: Button(
+                    labelText: AppLocalizations.of(context)!.continueButton,
                     onPressed: signUp,
+                    disabled: disabled.value,
+                    loading: state.signUpRequestStatus == RequestStatus.loading,
                   ),
                 ),
                 Padding(
@@ -124,83 +135,6 @@ class SignUpMailPage extends HookWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class InputEmail extends StatelessWidget {
-  const InputEmail({
-    Key? key,
-    required this.controller,
-    required this.errorInput,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final ErrorInput errorInput;
-
-  @override
-  Widget build(BuildContext context) {
-    return Input(
-      controller: controller,
-      errorInput: errorInput,
-      keyboardType: TextInputType.emailAddress,
-      labelText: AppLocalizations.of(context)!.email,
-    );
-  }
-}
-
-class InputName extends StatelessWidget {
-  const InputName({
-    Key? key,
-    required this.controller,
-    required this.errorInput,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final ErrorInput errorInput;
-
-  @override
-  Widget build(BuildContext context) {
-    return Input(
-      controller: controller,
-      errorInput: errorInput,
-      keyboardType: TextInputType.name,
-      labelText: AppLocalizations.of(context)!.nameAndLastName,
-    );
-  }
-}
-
-class TextEmail extends StatelessWidget {
-  const TextEmail({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      AppLocalizations.of(context)!.signUpText,
-      style: TextStyleApp.bodyXs(ColorTheme.grey6),
-    );
-  }
-}
-
-class ContinueButton extends StatelessWidget {
-  const ContinueButton({
-    Key? key,
-    required this.onPressed,
-    required this.disabled,
-  }) : super(key: key);
-
-  final void Function() onPressed;
-  final bool disabled;
-
-  @override
-  Widget build(BuildContext context) {
-    return Button(
-      labelText: AppLocalizations.of(context)!.continueButton,
-      backgroudColor: ColorTheme.blue,
-      onPressed: onPressed,
-      disabled: disabled,
     );
   }
 }

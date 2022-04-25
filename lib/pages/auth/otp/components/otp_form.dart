@@ -11,6 +11,7 @@ import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:jam_re_store/utils/constants/enums.dart';
 
 class OtpForm extends HookWidget {
   @override
@@ -141,9 +142,12 @@ class OtpForm extends HookWidget {
             ),
             Padding(
               padding: const EdgeInsets.only(top: 34),
-              child: ContinueButton(
-                disabled: disabled.value,
+              child: Button(
+                labelText: AppLocalizations.of(context)!.continueButton,
                 onPressed: sendOtpCode,
+                disabled: disabled.value,
+                loading:
+                    state.validateCodeRequestStatus == RequestStatus.loading,
               ),
             ),
           ],
@@ -235,27 +239,6 @@ class InputOtp extends StatelessWidget {
           controller: controller,
         ),
       ),
-    );
-  }
-}
-
-class ContinueButton extends StatelessWidget {
-  const ContinueButton({
-    Key? key,
-    required this.onPressed,
-    required this.disabled,
-  }) : super(key: key);
-
-  final void Function() onPressed;
-  final bool disabled;
-
-  @override
-  Widget build(BuildContext context) {
-    return Button(
-      labelText: AppLocalizations.of(context)!.continueButton,
-      backgroudColor: ColorTheme.blue,
-      onPressed: onPressed,
-      disabled: disabled,
     );
   }
 }

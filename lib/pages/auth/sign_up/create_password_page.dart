@@ -10,10 +10,9 @@ import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
-import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/routes/names.dart';
-import 'package:jam_re_store/styles/color_theme.dart';
+import 'package:jam_re_store/utils/constants/enums.dart';
 import 'package:jam_re_store/utils/helpers/cool_functions.dart';
 
 class CreatePasswordPage extends HookWidget {
@@ -75,7 +74,9 @@ class CreatePasswordPage extends HookWidget {
                 ),
                 Padding(
                     padding: const EdgeInsets.only(top: 29),
-                    child: InputCreatePassword(
+                    child: InputPassword(
+                      hintText: AppLocalizations.of(context)!.hintPassword,
+                      labelText: AppLocalizations.of(context)!.password,
                       controller: _passwordController,
                       errorInput: ErrorInput(
                         error: getErrorInput("password",
@@ -86,7 +87,9 @@ class CreatePasswordPage extends HookWidget {
                     )),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
-                  child: InputConfirmedPassword(
+                  child: InputPassword(
+                    hintText: AppLocalizations.of(context)!.hintConfirmPassword,
+                    labelText: AppLocalizations.of(context)!.confirmedPassword,
                     controller: _confirmedpasswordController,
                     errorInput: ErrorInput(
                       error: getErrorInput("confirmPassword",
@@ -99,75 +102,19 @@ class CreatePasswordPage extends HookWidget {
                 Spacer(),
                 Padding(
                   padding: const EdgeInsets.only(bottom: 12),
-                  child: ContinueButton(
-                      disabled: disabled.value, onPressed: createPassword),
+                  child: Button(
+                    labelText: AppLocalizations.of(context)!.continueButton,
+                    onPressed: createPassword,
+                    disabled: disabled.value,
+                    loading: state.createPasswordRequestStatus ==
+                        RequestStatus.loading,
+                  ),
                 ),
               ],
             ),
           );
         },
       ),
-    );
-  }
-}
-
-class InputCreatePassword extends StatelessWidget {
-  const InputCreatePassword({
-    Key? key,
-    required this.controller,
-    required this.errorInput,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final ErrorInput errorInput;
-
-  @override
-  Widget build(BuildContext context) {
-    return InputPassword(
-      hintText: AppLocalizations.of(context)!.hintPassword,
-      controller: controller,
-      labelText: AppLocalizations.of(context)!.password,
-    );
-  }
-}
-
-class InputConfirmedPassword extends StatelessWidget {
-  InputConfirmedPassword({
-    Key? key,
-    required this.controller,
-    required this.errorInput,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  final ErrorInput errorInput;
-
-  @override
-  Widget build(BuildContext context) {
-    return InputPassword(
-      hintText: AppLocalizations.of(context)!.hintConfirmPassword,
-      controller: controller,
-      labelText: AppLocalizations.of(context)!.confirmedPassword,
-    );
-  }
-}
-
-class ContinueButton extends StatelessWidget {
-  const ContinueButton({
-    Key? key,
-    required this.onPressed,
-    required this.disabled,
-  }) : super(key: key);
-
-  final void Function() onPressed;
-  final bool disabled;
-
-  @override
-  Widget build(BuildContext context) {
-    return Button(
-      labelText: AppLocalizations.of(context)!.continueButton,
-      backgroudColor: ColorTheme.blue,
-      onPressed: onPressed,
-      disabled: disabled,
     );
   }
 }

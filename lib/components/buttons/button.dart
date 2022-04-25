@@ -13,6 +13,7 @@ class Button extends StatelessWidget {
     this.disabled = false,
     this.icon,
     this.onPressed,
+    this.loading = false,
   }) : super(key: key);
 
   final String labelText;
@@ -22,6 +23,7 @@ class Button extends StatelessWidget {
   final Color textColor;
   final bool outline;
   final bool disabled;
+  final bool loading;
   final void Function()? onPressed;
 
   @override
@@ -38,17 +40,25 @@ class Button extends StatelessWidget {
       ),
       child: Container(
         constraints: BoxConstraints(maxHeight: 52),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            icon ?? Container(),
-            Text(
-              labelText,
-              style: TextStyleApp.labelS(textColor),
-            ),
-            Container()
-          ],
-        ),
+        child: !loading
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  icon ?? Container(),
+                  Text(
+                    labelText,
+                    style: TextStyleApp.labelS(textColor),
+                  ),
+                  Container()
+                ],
+              )
+            : Container(
+                constraints: BoxConstraints(maxHeight: 22, maxWidth: 22),
+                child: CircularProgressIndicator(
+                  color: ColorTheme.white,
+                  strokeWidth: 3,
+                ),
+              ),
       ),
     );
   }

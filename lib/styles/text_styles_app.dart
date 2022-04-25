@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextStyleApp {
@@ -131,5 +130,4 @@ class TextStyleApp {
         fontWeight: FontWeight.w600,
         fontStyle: FontStyle.normal,
       );
-
 }

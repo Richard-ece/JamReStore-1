@@ -2,6 +2,7 @@
   "signUp": "Registrate",
   "signIn": "Iniciar sesión",
   "email": "Correo Electrónico",
+  "nameComplete": "Tu nombre Completo",
   "nameAndLastName": "Nombre y Apellido",
   "name": "Nombre",
   "userName": "Nombre de usuario",
@@ -72,8 +73,5 @@
   "hintUserName": "Aca va tu nombre de usuario",
   "hintBiography": "Aca va una corta descripcion de quien eres",
   "hintLocation": "Aca va tu ubicacion"
-
-
-
 
 }
