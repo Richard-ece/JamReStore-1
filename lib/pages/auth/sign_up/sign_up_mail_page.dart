@@ -13,7 +13,6 @@ import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/text_terms_conditions.dart';
 import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/models/auth/user.dart';
-import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
@@ -83,11 +82,10 @@ class SignUpMailPage extends HookWidget {
                     controller: _nameController,
                     keyboardType: TextInputType.name,
                     labelText: AppLocalizations.of(context)!.nameComplete,
-                    errorInput: ErrorInput(
-                      error: getErrorInput(
-                          "name", state.signUpRequestError?.errors),
-                      message: getMessageErrorInput(
-                          "name", state.signUpRequestError?.errors),
+                    loading: state.signUpRequestStatus == RequestStatus.loading,
+                    errorInput: getErrorInputComplete(
+                      "name",
+                      state.signUpRequestError?.errors,
                     ),
                   ),
                 ),
@@ -95,14 +93,13 @@ class SignUpMailPage extends HookWidget {
                   padding: const EdgeInsets.only(top: 29),
                   child: Input(
                     controller: _emailController,
-                    errorInput: ErrorInput(
-                      error: getErrorInput(
-                          "email", state.signUpRequestError?.errors),
-                      message: getMessageErrorInput(
-                          "email", state.signUpRequestError?.errors),
-                    ),
                     keyboardType: TextInputType.emailAddress,
                     labelText: AppLocalizations.of(context)!.email,
+                    loading: state.signUpRequestStatus == RequestStatus.loading,
+                    errorInput: getErrorInputComplete(
+                      "email",
+                      state.signUpRequestError?.errors,
+                    ),
                   ),
                 ),
                 //TODO: Este texto debe ir dentro del input (heplerText)

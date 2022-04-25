@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/styles/color_theme.dart';
 import 'package:jam_re_store/styles/text_styles_app.dart';
 
-class Input extends StatelessWidget {
+class Input extends HookWidget {
   const Input({
     Key? key,
     required this.controller,
@@ -16,17 +17,21 @@ class Input extends StatelessWidget {
     this.suffixIcon,
     this.focusNode,
     this.onTapIcon,
+    this.textInputAction = TextInputAction.next,
+    this.loading = false,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String labelText;
   final bool obscureText;
   final bool enabled;
+  final bool loading;
   final ErrorInput errorInput;
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
   final String? hintText;
   final IconData? suffixIcon;
+  final TextInputAction textInputAction;
   final void Function()? onTapIcon;
 
   Color getBorderColor(bool? error) {
@@ -47,6 +52,15 @@ class Input extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var showErrorState = useState(true);
+
+    useEffect(() {
+      if (loading && showErrorState.value == false) {
+        showErrorState.value = true;
+      }
+      return null;
+    }, [loading]);
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,11 +74,17 @@ class Input extends StatelessWidget {
           ),
           TextFormField(
             style: TextStyleApp.bodyBase(ColorTheme.grey10),
+            onChanged: (_) {
+              if (errorInput.error == true && showErrorState.value == true) {
+                showErrorState.value = false;
+              }
+            },
             decoration: InputDecoration(
               labelStyle: TextStyleApp.labelS(ColorTheme.grey7),
               hintStyle: TextStyleApp.bodyS(ColorTheme.grey6),
               errorStyle: TextStyleApp.bodyXs(ColorTheme.errorRed),
-              errorText: errorInput.message,
+              errorText:
+                  showErrorState.value && !loading ? errorInput.message : null,
               suffixIcon: GestureDetector(
                 child: Icon(suffixIcon, color: ColorTheme.black),
                 onTap: onTapIcon,
@@ -73,7 +93,9 @@ class Input extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(8.0)),
                 borderSide: BorderSide(
-                  color: getBorderColor(errorInput.error),
+                  color: getBorderColor(showErrorState.value && !loading
+                      ? errorInput.error
+                      : null),
                   width: 1,
                 ),
               ),
@@ -102,6 +124,7 @@ class Input extends StatelessWidget {
             enableSuggestions: false,
             autocorrect: false,
             enabled: enabled,
+            textInputAction: textInputAction,
           ),
         ],
       ),

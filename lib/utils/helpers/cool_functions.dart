@@ -1,3 +1,4 @@
+import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/models/response_api.dart';
 import 'package:collection/collection.dart';
 
@@ -21,4 +22,12 @@ bool? getErrorInput(
   );
   print(errorInput);
   return errorInput?.id == null ? null : true;
+}
+
+ErrorInput getErrorInputComplete(
+    String idInput, List<ErrorInputMessage>? errors) {
+  return ErrorInput(
+    error: getErrorInput(idInput, errors),
+    message: getMessageErrorInput(idInput, errors),
+  );
 }

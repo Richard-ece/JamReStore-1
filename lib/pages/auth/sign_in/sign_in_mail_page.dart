@@ -12,7 +12,6 @@ import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
 import 'package:jam_re_store/models/auth/user.dart';
 import 'package:jam_re_store/components/dont_have_account_button.dart';
-import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
@@ -80,27 +79,25 @@ class SignInMailPage extends HookWidget {
                 Padding(
                   padding: const EdgeInsets.only(top: 29),
                   child: Input(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    labelText: AppLocalizations.of(context)!.email,
-                    errorInput: ErrorInput(
-                      error: getErrorInput(
-                          "email", state.signInRequestError?.errors),
-                      message: getMessageErrorInput(
-                          "email", state.signInRequestError?.errors),
-                    ),
-                  ),
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
+                      labelText: AppLocalizations.of(context)!.email,
+                      loading:
+                          state.signInRequestStatus == RequestStatus.loading,
+                      errorInput: getErrorInputComplete(
+                        "email",
+                        state.signInRequestError?.errors,
+                      )),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: InputPassword(
                     controller: _passwordController,
                     labelText: AppLocalizations.of(context)!.password,
-                    errorInput: ErrorInput(
-                      error: getErrorInput(
-                          "password", state.signInRequestError?.errors),
-                      message: getMessageErrorInput(
-                          "password", state.signInRequestError?.errors),
+                    loading: state.signInRequestStatus == RequestStatus.loading,
+                    errorInput: getErrorInputComplete(
+                      "password",
+                      state.signInRequestError?.errors,
                     ),
                   ),
                 ),

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:jam_re_store/bloc/auth/auth_event.dart';
 import 'package:jam_re_store/bloc/auth/auth_state.dart';
+import 'package:jam_re_store/models/failures.dart';
 import 'package:jam_re_store/models/preferences.dart';
 import 'package:jam_re_store/repositories/auth_repository.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
@@ -26,6 +27,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             await preferences.setAccessToken(response.accessToken);
             emit(state.copyWith(
               signInRequestStatus: RequestStatus.success,
+              signInRequestError: Failure(error: false),
             ));
           },
         );
@@ -53,6 +55,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             await preferences.setAccessToken(response.accessToken);
             emit(state.copyWith(
               signUpRequestStatus: RequestStatus.success,
+              signUpRequestError: Failure(error: false),
             ));
           },
         );
@@ -81,6 +84,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (response) {
             emit(state.copyWith(
               setNumberRequestStatus: RequestStatus.success,
+              setNumberRequestError: Failure(error: false),
             ));
           },
         );
@@ -107,6 +111,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (response) {
             emit(state.copyWith(
               sendCodeRequestStatus: RequestStatus.success,
+              sendCodeRequestError: Failure(error: false),
             ));
           },
         );
@@ -133,6 +138,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (response) {
             emit(state.copyWith(
               validateCodeRequestStatus: RequestStatus.success,
+              validateCodeRequestError: Failure(error: false),
             ));
           },
         );
@@ -161,6 +167,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           (response) {
             emit(state.copyWith(
               createPasswordRequestStatus: RequestStatus.success,
+              createPasswordRequestError: Failure(error: false),
             ));
           },
         );

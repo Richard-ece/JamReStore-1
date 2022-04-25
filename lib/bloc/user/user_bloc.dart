@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:jam_re_store/bloc/user/user_event.dart';
 import 'package:jam_re_store/bloc/user/user_state.dart';
+import 'package:jam_re_store/models/failures.dart';
 import 'package:jam_re_store/repositories/user_repository.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
 
@@ -25,6 +26,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           (response) {
             emit(state.copyWith(
               changePasswordRequestStatus: RequestStatus.success,
+              changePasswordRequestError: Failure(error: false),
             ));
           },
         );
@@ -51,6 +53,7 @@ class UserBloc extends Bloc<UserEvent, UserState> {
           (response) {
             emit(state.copyWith(
               editProfileRequestStatus: RequestStatus.success,
+              editProfileRequestError: Failure(error: false),
             ));
           },
         );

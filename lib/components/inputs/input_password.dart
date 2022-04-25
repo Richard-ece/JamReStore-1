@@ -12,12 +12,14 @@ class InputPassword extends HookWidget {
     this.enabled = true,
     this.errorInput = const ErrorInput(error: null),
     this.hintText,
+    this.loading = false,
     this.focusNode,
   }) : super(key: key);
 
   final TextEditingController controller;
   final String labelText;
   final bool enabled;
+  final bool loading;
   final ErrorInput errorInput;
   final FocusNode? focusNode;
   final String? hintText;
@@ -54,6 +56,7 @@ class InputPassword extends HookWidget {
       keyboardType: TextInputType.visiblePassword,
       enabled: enabled,
       focusNode: focusNode,
+      loading: loading,
       errorInput: errorInput,
       hintText: hintText,
       onTapIcon: () {

@@ -10,7 +10,6 @@ import 'package:jam_re_store/components/buttons/button.dart';
 import 'package:jam_re_store/components/inputs/input_password.dart';
 import 'package:jam_re_store/components/telling_icon.dart';
 import 'package:jam_re_store/components/texts.dart';
-import 'package:jam_re_store/models/error_input.dart';
 import 'package:jam_re_store/routes/names.dart';
 import 'package:jam_re_store/utils/constants/enums.dart';
 import 'package:jam_re_store/utils/helpers/cool_functions.dart';
@@ -73,29 +72,30 @@ class CreatePasswordPage extends HookWidget {
                           .createPasswordSubtittle),
                 ),
                 Padding(
-                    padding: const EdgeInsets.only(top: 29),
-                    child: InputPassword(
-                      hintText: AppLocalizations.of(context)!.hintPassword,
-                      labelText: AppLocalizations.of(context)!.password,
-                      controller: _passwordController,
-                      errorInput: ErrorInput(
-                        error: getErrorInput("password",
-                            state.createPasswordRequestError?.errors),
-                        message: getMessageErrorInput("password",
-                            state.createPasswordRequestError?.errors),
-                      ),
-                    )),
+                  padding: const EdgeInsets.only(top: 29),
+                  child: InputPassword(
+                    hintText: AppLocalizations.of(context)!.hintPassword,
+                    labelText: AppLocalizations.of(context)!.password,
+                    controller: _passwordController,
+                    loading: state.createPasswordRequestStatus ==
+                        RequestStatus.loading,
+                    errorInput: getErrorInputComplete(
+                      "password",
+                      state.createPasswordRequestError?.errors,
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 24),
                   child: InputPassword(
                     hintText: AppLocalizations.of(context)!.hintConfirmPassword,
                     labelText: AppLocalizations.of(context)!.confirmedPassword,
                     controller: _confirmedpasswordController,
-                    errorInput: ErrorInput(
-                      error: getErrorInput("confirmPassword",
-                          state.createPasswordRequestError?.errors),
-                      message: getMessageErrorInput("confirmPassword",
-                          state.createPasswordRequestError?.errors),
+                    loading: state.createPasswordRequestStatus ==
+                        RequestStatus.loading,
+                    errorInput: getErrorInputComplete(
+                      "confirmPassword",
+                      state.createPasswordRequestError?.errors,
                     ),
                   ),
                 ),
